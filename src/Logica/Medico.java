@@ -1,27 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Logica;
 
-/**
- *
- * @author Iván
- */
 public class Medico {
     
     private String id_empleado;
-    private int numero_licencia;
+    private String numero_licencia;
     private String especialidad;
     private String universidad;
+    private String contrasena;
     
     public Medico(){
         
         id_empleado = "";
-        numero_licencia = 0;
+        numero_licencia = "";
         especialidad = "";
         universidad = "";    
+    }
+    
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
     }
 
     /**
@@ -41,14 +41,14 @@ public class Medico {
     /**
      * @return the numero_licencia
      */
-    public int getNumero_licencia() {
+    public String getNumero_licencia() {
         return numero_licencia;
     }
 
     /**
      * @param numero_licencia the numero_licencia to set
      */
-    public void setNumero_licencia(int numero_licencia) {
+    public void setNumero_licencia(String numero_licencia) {
         this.numero_licencia = numero_licencia;
     }
 

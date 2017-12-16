@@ -1,14 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
+import DAO.*;
+import Logica.*;
 
-/**
- *
- * @author Iván
- */
 public class ControladorMedico {
     
+    DaoMedico daoMedico;
+
+
+    public ControladorMedico(){
+        
+        daoMedico = new DaoMedico();
+    }
+    
+    public Medico consultarDatosMedico(String user){
+        
+        Medico medico;
+        medico = daoMedico.consultarDatosMedico(user);
+        return medico;
+    }
 }

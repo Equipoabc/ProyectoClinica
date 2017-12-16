@@ -1,14 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Conexion;
-
-/**
- *
- * @author Iván
- */
 
 import java.sql.*;
 
@@ -19,7 +9,7 @@ public class Conexiones {
     
     public Conexiones(){
     
-        url = "jdbc:postgresql://localhost:5432/ProyectoClinica";
+        url = "jdbc:postgresql://localhost:5432/postgres";
         usuario = "postgres";
         password = "1234";
     }
