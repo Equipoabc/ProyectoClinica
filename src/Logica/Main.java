@@ -1,5 +1,5 @@
 package Logica;
-import GUI.*;
+import GUI.GUI_Login;
 import Conexion.*;
 
 public class Main {
@@ -14,7 +14,8 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        GUI_ModificarPaciente interfaz = new GUI_ModificarPaciente();
+        //Reportes.crearCarpetas();
+        GUI_Login interfaz = new GUI_Login();
         interfaz.setVisible(true);
     }
 }
