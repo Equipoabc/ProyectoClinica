@@ -30,6 +30,10 @@ public class GUI_Administrador extends javax.swing.JFrame {
         bienvenidoLabel = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         registrarMedico = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        crearPaciente = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        modificarPaciente = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -155,6 +159,48 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(registrarMedico);
         registrarMedico.setBounds(340, 120, 160, 110);
 
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setText("<html><body> <center>  Crear<br>Paciente </center></body></html>");
+        jPanel1.add(jLabel6);
+        jLabel6.setBounds(530, 130, 140, 90);
+
+        crearPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        crearPaciente.setBorder(null);
+        crearPaciente.setBorderPainted(false);
+        crearPaciente.setContentAreaFilled(false);
+        crearPaciente.setFocusPainted(false);
+        crearPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearPacienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(crearPaciente);
+        crearPaciente.setBounds(520, 120, 160, 110);
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("<html><body> <center>  Modificar<br>Paciente </center></body></html>");
+        jPanel1.add(jLabel7);
+        jLabel7.setBounds(240, 370, 140, 90);
+
+        modificarPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        modificarPaciente.setBorder(null);
+        modificarPaciente.setBorderPainted(false);
+        modificarPaciente.setContentAreaFilled(false);
+        modificarPaciente.setFocusPainted(false);
+        modificarPaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarPacienteActionPerformed(evt);
+            }
+        });
+        jPanel1.add(modificarPaciente);
+        modificarPaciente.setBounds(230, 360, 160, 110);
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -211,6 +257,22 @@ public class GUI_Administrador extends javax.swing.JFrame {
         interfazCrearMedico.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarMedicoActionPerformed
+
+    private void crearPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPacienteActionPerformed
+        // TODO add your handling code here:
+        GUI_CrearPaciente interfazCrearPaciente = new GUI_CrearPaciente();
+        interfazCrearPaciente.setTipo("Administrador");
+        interfazCrearPaciente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_crearPacienteActionPerformed
+
+    private void modificarPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPacienteActionPerformed
+        // TODO add your handling code here:
+        GUI_ModificarPaciente interfazModificarPaciente = new GUI_ModificarPaciente();
+        interfazModificarPaciente.setTipo("Administrador");
+        interfazModificarPaciente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarPacienteActionPerformed
     
     public static void main(String args[]){
        
@@ -228,12 +290,16 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel administradorLabel;
     private javax.swing.JLabel administradorLabel2;
     private javax.swing.JLabel bienvenidoLabel;
+    private javax.swing.JButton crearPaciente;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarPaciente;
     private javax.swing.JButton modificarUsuario;
     private javax.swing.JButton registrarEnfermera;
     private javax.swing.JButton registrarMedico;

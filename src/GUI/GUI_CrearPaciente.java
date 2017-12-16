@@ -27,7 +27,7 @@ public class GUI_CrearPaciente extends javax.swing.JFrame {
         ((JTextField) fecha.getDateEditor()).setEditable(false);
     }
     
-    private void setTipo(String tipo){
+    public void setTipo(String tipo){
         
         this.tipo = tipo;
     }
