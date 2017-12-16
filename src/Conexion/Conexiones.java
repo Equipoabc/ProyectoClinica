@@ -9,9 +9,9 @@ public class Conexiones {
     
     public Conexiones(){
     
-        url = "jdbc:postgresql://localhost:5432/postgres";
+        url = "jdbc:postgresql://localhost:5432/ProyectoClinica";
         usuario = "postgres";
-        password = "1234";
+        password = "12345";
     }
     
     public Connection conectar(){
