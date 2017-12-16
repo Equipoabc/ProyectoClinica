@@ -9,10 +9,11 @@ package Logica;
  *
  * @author Iván
  */
-public class Enfermera {
+public class Enfermera extends Empleado{
      
     private String id_empleado;
     private int anos_experiencia;
+    
     
     public Enfermera(){
         

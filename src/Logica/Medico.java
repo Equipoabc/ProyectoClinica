@@ -1,6 +1,6 @@
 package Logica;
 
-public class Medico {
+public class Medico extends Empleado{
     
     private String id_empleado;
     private String numero_licencia;
