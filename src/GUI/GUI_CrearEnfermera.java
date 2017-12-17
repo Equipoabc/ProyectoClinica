@@ -267,7 +267,10 @@ public class GUI_CrearEnfermera extends javax.swing.JFrame {
         }
         else {
                 int salInt = Integer.parseInt(sal);
-                int anosI = Integer.parseInt (anosS);
+                int anosI = 0;
+                if(!anosS.equals("")){
+                   anosI = Integer.parseInt (anosS); 
+                }
                 int numFilas = controladorEnfermera.insertarEnfermera(id_empleado, 
                         id_jefe, id_area, nombre_empleado, direccion, telefono, salInt, email, car, anosI);
                 

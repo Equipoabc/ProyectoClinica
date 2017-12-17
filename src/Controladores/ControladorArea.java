@@ -9,5 +9,9 @@ public class ControladorArea {
     public ArrayList<String> llenarCombo() {
         return daoArea.llenarCombo();
     }
+
+    public String seleccionArea(String id_area) {
+        return daoArea.seleccionArea(id_area);
+    }
     
 }

@@ -11,39 +11,64 @@ public class DaoMedico {
     }
 
     public Medico consultarDatosMedico(String user) {
-        String sqlMedicos, sqlEmpleados, validar;
+        String sqlMedicos, validar, sqlEmpleado, validar2;
         Medico medico = new Medico();
         
+        validar2 = "SELECT id_empleado FROM empleados WHERE id_empleado = '" + user + "';";
         validar = "SELECT id_empleado FROM medicos WHERE id_empleado = '" + user + "';";
         sqlMedicos = "SELECT id_empleado, numero_licencia, especialidad, universidad,"
                 + " contrasena FROM medicos WHERE id_empleado = '" + user + "';";
-        
-        
+        sqlEmpleado = "SELECT id_jefe, id_area, nombre_empleado, direccion, telefono, salario,"
+                + "email, cargo FROM empleados WHERE id_empleado = '" + user + "';";
+       
         try {
             
             Connection conn = conexion.getConnetion();
             Statement sentencia = conn.createStatement();
+            Statement sentencia2 = conn.createStatement();
             ResultSet consulta = sentencia.executeQuery(validar);
+            ResultSet consulta2 = sentencia2.executeQuery(validar2);
             
             while (consulta.next()) {
                 
                 validar = consulta.getString(1);
             }
+            while (consulta2.next()) {
+                
+                validar2 = consulta2.getString(1);
+            }
             
             if (!validar.equals(user)) {
                 
                 return null;
-            } else {
+            }
+            else if (!validar2.equals(user)) {
+                return null;
+            }
+            else {
+                ResultSet consulta3 = sentencia.executeQuery(sqlMedicos);
                 
-                ResultSet consulta2 = sentencia.executeQuery(sqlMedicos);
-                
-                while (consulta2.next()) {
+                while (consulta3.next()) {
                     
-                    medico.setId_empleado(consulta2.getString(1));
-                    medico.setNumero_licencia(consulta2.getString(2));
-                    medico.setEspecialidad(consulta2.getString(3));
-                    medico.setUniversidad(consulta2.getString(4));
-                    medico.setContrasena(consulta2.getString(5));
+                    medico.setId_empleado(consulta3.getString(1));
+                    medico.setNumero_licencia(consulta3.getString(2));
+                    medico.setEspecialidad(consulta3.getString(3));
+                    medico.setUniversidad(consulta3.getString(4));
+                    medico.setContrasena(consulta3.getString(5));
+                }
+                
+                ResultSet consulta4 = sentencia.executeQuery(sqlEmpleado);
+                
+                while (consulta4.next()) {
+                    
+                    medico.setId_jefe(consulta4.getString(1));
+                    medico.setId_area(consulta4.getString(2));
+                    medico.setNombre_empleado(consulta4.getString(3));
+                    medico.setDireccion(consulta4.getString(4));
+                    medico.setTelefono(consulta4.getString(5));
+                    medico.setSalario(consulta4.getInt(6));
+                    medico.setEmail(consulta4.getString(7));
+                    medico.setCargo(consulta4.getString(8));
                 }
                 
                 return medico;
@@ -125,9 +150,52 @@ public class DaoMedico {
         return -1;
         
     }
-    
-    
-    
+
+    public int actualizarMedico(String id_empleado, String id_jefe, String id_area, String nombre_empleado,
+            String direccion, String telefono, String sal, String email, String car, String numLi, String espe, 
+            String uni, String contrasena) {
+        
+          String sql_guardar, sql_guardar2, validar;
+        validar = "SELECT id_empleado FROM medicos WHERE id_empleado = '" + id_jefe + "';";
+        sql_guardar = "UPDATE empleados SET id_jefe = '" + id_jefe + "', id_area = '" + id_area + "', nombre_empleado = '"
+            + nombre_empleado + "', direccion = '" + direccion + "', telefono = '" + telefono + 
+            "', salario = " + sal + ", email = '" + email + "', cargo = '" + car
+            + "' WHERE id_empleado = '" + id_empleado + "';";
+        
+        sql_guardar2 = "UPDATE medicos SET numero_licencia = '" + numLi + "', especialidad = '" + espe + 
+            "', universidad = '" + uni + "', contrasena = '" + contrasena + "' WHERE id_empleado = '" + id_empleado + "';";
+
+        try {
+
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(validar);
+
+            while (consulta.next()) {
+
+                validar = consulta.getString(1);
+            }
+               
+            if(!validar.equals(id_jefe)){
+                    
+                return 4;
+            }
+            else {
+                    
+                int resultado = sentencia.executeUpdate(sql_guardar);
+                int resultado2 = sentencia.executeUpdate(sql_guardar2);
+                return resultado + resultado2;
+            }               
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("SQL error: " + e);
+        } catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+
+        return -1;
+    }
+  
 }
 
 

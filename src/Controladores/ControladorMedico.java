@@ -41,4 +41,12 @@ public class ControladorMedico {
         int result = daoMedico.guardarMedico(medico);
         return result;
     }
+
+    public int actualizarMedico(String id_empleado, String id_jefe, String id_area, String nombre_empleado, 
+            String direccion, String telefono, String sal, String email, String car, 
+            String numLi, String espe, String uni, String contrasena) {
+        
+        return daoMedico.actualizarMedico(id_empleado, id_jefe, id_area, nombre_empleado, direccion, telefono,
+        sal, email, car, numLi, espe, uni, contrasena);
+    }
 }

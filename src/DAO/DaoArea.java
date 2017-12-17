@@ -38,4 +38,30 @@ public class DaoArea {
         return lista;
     }
     
+     public String seleccionArea(String area){
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql = "SELECT id_area, nombre_area FROM areas WHERE id_area = '" + area + "';";
+        String result = "";
+        
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                result = consulta.getString(1) + " " + consulta.getString(2); 
+            }
+            
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return result;
+    }
+    
 }

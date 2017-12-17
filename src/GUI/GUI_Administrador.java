@@ -22,7 +22,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         administradorLabel = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        modificarUsuario = new javax.swing.JButton();
+        modificarEmpleado = new javax.swing.JButton();
         reportes = new javax.swing.JButton();
         registrarEnfermera = new javax.swing.JButton();
         CerrarSesion = new javax.swing.JLabel();
@@ -54,7 +54,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(108, 101, 247));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("<html><body> <center>  Modificar<br>Usuario </center></body></html>");
+        jLabel3.setText("<html><body> <center>  Modificar<br>Empleado </center></body></html>");
         jPanel1.add(jLabel3);
         jLabel3.setBounds(410, 250, 140, 90);
 
@@ -73,18 +73,18 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(jLabel2);
         jLabel2.setBounds(238, 250, 150, 90);
 
-        modificarUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
-        modificarUsuario.setBorder(null);
-        modificarUsuario.setBorderPainted(false);
-        modificarUsuario.setContentAreaFilled(false);
-        modificarUsuario.setFocusPainted(false);
-        modificarUsuario.addActionListener(new java.awt.event.ActionListener() {
+        modificarEmpleado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        modificarEmpleado.setBorder(null);
+        modificarEmpleado.setBorderPainted(false);
+        modificarEmpleado.setContentAreaFilled(false);
+        modificarEmpleado.setFocusPainted(false);
+        modificarEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarUsuarioActionPerformed(evt);
+                modificarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarUsuario);
-        modificarUsuario.setBounds(400, 240, 160, 110);
+        jPanel1.add(modificarEmpleado);
+        modificarEmpleado.setBounds(400, 240, 160, 110);
 
         reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         reportes.setBorder(null);
@@ -244,12 +244,12 @@ public class GUI_Administrador extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
     
-    private void modificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarUsuarioActionPerformed
+    private void modificarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarEmpleadoActionPerformed
         
-        /*GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
-        interfazModificarUsuario.setVisible(true);
-        this.dispose();*/
-    }//GEN-LAST:event_modificarUsuarioActionPerformed
+        GUI_ModificarEmpleado interfazModificarEmpleado = new GUI_ModificarEmpleado();
+        interfazModificarEmpleado.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarEmpleadoActionPerformed
 
     private void registrarMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMedicoActionPerformed
         // TODO add your handling code here:
@@ -299,8 +299,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarEmpleado;
     private javax.swing.JButton modificarPaciente;
-    private javax.swing.JButton modificarUsuario;
     private javax.swing.JButton registrarEnfermera;
     private javax.swing.JButton registrarMedico;
     private javax.swing.JButton reportes;

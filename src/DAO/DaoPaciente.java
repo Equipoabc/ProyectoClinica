@@ -134,7 +134,8 @@ public class DaoPaciente {
         return 0;
     }
 
-    public int actualizarPaciente(String cedula, String nombre, String telefono, String act, String direccion, String numero) {
+    public int actualizarPaciente(String cedula, String nombre, String telefono, String act, String direccion, 
+            String numero) {
         
         String sql_guardar, validar;
         validar = "SELECT id_paciente FROM Pacientes WHERE id_paciente = '" + cedula + "';";

@@ -27,6 +27,19 @@ public class ControladorEnfermera {
         int result = daoEnfermera.guardarEnfermera(enfermera);
         return result;
     }
+
+    public Enfermera consultarDatosEnfermera(String cedulaConsulta) {
+        Enfermera enfermera;
+        enfermera = daoEnfermera.consultarDatosEnfermera(cedulaConsulta);
+        return enfermera;
+        
+    }
+
+    public int actualizarEnfermera(String id_empleado, String id_jefe, String id_area, String nombre_empleado,
+            String direccion, String telefono, String sal, String email, String car, String an) {
+        return daoEnfermera.actualizarEnfermera(id_empleado, id_jefe, id_area, nombre_empleado, direccion, telefono,
+        sal, email, car, an);
+    }
     
     
     
