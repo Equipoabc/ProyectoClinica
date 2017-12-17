@@ -153,7 +153,7 @@ CREATE TABLE Formulas_medicas (
 DROP TABLE IF EXISTS Causas CASCADE;
 CREATE TABLE Causas (
   
-  codigo_causa VARCHAR(20) NOT NULL PRIMARY KEY,
+  codigo_causa SERIAL NOT NULL PRIMARY KEY,
   nombre_causa VARCHAR(30) NOT NULL,
   descripcion VARCHAR(40) NOT NULL
 );
@@ -162,7 +162,7 @@ DROP TABLE IF EXISTS Registros_Causas CASCADE;
 CREATE TABLE Registros_Causas (
   
   numero_registro INTEGER NOT NULL,
-  codigo_causa VARCHAR(20) NOT NULL,
+  codigo_causa INTEGER NOT NULL,
   PRIMARY KEY (numero_registro, codigo_causa),
   FOREIGN KEY (numero_registro) REFERENCES Registros (numero_registro),
   FOREIGN KEY (codigo_causa) REFERENCES Causas (codigo_causa)

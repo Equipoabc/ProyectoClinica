@@ -14,7 +14,7 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        GUI_CrearPaciente interfaz = new GUI_CrearPaciente();
+        GUI_CrearCausa interfaz = new GUI_CrearCausa();
         interfaz.setVisible(true);
     }
 }
