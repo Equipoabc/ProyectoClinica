@@ -33,6 +33,7 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
         codigo_label = new javax.swing.JLabel();
@@ -67,6 +68,20 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(400, 370, 140, 90);
+
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarMed.png"))); // NOI18N
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.setContentAreaFilled(false);
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarPeq.png"))); // NOI18N
+        botonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonEliminar);
+        botonEliminar.setBounds(80, 340, 120, 50);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
@@ -142,6 +157,7 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        descripcion.setLineWrap(true);
         descripcion.setRows(5);
         descripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(descripcion);
@@ -265,16 +281,15 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
     
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
-        
         String cod_med = codigo.getText();
         
         if (cod_med.equals("")) {
             
-            JOptionPane.showMessageDialog(null, "El campo de la consulta esta vacio.");
+            JOptionPane.showMessageDialog(null, "El campo de la consulta esta vacío.");
             
         } else if (!validaciones.validarNumero(cod_med)) {
             
-            JOptionPane.showMessageDialog(null, "El campo consultar debe ser numerico.");
+            JOptionPane.showMessageDialog(null, "El campo consultar debe ser numérico.");
             
         } else {
             
@@ -316,6 +331,45 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
     private void costoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costoKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_costoKeyPressed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+
+        String cod_med=codigo.getText();
+
+        if (cod_med.equals("")){
+
+            JOptionPane.showMessageDialog(null, "No ha ingresado ningún medicamento.");
+        } else if (!validaciones.validarNumero(cod_med)){
+
+            JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
+        } else {
+
+            medicamento = controladorMedicamento.consultarDatosMedicamento(cod_med);
+
+            if(medicamento != null){
+
+                int opcion = 5;
+                opcion = JOptionPane.showConfirmDialog(null, "Está seguro que desea borrar este medicamento: \n" + medicamento.getNombre_medicamento()+ " ?", "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
+
+                if(opcion == 0){
+
+                    int numFilas = controladorMedicamento.eliminarMedicamento(cod_med);
+
+                    if (numFilas == 1){
+
+                        JOptionPane.showMessageDialog(null, "El medicamento "+ medicamento.getNombre_medicamento()+ " ha sido eliminado.");
+                    }
+                    else{
+
+                        JOptionPane.showMessageDialog(null, "Hubo un error eliminando el medicamento.");
+                    }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "El medicamento: " + cod_med + " no existe.");
+            }
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
     
     public static void main(String args[]){
         
@@ -332,6 +386,7 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JTextField codigo;
     private javax.swing.JLabel codigo_label;
     private javax.swing.JTextField costo;

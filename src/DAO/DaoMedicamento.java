@@ -180,5 +180,25 @@ public class DaoMedicamento {
         }
         return null;
     }
+
+    public int eliminarMedicamento(String cod_med) {
+        String sql;
+        sql = "DELETE FROM medicamentos WHERE codigo_medicamento = '" + cod_med + "';";
+        
+        try {
+            int numFilas;
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            numFilas = sentencia.executeUpdate(sql);
+            return numFilas;
+        }
+        catch (SQLException e) {
+            System.out.println("SQL error: " + e);
+        }
+        catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        return -1;
+    }
     
 }

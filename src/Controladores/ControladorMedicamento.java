@@ -45,5 +45,9 @@ public class ControladorMedicamento {
     public Medicamento consultarDatosMedicamento(String cod_med) {
         return daoMedicamento.consultarDatosMedicamento(cod_med);
     }
+
+    public int eliminarMedicamento(String cod_med) {
+        return daoMedicamento.eliminarMedicamento(cod_med);
+    }
     
 }

@@ -57,6 +57,7 @@ public class GUI_CrearArea extends javax.swing.JFrame {
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        descripcion.setLineWrap(true);
         descripcion.setRows(5);
         descripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(descripcion);

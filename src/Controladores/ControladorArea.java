@@ -36,6 +36,10 @@ public class ControladorArea {
     public Area consultarDatosArea(String cod_area) {
         return daoArea.consultarDatosArea(cod_area);
     }
+
+    public int eliminarArea(String cod_area) {
+        return daoArea.eliminarArea(cod_area);
+    }
     
     
     

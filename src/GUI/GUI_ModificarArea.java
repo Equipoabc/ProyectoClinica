@@ -32,6 +32,7 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        botonEliminar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
@@ -51,6 +52,20 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
 
         jPanel1.setLayout(null);
 
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarMed.png"))); // NOI18N
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.setContentAreaFilled(false);
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarPeq.png"))); // NOI18N
+        botonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonEliminar);
+        botonEliminar.setBounds(80, 340, 120, 50);
+
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
         botonCancelar.setBorderPainted(false);
@@ -69,7 +84,7 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Modificar Medicamento");
+        jLabel6.setText("Modificar Área");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(140, 40, 320, 50);
 
@@ -140,10 +155,11 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
 
         descripcion.setColumns(20);
         descripcion.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        descripcion.setLineWrap(true);
         descripcion.setRows(5);
         descripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(descripcion);
-        descripcion.setBounds(340, 260, 180, 50);
+        descripcion.setBounds(340, 260, 180, 70);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel.setText("Código:");
@@ -287,6 +303,45 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
        
     }//GEN-LAST:event_nombreKeyPressed
+
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
+
+        String cod_area=codigo.getText();
+
+        if (cod_area.equals("")){
+
+            JOptionPane.showMessageDialog(null, "No ha ingresado ningún área.");
+        } else if (!validaciones.validarNumero(cod_area)){
+
+            JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
+        } else {
+
+            area = controladorArea.consultarDatosArea(cod_area);
+
+            if(area != null){
+
+                int opcion = 5;
+                opcion = JOptionPane.showConfirmDialog(null, "Está seguro que desea borrar este área: \n" + area.getNombre_area()+ " ?", "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
+
+                if(opcion == 0){
+
+                    int numFilas = controladorArea.eliminarArea(cod_area);
+
+                    if (numFilas == 1){
+
+                        JOptionPane.showMessageDialog(null, "El área "+ area.getNombre_area()+ " ha sido eliminado.");
+                    }
+                    else{
+
+                        JOptionPane.showMessageDialog(null, "Hubo un error eliminando el área.");
+                    }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "El área: " + cod_area + " no existe.");
+            }
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
     
     public static void main(String args[]){
         
@@ -303,6 +358,7 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JTextField codigo;
     private javax.swing.JLabel codigo_label;
     private javax.swing.JTextArea descripcion;

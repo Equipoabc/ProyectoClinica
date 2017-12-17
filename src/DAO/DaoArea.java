@@ -172,6 +172,24 @@ public class DaoArea {
         }
         return null;
     }
+
+    public int eliminarArea(String cod_area) {
+        String sql;
+        sql = "DELETE FROM areas WHERE id_area = '" + cod_area + "';";
         
-    
+        try {
+            int numFilas;
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            numFilas = sentencia.executeUpdate(sql);
+            return numFilas;
+        }
+        catch (SQLException e) {
+            System.out.println("SQL error: " + e);
+        }
+        catch (Exception e) {
+            System.out.println("Error" + e);
+        }
+        return -1;
+    }
 }
