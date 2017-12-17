@@ -1,14 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
+import DAO.*;
+import Logica.*;
 
-/**
- *
- * @author Iván
- */
 public class ControladorCita {
+    
+    DaoCita daoCita;
+    
+    public ControladorCita(){
+        daoCita = new DaoCita();
+    }
+
+    public int insertarCita(String id_empleadoS, String id_pacienteS, String fechaS, String horario, String precioS) {
+        Cita cita = new Cita();
+        cita.setId_empleado(id_empleadoS);
+        cita.setId_paciente(id_pacienteS);
+        cita.setFecha(fechaS);
+        cita.setHora(horario);
+        cita.setPrecio(precioS);
+        
+        int resultado = daoCita.insertarCita(cita);
+        return resultado;
+        
+    }
     
 }

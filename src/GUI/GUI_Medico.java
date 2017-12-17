@@ -204,7 +204,7 @@ public class GUI_Medico extends javax.swing.JFrame {
     }
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
-        // TODO add your handling code here:
+        
         /*GUI_ReportesGerente vSede = new GUI_ReportesGerente();
         vSede.setId(id);
         vSede.personalizarBienvenida();
@@ -238,10 +238,9 @@ public class GUI_Medico extends javax.swing.JFrame {
     
     private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
         
-        /*GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
-        interfazCrearEvento.setId(id);
-        interfazCrearEvento.setVisible(true);
-        this.dispose();*/
+        GUI_ProgramarCita interfazProgramarCita = new GUI_ProgramarCita();
+        interfazProgramarCita.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearEventoActionPerformed
    
     public void personalizarBienvenida(){

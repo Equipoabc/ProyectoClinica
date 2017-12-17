@@ -1,33 +1,42 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Logica;
 
-import java.util.Date;
 
-/**
- *
- * @author Iván
- */
+
 public class Cita {
     
     private int numero_cita;
     private String id_paciente;
-    private Date fecha;
+    private String fecha;
     private String hora;
     private String id_empleado;
+    private String precio;
     
     public Cita(){
         
         numero_cita = 0;
         id_paciente = "";
-        fecha = null;
+        fecha = "";
         hora = "";
         id_empleado = "";
     }
 
+    
+    public String getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
+    
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+    
     /**
      * @return the numero_cita
      */
@@ -54,20 +63,6 @@ public class Cita {
      */
     public void setId_paciente(String id_paciente) {
         this.id_paciente = id_paciente;
-    }
-
-    /**
-     * @return the fecha
-     */
-    public Date getFecha() {
-        return fecha;
-    }
-
-    /**
-     * @param fecha the fecha to set
-     */
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
     }
 
     /**
