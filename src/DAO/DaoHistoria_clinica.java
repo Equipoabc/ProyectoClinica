@@ -22,6 +22,7 @@ public class DaoHistoria_clinica {
             Connection con = conexion.getConnetion();
             Statement sentencia = con.createStatement();
             ResultSet consulta = sentencia.executeQuery(sql);
+            sql = "";
 
             while (consulta.next()) {
 

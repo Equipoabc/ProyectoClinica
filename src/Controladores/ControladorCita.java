@@ -1,14 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
+import DAO.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Iván
- */
 public class ControladorCita {
+
+    DaoCita daoCita;
     
+    public ControladorCita(){
+        
+        daoCita = new DaoCita();
+    }
+
+    public int consutarAgenda(String fecha, String medico, DefaultTableModel modelo, JTable tabla) {
+        
+        return daoCita.consutarAgenda(fecha, medico, modelo, tabla);
+    }
 }

@@ -49,8 +49,6 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-        precio = new javax.swing.JTextField();
-        primerNombreLabel8 = new javax.swing.JLabel();
         primerNombreLabel6 = new javax.swing.JLabel();
         primerNombreLabel4 = new javax.swing.JLabel();
         segundoNombreLabel = new javax.swing.JLabel();
@@ -93,20 +91,10 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(540, 360, 190, 80);
 
-        precio.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        precio.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(precio);
-        precio.setBounds(410, 240, 180, 25);
-
-        primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel8.setText("Precio:");
-        jPanel1.add(primerNombreLabel8);
-        primerNombreLabel8.setBounds(330, 240, 70, 20);
-
         primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel6.setText("Agregar causas:");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(330, 280, 110, 30);
+        primerNombreLabel6.setBounds(300, 240, 110, 30);
 
         primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
@@ -255,7 +243,6 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
                 fecha.setDate(null);
                 hora.setValue(0);
                 minuto.setValue(0);
-                precio.setText(null);
             }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
@@ -263,20 +250,16 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
         botonAceptar.setEnabled(false);
-        String cedula, fech, hor, preci;
+        String cedula, fech, hor;
         
         cedula = cedulaBuscar.getText();
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
         fech = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
         LocalDate.parse(fech, fmt);
         hor = hora.getValue() + ":" + minuto.getValue();
-        preci = precio.getText();
         
-        if (cedula.equals("") ||  preci.equals("")){            
+        if (cedula.equals("")){            
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        } 
-        else if(!validaciones.validarNumero(preci)){
-            JOptionPane.showMessageDialog(null, "El campo de precio solo puede ser de numeros.");
         }
         else {
             
@@ -285,7 +268,6 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
             switch(resultado){                    
                 case 1:
                     JOptionPane.showMessageDialog(null, "Registro creado exitosamente.");
-                    precio.setText(null);
                     hora.setValue(0);
                     minuto.setValue(0);
                     titulo.setText("Historia clinica");
@@ -346,12 +328,10 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSpinner minuto;
-    private javax.swing.JTextField precio;
     private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel primerNombreLabel4;
     private javax.swing.JLabel primerNombreLabel6;
     private javax.swing.JLabel primerNombreLabel7;
-    private javax.swing.JLabel primerNombreLabel8;
     private javax.swing.JLabel primerNombreLabel9;
     private javax.swing.JLabel segundoNombreLabel;
     private javax.swing.JLabel titulo;

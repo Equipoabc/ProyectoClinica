@@ -14,7 +14,7 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        GUI_CrearCausa interfaz = new GUI_CrearCausa();
+        GUI_CrearRegistro interfaz = new GUI_CrearRegistro();
         interfaz.setVisible(true);
     }
 }
