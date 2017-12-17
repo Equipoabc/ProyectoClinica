@@ -1,14 +1,22 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
+import DAO.*;
 
-/**
- *
- * @author Iván
- */
 public class ControladorHistoria_clinica {
+
+    DaoHistoria_clinica daoHistoria_clinica;
     
+    public ControladorHistoria_clinica(){
+        
+        daoHistoria_clinica = new DaoHistoria_clinica();
+    }
+    
+    public String consultarNumero(String cedula) {
+        
+        return daoHistoria_clinica.consultarNumero(cedula);
+    }
+
+    public void crearHistoria(String fecha, String cedula) {
+        
+        daoHistoria_clinica.crearHistoria(fecha, cedula);
+    }
 }

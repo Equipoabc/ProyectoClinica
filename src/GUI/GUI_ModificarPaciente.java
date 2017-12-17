@@ -208,7 +208,6 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
     
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
-        botonAceptar.setEnabled(true);
         String cedula = consultarLabel.getText();
         
         if (cedula.equals("")){       
@@ -224,7 +223,8 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
             paciente = controladorPaciente.consultarDatosPaciente(cedula);
             
             if (paciente != null){
-
+                
+                botonAceptar.setEnabled(true);
                 nom.setText(paciente.getNombre_paciente());
                 actividad.setText(paciente.getActividad_economica());
                 direc.setText(paciente.getDireccion());
@@ -257,7 +257,7 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         
         if (nombre.equals("") || telefono.equals("") ||  numero.equals("")){            
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        } else if (!validaciones.validarLetrasEspacios(nombre) || !validaciones.validarLetras(act)) {
+        } else if (!validaciones.validarLetrasEspacios(nombre) || !validaciones.validarLetrasEspacios(act)) {
             JOptionPane.showMessageDialog(null, "Los campos nombre y actividad economica deben ser de solo letras y espacios.");
         } else if ( !validaciones.validarNumero(telefono) || !validaciones.validarNumero(cedulaBusqueda) || !validaciones.validarNumero(numero)) {
             JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y numero de seguro deben ser de solo numeros.");

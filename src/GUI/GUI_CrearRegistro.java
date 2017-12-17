@@ -1,28 +1,45 @@
 package GUI;
 import Controladores.*;
 import Logica.*;
-import javax.swing.JOptionPane;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+import javax.swing.*;
 
-public class GUI_ModificarPaciente extends javax.swing.JFrame {
+public class GUI_CrearRegistro extends javax.swing.JFrame {
     
     Validaciones validaciones;
-    ControladorPaciente controladorPaciente;
-    Paciente paciente;
-    String tipo;
+    ControladorRegistro controladorRegistro;
+    String historia, cedula_medico;
     
-    public GUI_ModificarPaciente() {
+    public GUI_CrearRegistro() {
         
         initComponents();
         this.setLocationRelativeTo(null);
-        tipo = "";
-        controladorPaciente = new ControladorPaciente();
+        historia = "";
+        cedula_medico = "";
+        controladorRegistro = new ControladorRegistro();
         validaciones = new Validaciones();
         botonAceptar.setEnabled(false);
+        SpinnerNumberModel modeloH = new SpinnerNumberModel(0, 0, 23, 1);
+        SpinnerNumberModel modeloM = new SpinnerNumberModel(0, 0, 59, 1);
+        hora.setModel(modeloH);
+        minuto.setModel(modeloM);  
+        ((JTextField) fecha.getDateEditor()).setEditable(false);
+        fecha.setEnabled(false);
+        fecha.setDate(GetDateNow());
+    }
+
+    public void setCedula_medico(String cedula_medico){
+        
+        this.cedula_medico = cedula_medico;
     }
     
-    private void setTipo(String tipo){
+    private Date GetDateNow(){
         
-        this.tipo = tipo;
+        Calendar currentDate = Calendar.getInstance();
+        return currentDate.getTime();
     }
     
     @SuppressWarnings("unchecked")
@@ -32,20 +49,22 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-        direc = new javax.swing.JTextField();
+        precio = new javax.swing.JTextField();
         primerNombreLabel8 = new javax.swing.JLabel();
-        num_seguro = new javax.swing.JTextField();
-        tel = new javax.swing.JTextField();
         primerNombreLabel6 = new javax.swing.JLabel();
         primerNombreLabel4 = new javax.swing.JLabel();
-        actividad = new javax.swing.JTextField();
         segundoNombreLabel = new javax.swing.JLabel();
         primerNombreLabel = new javax.swing.JLabel();
-        consultarLabel = new javax.swing.JTextField();
+        cedulaBuscar = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
-        nom = new javax.swing.JTextField();
         botonAceptar = new javax.swing.JButton();
-        primerNombreLabel10 = new javax.swing.JLabel();
+        titulo = new javax.swing.JLabel();
+        fecha = new com.toedter.calendar.JDateChooser();
+        primerNombreLabel7 = new javax.swing.JLabel();
+        primerNombreLabel9 = new javax.swing.JLabel();
+        hora = new javax.swing.JSpinner();
+        minuto = new javax.swing.JSpinner();
+        formula = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,9 +75,9 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Modificar Paciente");
+        jLabel6.setText("Nuevo Registro");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(140, 40, 250, 50);
+        jLabel6.setBounds(140, 50, 250, 50);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorderPainted(false);
@@ -72,62 +91,42 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
             }
         });
         jPanel1.add(botonCancelar);
-        botonCancelar.setBounds(370, 370, 190, 80);
+        botonCancelar.setBounds(540, 360, 190, 80);
 
-        direc.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        direc.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(direc);
-        direc.setBounds(410, 240, 180, 25);
+        precio.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
+        precio.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(precio);
+        precio.setBounds(410, 240, 180, 25);
 
         primerNombreLabel8.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel8.setText("Dirección:");
+        primerNombreLabel8.setText("Precio:");
         jPanel1.add(primerNombreLabel8);
         primerNombreLabel8.setBounds(330, 240, 70, 20);
 
-        num_seguro.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        num_seguro.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(num_seguro);
-        num_seguro.setBounds(410, 320, 180, 25);
-
-        tel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        tel.setSelectionColor(new java.awt.Color(102, 102, 255));
-        tel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                telActionPerformed(evt);
-            }
-        });
-        jPanel1.add(tel);
-        tel.setBounds(410, 280, 180, 25);
-
         primerNombreLabel6.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel6.setText("Teléfono:");
+        primerNombreLabel6.setText("Agregar causas:");
         jPanel1.add(primerNombreLabel6);
-        primerNombreLabel6.setBounds(330, 280, 60, 30);
+        primerNombreLabel6.setBounds(330, 280, 110, 30);
 
         primerNombreLabel4.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         primerNombreLabel4.setText("Ingresar Cédula:");
         jPanel1.add(primerNombreLabel4);
         primerNombreLabel4.setBounds(90, 180, 100, 40);
 
-        actividad.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        actividad.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(actividad);
-        actividad.setBounds(410, 200, 180, 25);
-
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        segundoNombreLabel.setText("Actividad economica:");
+        segundoNombreLabel.setText("Hora:");
         jPanel1.add(segundoNombreLabel);
-        segundoNombreLabel.setBounds(270, 200, 130, 30);
+        segundoNombreLabel.setBounds(340, 200, 50, 30);
 
         primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel.setText("Nombre:");
+        primerNombreLabel.setText("Fecha:");
         jPanel1.add(primerNombreLabel);
         primerNombreLabel.setBounds(340, 160, 60, 30);
 
-        consultarLabel.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        consultarLabel.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(consultarLabel);
-        consultarLabel.setBounds(70, 220, 150, 25);
+        cedulaBuscar.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
+        cedulaBuscar.setSelectionColor(new java.awt.Color(102, 102, 255));
+        jPanel1.add(cedulaBuscar);
+        cedulaBuscar.setBounds(70, 220, 150, 25);
 
         botonConsultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         botonConsultar.setBorderPainted(false);
@@ -143,11 +142,6 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         jPanel1.add(botonConsultar);
         botonConsultar.setBounds(60, 250, 160, 70);
 
-        nom.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
-        nom.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(nom);
-        nom.setBounds(410, 160, 180, 25);
-
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorderPainted(false);
         botonAceptar.setContentAreaFilled(false);
@@ -162,16 +156,51 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         jPanel1.add(botonAceptar);
         botonAceptar.setBounds(240, 380, 160, 60);
 
-        primerNombreLabel10.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel10.setText("Numero de seguro:");
-        jPanel1.add(primerNombreLabel10);
-        primerNombreLabel10.setBounds(281, 320, 109, 20);
+        titulo.setText("Historia clinica");
+        jPanel1.add(titulo);
+        titulo.setBounds(340, 120, 340, 30);
+
+        fecha.setBackground(new java.awt.Color(255, 255, 255));
+        fecha.setForeground(new java.awt.Color(102, 102, 255));
+        fecha.setFocusable(false);
+        fecha.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
+        fecha.setMaxSelectableDate(new java.util.Date(1514786511000L));
+        fecha.setMinSelectableDate(new java.util.Date(-1577901489000L));
+        fecha.setRequestFocusEnabled(false);
+        fecha.setVerifyInputWhenFocusTarget(false);
+        fecha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                fechaKeyPressed(evt);
+            }
+        });
+        jPanel1.add(fecha);
+        fecha.setBounds(410, 160, 180, 20);
+
+        primerNombreLabel7.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        primerNombreLabel7.setText("Hora");
+        jPanel1.add(primerNombreLabel7);
+        primerNombreLabel7.setBounds(480, 200, 50, 30);
+
+        primerNombreLabel9.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
+        primerNombreLabel9.setText("Minuto");
+        jPanel1.add(primerNombreLabel9);
+        primerNombreLabel9.setBounds(590, 200, 80, 30);
+
+        hora.setAutoscrolls(true);
+        jPanel1.add(hora);
+        hora.setBounds(420, 200, 50, 30);
+        jPanel1.add(minuto);
+        minuto.setBounds(520, 200, 60, 30);
+
+        formula.setText("Agregar formula medica");
+        jPanel1.add(formula);
+        formula.setBounds(400, 390, 150, 23);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(0, -10, 750, 500);
+        jLabel2.setBounds(0, 0, 750, 500);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,28 +217,15 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        
-        if(tipo.equals("Administrador")){
-            
-            GUI_Administrador administrador = new GUI_Administrador();
-            administrador.setVisible(true);
-            this.dispose();
-        }        
-        else {
-            
-            GUI_Operador operador = new GUI_Operador();
-            operador.setVisible(true);
-            this.dispose();
-        }
+
+        GUI_Medico medico = new GUI_Medico();
+        medico.setVisible(true);
+        this.dispose();        
     }//GEN-LAST:event_botonCancelarActionPerformed
-    
-    private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed
-    }//GEN-LAST:event_telActionPerformed
-    
+        
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
         
-        botonAceptar.setEnabled(true);
-        String cedula = consultarLabel.getText();
+        String cedula = cedulaBuscar.getText();
         
         if (cedula.equals("")){       
             
@@ -221,24 +237,25 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
         } 
         else {
             
-            paciente = controladorPaciente.consultarDatosPaciente(cedula);
+            ControladorPaciente controladorPaciente = new ControladorPaciente();
+            Paciente paciente = controladorPaciente.consultarDatosPaciente(cedula);
             
             if (paciente != null){
-
-                nom.setText(paciente.getNombre_paciente());
-                actividad.setText(paciente.getActividad_economica());
-                direc.setText(paciente.getDireccion());
-                tel.setText(paciente.getTelefono());
-                num_seguro.setText(paciente.getNumero_seguro());
+                
+                botonAceptar.setEnabled(true);
+                botonConsultar.setEnabled(false);
+                ControladorHistoria_clinica controladorHistoria_clinica = new ControladorHistoria_clinica();
+                historia = controladorHistoria_clinica.consultarNumero(cedula);
+                titulo.setText("Historia clinica: " + historia + "| Paciente: " + paciente.getNombre_paciente());
             }
             else {
                 
-                JOptionPane.showMessageDialog(null, "El paciente no existe.");                
-                nom.setText(null);
-                actividad.setText(null);
-                tel.setText(null);
-                num_seguro.setText(null);
-                direc.setText(null);
+                JOptionPane.showMessageDialog(null, "El paciente no existe.");
+                titulo.setText("Historia clinica");
+                fecha.setDate(null);
+                hora.setValue(0);
+                minuto.setValue(0);
+                precio.setText(null);
             }
         }
     }//GEN-LAST:event_botonConsultarActionPerformed
@@ -246,62 +263,43 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
         botonAceptar.setEnabled(false);
-        String cedulaBusqueda, nombre, direccion, telefono, act, numero;  
+        String cedula, fech, hor, preci;
         
-        nombre = nom.getText();
-        telefono = tel.getText();
-        numero = num_seguro.getText();
-        direccion = direc.getText();
-        act = actividad.getText();        
-        cedulaBusqueda = consultarLabel.getText();
+        cedula = cedulaBuscar.getText();
+        DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");        
+        fech = new SimpleDateFormat("dd/MM/YYYY").format(fecha.getDate());
+        LocalDate.parse(fech, fmt);
+        hor = hora.getValue() + ":" + minuto.getValue();
+        preci = precio.getText();
         
-        if (nombre.equals("") || telefono.equals("") ||  numero.equals("")){            
+        if (cedula.equals("") ||  preci.equals("")){            
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        } else if (!validaciones.validarLetrasEspacios(nombre) || !validaciones.validarLetras(act)) {
-            JOptionPane.showMessageDialog(null, "Los campos nombre y actividad economica deben ser de solo letras y espacios.");
-        } else if ( !validaciones.validarNumero(telefono) || !validaciones.validarNumero(cedulaBusqueda) || !validaciones.validarNumero(numero)) {
-            JOptionPane.showMessageDialog(null, "Los campos de cedula, telefono y numero de seguro deben ser de solo numeros.");
-        } else if(!validaciones.validarLetrasYNumerosEspaciosSimbolos(direccion)){
-            JOptionPane.showMessageDialog(null, "El campo de direccion solo puede ser de letras, numeros, espacios y los caracteres '.' y '-'.");
+        } 
+        else if(!validaciones.validarNumero(preci)){
+            JOptionPane.showMessageDialog(null, "El campo de precio solo puede ser de numeros.");
         }
         else {
             
-            if (controladorPaciente.comprobar(cedulaBusqueda) == 1){
+            int resultado = controladorRegistro.crearRegistro(historia, fech, hor, cedula_medico);
                 
-                if (nombre.equals(paciente.getNombre_paciente()) && telefono.equals(paciente.getTelefono())
-                        && act.equals(paciente.getActividad_economica()) && direccion.equals(paciente.getDireccion())
-                        && numero.equals(paciente.getNumero_seguro())) {
-                    
-                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
-                } 
-                else {
-                    
-                    int resultado = controladorPaciente.actualizarPaciente(cedulaBusqueda, nombre, telefono, act, direccion, numero);
-                                        
-                    switch(resultado){
-                        case 1:
-                            JOptionPane.showMessageDialog(null, "Los datos se han actualizado.");
-                            consultarLabel.setText(null);
-                            nom.setText(null);
-                            actividad.setText(null);
-                            tel.setText(null);
-                            num_seguro.setText(null);
-                            direc.setText(null);
-                            botonAceptar.setEnabled(false);
-                            break;
-                        default:
-                            JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el paciente.");
-                            break;
-                    }
-                }
-            }
-            else {
-                
-                JOptionPane.showMessageDialog(null, "El paciente que quiere actualizar no existe.");
+            switch(resultado){                    
+                case 1:
+                    JOptionPane.showMessageDialog(null, "Registro creado exitosamente.");
+                    precio.setText(null);
+                    hora.setValue(0);
+                    minuto.setValue(0);
+                    titulo.setText("Historia clinica");
+                    fecha.setDate(null);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Ocurrió un problema al crear el registro.");
+                    break;
             }
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
-    
+
+    private void fechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyPressed
+    }//GEN-LAST:event_fechaKeyPressed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -316,14 +314,15 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GUI_ModificarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_CrearRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GUI_ModificarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_CrearRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GUI_ModificarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_CrearRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GUI_ModificarPaciente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_CrearRegistro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
         
         /* Create and display the form */
@@ -331,28 +330,30 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
             
             public void run() {
                 
-                new GUI_ModificarPaciente().setVisible(true);
+                new GUI_CrearRegistro().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField actividad;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
-    private javax.swing.JTextField consultarLabel;
-    private javax.swing.JTextField direc;
+    private javax.swing.JTextField cedulaBuscar;
+    private com.toedter.calendar.JDateChooser fecha;
+    private javax.swing.JButton formula;
+    private javax.swing.JSpinner hora;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField nom;
-    private javax.swing.JTextField num_seguro;
+    private javax.swing.JSpinner minuto;
+    private javax.swing.JTextField precio;
     private javax.swing.JLabel primerNombreLabel;
-    private javax.swing.JLabel primerNombreLabel10;
     private javax.swing.JLabel primerNombreLabel4;
     private javax.swing.JLabel primerNombreLabel6;
+    private javax.swing.JLabel primerNombreLabel7;
     private javax.swing.JLabel primerNombreLabel8;
+    private javax.swing.JLabel primerNombreLabel9;
     private javax.swing.JLabel segundoNombreLabel;
-    private javax.swing.JTextField tel;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
