@@ -12,12 +12,27 @@ import java.util.Date;
  * @author Iván
  */
 public class Cita {
+
+    /**
+     * @return the precio
+     */
+    public String getPrecio() {
+        return precio;
+    }
+
+    /**
+     * @param precio the precio to set
+     */
+    public void setPrecio(String precio) {
+        this.precio = precio;
+    }
     
     private int numero_cita;
     private String id_paciente;
     private Date fecha;
     private String hora;
     private String id_empleado;
+    private String precio;
     
     public Cita(){
         
@@ -26,6 +41,7 @@ public class Cita {
         fecha = null;
         hora = "";
         id_empleado = "";
+        precio = "";
     }
 
     /**

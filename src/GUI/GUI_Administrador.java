@@ -156,9 +156,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         
-        /*GUI_ReportesAdmin interfazReportesAdmin = new GUI_ReportesAdmin();
-        interfazReportesAdmin.setVisible(true);
-        this.dispose();*/
+        GUI_ModificarArea med = new GUI_ModificarArea();
+        med.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
     
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed

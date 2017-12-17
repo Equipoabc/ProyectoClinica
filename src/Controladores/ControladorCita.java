@@ -5,10 +5,21 @@
  */
 package Controladores;
 
+import DAO.DaoCita;
+
+
 /**
  *
  * @author Iván
  */
 public class ControladorCita {
+    
+    DaoCita daoCita;
+    
+public ControladorCita(){
+    daoCita = new DaoCita();
+}
+
+
     
 }
