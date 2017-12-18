@@ -257,9 +257,7 @@ public class GUI_CrearPaciente extends javax.swing.JFrame {
             fechaNac = LocalDate.parse(fechaNacimiento, fmt);
         } catch(Exception e){
             validar = "\nDebe ingresar una fecha válida.";
-        }        
-        LocalDate ahora = LocalDate.now();
-        Period periodo = Period.between(fechaNac, ahora);        
+        }   
         telefono = tel.getText();
         direc = direccion.getText();
         numero_seguro = num_seguro.getText();
@@ -287,6 +285,8 @@ public class GUI_CrearPaciente extends javax.swing.JFrame {
             switch(resultado){                    
                 case 1:
                     JOptionPane.showMessageDialog(null, "Paciente registrado exitosamente.");
+                    ControladorHistoria_clinica controladorHistoria_clinica = new ControladorHistoria_clinica();
+                    controladorHistoria_clinica.crearHistoria(GetDateNow().toString(), cedula);
                     nom.setText(null);
                     ced.setText(null);
                     tel.setText(null);
@@ -301,7 +301,7 @@ public class GUI_CrearPaciente extends javax.swing.JFrame {
                 default:
                     JOptionPane.showMessageDialog(null, "Ocurrió un problema al registrar el paciente.");
                     break;
-                }            
+            }            
         }
     }
     

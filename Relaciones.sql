@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS Administrador CASCADE;
+DROP TABLE IF EXISTS Administrador CASCADE;
 CREATE TABLE Administrador (
 
 	usuario VARCHAR(20) NOT NULL PRIMARY KEY,
@@ -121,39 +121,39 @@ CREATE TABLE Pacientes_Campanas (
 DROP TABLE IF EXISTS Historias_clinicas CASCADE;
 CREATE TABLE Historias_clinicas (
   
-  numero_historia VARCHAR(20) NOT NULL PRIMARY KEY,
+  numero_historia SERIAL NOT NULL PRIMARY KEY,
   fecha_apertura DATE,
   id_paciente VARCHAR(20) NOT NULL,
   FOREIGN KEY (id_paciente) REFERENCES Pacientes (id_paciente)
 );
 
-DROP TABLE IF EXISTS Formulas_medicas CASCADE;
-CREATE TABLE Formulas_medicas (
-  
-  codigo_formula VARCHAR(20) NOT NULL PRIMARY KEY,
-  id_empleado VARCHAR(20) NOT NULL,
-  FOREIGN KEY (id_empleado) REFERENCES Medicos (id_empleado)
-);
-
 DROP TABLE IF EXISTS Registros CASCADE;
 CREATE TABLE Registros (
   
-  numero_registro VARCHAR(20) NOT NULL,
-  numero_historia VARCHAR(20) NOT NULL,
+  numero_registro SERIAL NOT NULL,
+  numero_historia INTEGER NOT NULL,
   fecha_consulta DATE NOT NULL,
   hora TIME NOT NULL,
   id_empleado VARCHAR(20) NOT NULL,
-  codigo_formula VARCHAR(20) NOT NULL,
   PRIMARY KEY (numero_registro),
   FOREIGN KEY (id_empleado) REFERENCES Empleados (id_empleado),
-  FOREIGN KEY (codigo_formula) REFERENCES Formulas_medicas (codigo_formula),
   FOREIGN KEY (numero_historia) REFERENCES Historias_clinicas (numero_historia)
+);
+
+DROP TABLE IF EXISTS Formulas_medicas CASCADE;
+CREATE TABLE Formulas_medicas (
+  
+  codigo_formula SERIAL NOT NULL PRIMARY KEY,
+  id_empleado VARCHAR(20) NOT NULL,
+  numero_registro INTEGER NOT NULL,
+  FOREIGN KEY (id_empleado) REFERENCES Medicos (id_empleado),
+  FOREIGN KEY (numero_registro) REFERENCES Registros (numero_registro)
 );
 
 DROP TABLE IF EXISTS Causas CASCADE;
 CREATE TABLE Causas (
   
-  codigo_causa VARCHAR(20) NOT NULL PRIMARY KEY,
+  codigo_causa SERIAL NOT NULL PRIMARY KEY,
   nombre_causa VARCHAR(30) NOT NULL,
   descripcion VARCHAR(40) NOT NULL
 );
@@ -161,8 +161,8 @@ CREATE TABLE Causas (
 DROP TABLE IF EXISTS Registros_Causas CASCADE;
 CREATE TABLE Registros_Causas (
   
-  numero_registro VARCHAR(20) NOT NULL,
-  codigo_causa VARCHAR(20) NOT NULL,
+  numero_registro INTEGER NOT NULL,
+  codigo_causa INTEGER NOT NULL,
   PRIMARY KEY (numero_registro, codigo_causa),
   FOREIGN KEY (numero_registro) REFERENCES Registros (numero_registro),
   FOREIGN KEY (codigo_causa) REFERENCES Causas (codigo_causa)
@@ -194,7 +194,7 @@ CREATE TABLE Medicamentos (
 DROP TABLE IF EXISTS Formulas_medicas_Medicamentos CASCADE;
 CREATE TABLE Formulas_medicas_Medicamentos (
   
-  codigo_formula VARCHAR(20) NOT NULL,
+  codigo_formula INTEGER NOT NULL,
   codigo_medicamento VARCHAR(20) NOT NULL,
   PRIMARY KEY (codigo_formula, codigo_medicamento),
   FOREIGN KEY (codigo_formula) REFERENCES Formulas_medicas (codigo_formula),

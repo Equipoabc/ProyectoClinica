@@ -2,9 +2,11 @@ package Controladores;
 import DAO.*;
 import Logica.*;
 import java.util.ArrayList;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorCita {
-    
+
     DaoCita daoCita;
     
     public ControladorCita(){
@@ -45,5 +47,9 @@ public class ControladorCita {
     public int eliminarCita(String id_paciente, String fechaN, String horaN) {
         return daoCita.eliminarCita(id_paciente, fechaN, horaN);
     }
-    
+
+    public int consutarAgenda(String fecha, String medico, DefaultTableModel modelo, JTable tabla) {
+        
+        return daoCita.consutarAgenda(fecha, medico, modelo, tabla);
+    }
 }
