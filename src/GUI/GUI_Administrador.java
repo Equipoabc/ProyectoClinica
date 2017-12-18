@@ -163,9 +163,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     private void crearUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearUsuarioActionPerformed
         
-        /*GUI_CrearUsuario interfazCrearUsuario = new GUI_CrearUsuario();
-        interfazCrearUsuario.setVisible(true);
-        this.dispose();*/
+       GUI_RegistrarMedicamento i = new GUI_RegistrarMedicamento();
+        i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearUsuarioActionPerformed
     
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
@@ -180,6 +180,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
         /*GUI_ModificarUsuario interfazModificarUsuario = new GUI_ModificarUsuario();
         interfazModificarUsuario.setVisible(true);
         this.dispose();*/
+        GUI_RegistrarCampana i = new GUI_RegistrarCampana();
+        i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_modificarUsuarioActionPerformed
     
     public static void main(String args[]){

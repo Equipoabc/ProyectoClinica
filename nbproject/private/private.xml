@@ -3,7 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Sebastián/Documents/GitHub/ProyectoClinica/src/GUI/GUI_Login.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/DAO/DaoMedicamento.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/GUI/GUI_FormulaMedica.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/DAO/DaoFormulas_medicas_Medicamentos.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/Controladores/ControladorMedicamento.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/GUI/GUI_RegistrarCama.java</file>
+            <file>file:/C:/Users/USUARIO/Documents/Desarrollo/ProyectoClinica/src/Controladores/ControladorFormulas_medicas_Medicamentos.java</file>
         </group>
     </open-files>
 </project-private>

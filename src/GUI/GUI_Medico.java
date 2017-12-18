@@ -238,10 +238,10 @@ public class GUI_Medico extends javax.swing.JFrame {
     
     private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
         
-        /*GUI_CrearEvento interfazCrearEvento = new GUI_CrearEvento();
-        interfazCrearEvento.setId(id);
-        interfazCrearEvento.setVisible(true);
-        this.dispose();*/
+        GUI_FormulaMedica i= new GUI_FormulaMedica();
+        i.setIdMedico(id);
+        i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_crearEventoActionPerformed
    
     public void personalizarBienvenida(){
