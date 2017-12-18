@@ -29,7 +29,7 @@ public class GUI_Medico extends javax.swing.JFrame {
         reportes = new javax.swing.JButton();
         registrarSede = new javax.swing.JButton();
         CerrarSesion = new javax.swing.JLabel();
-        crearEvento = new javax.swing.JButton();
+        Agenda = new javax.swing.JButton();
         modificarEvento = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
@@ -153,18 +153,18 @@ public class GUI_Medico extends javax.swing.JFrame {
         jPanel1.add(CerrarSesion);
         CerrarSesion.setBounds(610, 40, 120, 50);
 
-        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
-        crearEvento.setBorder(null);
-        crearEvento.setBorderPainted(false);
-        crearEvento.setContentAreaFilled(false);
-        crearEvento.setFocusPainted(false);
-        crearEvento.addActionListener(new java.awt.event.ActionListener() {
+        Agenda.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        Agenda.setBorder(null);
+        Agenda.setBorderPainted(false);
+        Agenda.setContentAreaFilled(false);
+        Agenda.setFocusPainted(false);
+        Agenda.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearEventoActionPerformed(evt);
+                AgendaActionPerformed(evt);
             }
         });
-        jPanel1.add(crearEvento);
-        crearEvento.setBounds(220, 170, 180, 110);
+        jPanel1.add(Agenda);
+        Agenda.setBounds(220, 170, 180, 110);
 
         modificarEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarEvento.setBorder(null);
@@ -236,12 +236,12 @@ public class GUI_Medico extends javax.swing.JFrame {
         
     }//GEN-LAST:event_modificarSedeActionPerformed
     
-    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
+    private void AgendaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgendaActionPerformed
         
-        GUI_ProgramarCita interfazProgramarCita = new GUI_ProgramarCita();
-        interfazProgramarCita.setVisible(true);
+        GUI_Agenda agenda = new GUI_Agenda(this.id);
+        agenda.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_crearEventoActionPerformed
+    }//GEN-LAST:event_AgendaActionPerformed
    
     public void personalizarBienvenida(){
        /* Gerente gerente = new Gerente();
@@ -275,10 +275,10 @@ public class GUI_Medico extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Agenda;
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel MedicoLabel;
     private javax.swing.JLabel bienvenidoLabel;
-    private javax.swing.JButton crearEvento;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
