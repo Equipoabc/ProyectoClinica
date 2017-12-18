@@ -155,6 +155,7 @@ public class DaoArea {
                 
                 validar = consulta.getString(1);
             }
+            
             int numFilas = sentencia.executeUpdate(sql_guardar);
             return numFilas;
             

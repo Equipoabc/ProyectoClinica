@@ -1,23 +1,14 @@
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
 import Logica.*;
-import java.time.*;
-import java.time.format.*;
-import java.util.*;
 
 public class GUI_ModificarArea extends javax.swing.JFrame {
     
     Validaciones validaciones;
     ControladorArea controladorArea;
     Area area;
-    String idNombre;
-    
-    public void setId(String id) {
-        this.idNombre = id;
-    }
-    
+
     public GUI_ModificarArea() {
         
         initComponents();
@@ -110,11 +101,6 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
 
         codigo.setFont(new java.awt.Font("Cambria", 2, 12)); // NOI18N
         codigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        codigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoActionPerformed(evt);
-            }
-        });
         jPanel1.add(codigo);
         codigo.setBounds(70, 230, 140, 25);
 
@@ -135,21 +121,11 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
 
         pCodigo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         pCodigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        pCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pCodigoKeyPressed(evt);
-            }
-        });
         jPanel1.add(pCodigo);
         pCodigo.setBounds(340, 150, 180, 25);
 
         nombre.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
-        nombre.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                nombreKeyPressed(evt);
-            }
-        });
         jPanel1.add(nombre);
         nombre.setBounds(340, 200, 180, 25);
 
@@ -200,9 +176,8 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Operador operador = new GUI_Operador();
-        operador.personalizarBienvenida();
-        operador.setVisible(true);
+        GUI_Administrador admin = new GUI_Administrador();
+        admin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
@@ -292,18 +267,6 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         }        
     }//GEN-LAST:event_botonConsultarActionPerformed
     
-    private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoActionPerformed
-
-    private void pCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pCodigoKeyPressed
-        
-    }//GEN-LAST:event_pCodigoKeyPressed
-
-    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
-       
-    }//GEN-LAST:event_nombreKeyPressed
-
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
         String cod_area=codigo.getText();
