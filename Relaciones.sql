@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS Administrador CASCADE;
+﻿DROP TABLE IF EXISTS Administrador CASCADE;
 CREATE TABLE Administrador (
 
 	usuario VARCHAR(20) NOT NULL PRIMARY KEY,
@@ -212,3 +212,10 @@ CREATE TABLE Agenda (
   PRIMARY KEY (id_agenda),
   FOREIGN KEY (id_empleado) REFERENCES Medicos (id_empleado)
 );
+
+INSERT INTO Administrador VALUES ('admin', '1');
+INSERT INTO Operador VALUES ('ope', '1');
+INSERT INTO Areas VALUES ('1', 'Cardiologia', 'Corazon');
+INSERT INTO Empleados VALUES ('1','1','1','Sebastian Villegas', 'Cra 27 19-117',
+'3353985', 4000000, 'jhoan.villegas', 'arriba');
+INSERT INTO Medicos VALUES('1', '1533597', 'Corazon', 'Univalle', '1');
