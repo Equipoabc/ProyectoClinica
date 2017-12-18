@@ -1,24 +1,21 @@
 package Controladores;
-import DAO.DaoArea;
+import DAO.*;
 import java.util.ArrayList;
-
-import Logica.Area;
+import Logica.*;
 
 public class ControladorArea {
-    DaoArea daoArea = new DaoArea();
+    DaoArea daoArea;
 
-    public ArrayList<String> llenarCombo() {
+    public ControladorArea(){
+        daoArea = new DaoArea();
+    }
+    
+     public ArrayList<String> llenarCombo() {
         return daoArea.llenarCombo();
     }
 
     public String seleccionArea(String id_area) {
         return daoArea.seleccionArea(id_area);
-    }
-    
-    DaoArea daoArea;
-    
-    public ControladorArea(){
-        daoArea = new DaoArea();
     }
 
     public int insertarArea(String cod, String nom, String des, String id) {
@@ -28,7 +25,6 @@ public class ControladorArea {
         area.setId_area(cod);
         area.setNombre_area(nom);
         area.setDescripcion(des);
-        
         int result = daoArea.guardarArea(area);
         return result;
         

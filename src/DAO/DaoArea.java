@@ -1,6 +1,6 @@
 package DAO;
 import Conexion.Conexiones;
-import Logica.Main;
+import Logica.*;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -27,8 +27,18 @@ public class DaoArea {
                 lista.add(consulta.getString(1)+" "+consulta.getString(2));
             }
             
-import Logica.Area;
-
+            } catch(SQLException e){
+        
+        
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return lista;
+    }
+    
     public int guardarArea(Area area) {
         
         String sql_guardar, validar;
@@ -56,11 +66,36 @@ import Logica.Area;
             }
             
             else {
-                
                 numFilas = sentencia.executeUpdate(sql_guardar);
                 return numFilas;
             }
         } catch(SQLException e){
+        
+        
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return -1;
+    }
+    
+     public String seleccionArea(String area){
+        String sql = "SELECT id_area, nombre_area FROM areas WHERE id_area = '" + area + "';";
+        String result = "";
+        
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                result = consulta.getString(1) + " " + consulta.getString(2); 
+            }
+            
+            } catch(SQLException e){
             
             System.out.println("SQL error: " + e);
         } catch(Exception e){
@@ -68,20 +103,9 @@ import Logica.Area;
             System.out.println("Error: " + e);
         }
         
-        return lista;
+        return result;
     }
-    
-     public String seleccionArea(String area){
-        ArrayList<String> lista = new ArrayList<String>();
-        String sql = "SELECT id_area, nombre_area FROM areas WHERE id_area = '" + area + "';";
-        String result = "";
-        
-        try {
-            Connection conn = conexion.getConnetion();
-            Statement sentencia = conn.createStatement();
-        return -1;
-    }  
-
+     
     public int comprobar(String codigoConsulta) {
         String sql;
         sql = "SELECT id_area FROM areas WHERE id_area = '" + codigoConsulta + "';";
@@ -94,8 +118,6 @@ import Logica.Area;
             
             while(consulta.next()){
                 
-                result = consulta.getString(1) + " " + consulta.getString(2); 
-            }
                 sql = consulta.getString(1);
             }
             
@@ -104,18 +126,14 @@ import Logica.Area;
                 return 1;
             }
             return 0;
-            
-        } catch(SQLException e){
+        }
+        catch(SQLException e){
             
             System.out.println("SQL error: " + e);
         } catch(Exception e){
             
             System.out.println("Error: " + e);
         }
-        
-        return result;
-    }
-    
         return 0;
     }
 
@@ -154,8 +172,6 @@ import Logica.Area;
         
        String sql, validar;
         Area area = new Area();
-        
-        
         validar = "SELECT id_area FROM areas WHERE id_area = '" + cod_area + "';";
         
         sql = "SELECT id_area, nombre_area, descripcion "

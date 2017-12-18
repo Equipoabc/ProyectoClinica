@@ -1,22 +1,6 @@
 package Logica;
 
-
-
 public class Cita {
-
-    /**
-     * @return the precio
-     */
-    public String getPrecio() {
-        return precio;
-    }
-
-    /**
-     * @param precio the precio to set
-     */
-    public void setPrecio(String precio) {
-        this.precio = precio;
-    }
     
     private int numero_cita;
     private String id_paciente;
@@ -35,11 +19,16 @@ public class Cita {
         precio = "";
     }
 
-    
+    /**
+     * @return the precio
+     */
     public String getPrecio() {
         return precio;
     }
 
+    /**
+     * @param precio the precio to set
+     */
     public void setPrecio(String precio) {
         this.precio = precio;
     }
