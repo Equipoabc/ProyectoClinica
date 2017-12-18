@@ -34,6 +34,8 @@ public class GUI_Administrador extends javax.swing.JFrame {
         crearPaciente = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         modificarPaciente = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        modificarCita = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -201,6 +203,27 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(modificarPaciente);
         modificarPaciente.setBounds(230, 360, 160, 110);
 
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("<html><body> <center>  Modificar<br>Cita </center></body></html>");
+        jPanel1.add(jLabel8);
+        jLabel8.setBounds(410, 370, 140, 90);
+
+        modificarCita.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        modificarCita.setBorder(null);
+        modificarCita.setBorderPainted(false);
+        modificarCita.setContentAreaFilled(false);
+        modificarCita.setFocusPainted(false);
+        modificarCita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarCitaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(modificarCita);
+        modificarCita.setBounds(400, 360, 160, 110);
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -225,7 +248,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
     
     private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
         
-        GUI_ModificarArea med = new GUI_ModificarArea();
+        GUI_CrearArea med = new GUI_CrearArea();
         med.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_reportesActionPerformed
@@ -273,6 +296,12 @@ public class GUI_Administrador extends javax.swing.JFrame {
         interfazModificarPaciente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarPacienteActionPerformed
+
+    private void modificarCitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarCitaActionPerformed
+        GUI_ModificarCita interfazModificarCita = new GUI_ModificarCita();
+        interfazModificarCita.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarCitaActionPerformed
     
     public static void main(String args[]){
        
@@ -298,7 +327,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarCita;
     private javax.swing.JButton modificarEmpleado;
     private javax.swing.JButton modificarPaciente;
     private javax.swing.JButton registrarEnfermera;

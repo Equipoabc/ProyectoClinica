@@ -164,6 +164,7 @@ public class DaoMedico {
         
         sql_guardar2 = "UPDATE medicos SET numero_licencia = '" + numLi + "', especialidad = '" + espe + 
             "', universidad = '" + uni + "', contrasena = '" + contrasena + "' WHERE id_empleado = '" + id_empleado + "';";
+        System.out.println(sql_guardar2);
 
         try {
 

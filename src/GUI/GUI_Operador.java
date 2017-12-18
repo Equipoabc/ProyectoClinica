@@ -39,6 +39,8 @@ public class GUI_Operador extends javax.swing.JFrame {
         escarapelas = new javax.swing.JButton();
         preInscripcion = new javax.swing.JButton();
         certificados = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        crearEvento = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,7 +90,7 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(108, 101, 247));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("<html><body> <center>  Eliminar<br>Preinscripción </center></body></html>");
+        jLabel5.setText("<html><body> <center>  Modificar<br>Cita </center></body></html>");
         jPanel1.add(jLabel5);
         jLabel5.setBounds(250, 250, 130, 80);
 
@@ -114,7 +116,7 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Escarapelas");
         jPanel1.add(jLabel8);
-        jLabel8.setBounds(330, 360, 130, 80);
+        jLabel8.setBounds(410, 360, 130, 80);
 
         jLabel9.setBackground(new java.awt.Color(255, 255, 255));
         jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -122,7 +124,7 @@ public class GUI_Operador extends javax.swing.JFrame {
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(490, 360, 130, 80);
+        jLabel9.setBounds(570, 360, 130, 80);
 
         jLabel10.setBackground(new java.awt.Color(255, 255, 255));
         jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
@@ -143,7 +145,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(reportes);
-        reportes.setBounds(480, 350, 170, 110);
+        reportes.setBounds(560, 350, 170, 110);
 
         registrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
         registrarPago.setBorder(null);
@@ -220,7 +222,7 @@ public class GUI_Operador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(escarapelas);
-        escarapelas.setBounds(320, 350, 170, 110);
+        escarapelas.setBounds(400, 350, 170, 110);
 
         preInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
         preInscripcion.setBorder(null);
@@ -247,6 +249,27 @@ public class GUI_Operador extends javax.swing.JFrame {
         });
         jPanel1.add(certificados);
         certificados.setBounds(560, 240, 170, 110);
+
+        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("<html><body> <center>  Programar<br>Cita </center></body></html>");
+        jPanel1.add(jLabel11);
+        jLabel11.setBounds(240, 360, 140, 90);
+
+        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        crearEvento.setBorder(null);
+        crearEvento.setBorderPainted(false);
+        crearEvento.setContentAreaFilled(false);
+        crearEvento.setFocusPainted(false);
+        crearEvento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                crearEventoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(crearEvento);
+        crearEvento.setBounds(220, 350, 180, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -277,11 +300,10 @@ public class GUI_Operador extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarPagoActionPerformed
     
     private void eliminarPreinscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPreinscripcionActionPerformed
-        // TODO add your handling code here:
-        /*GUI_EliminarPreins eliminarPre = new GUI_EliminarPreins();
-        eliminarPre.setId(cedula);
+        
+        GUI_ModificarCita eliminarPre = new GUI_ModificarCita();
         eliminarPre.setVisible(true);
-        this.dispose();       */ 
+        this.dispose();       
     }//GEN-LAST:event_eliminarPreinscripcionActionPerformed
     
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
@@ -346,6 +368,13 @@ public class GUI_Operador extends javax.swing.JFrame {
         this.dispose(); */       
     }//GEN-LAST:event_certificadosActionPerformed
 
+    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
+
+        GUI_ProgramarCita interfazProgramarCita = new GUI_ProgramarCita();
+        interfazProgramarCita.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_crearEventoActionPerformed
+
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -361,11 +390,13 @@ public class GUI_Operador extends javax.swing.JFrame {
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton certificados;
+    private javax.swing.JButton crearEvento;
     private javax.swing.JButton eliminarPreinscripcion;
     private javax.swing.JButton escarapelas;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton inscripcion;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

@@ -1,6 +1,7 @@
 package Controladores;
 import DAO.*;
 import Logica.*;
+import java.util.ArrayList;
 
 public class ControladorCita {
     
@@ -21,6 +22,28 @@ public class ControladorCita {
         int resultado = daoCita.insertarCita(cita);
         return resultado;
         
+    }
+
+    public ArrayList<String> llenarCombo(String id) {
+        return daoCita.llenarCombo(id);
+    }
+
+    public Cita consultarDatosCita(String id_paciente, String fechaN, String horaN) {
+        Cita cita;
+        cita = daoCita.consultarDatosCita(id_paciente, fechaN, horaN);
+        return cita;
+    }
+
+    public int actualizarCita(String id_paciente, String id_empleadoS, String precioS, String fechaS, String horario, String fechaVieja, String horaVieja) {
+        return daoCita.actualizarCita(id_paciente, id_empleadoS, precioS, fechaS, horario, fechaVieja, horaVieja);
+    }
+
+    public int validarPacienteCitas(String id_paciente) {
+        return daoCita.validarPacienteCitas(id_paciente);
+    }
+
+    public int eliminarCita(String id_paciente, String fechaN, String horaN) {
+        return daoCita.eliminarCita(id_paciente, fechaN, horaN);
     }
     
 }
