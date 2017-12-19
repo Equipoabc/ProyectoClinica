@@ -22,25 +22,13 @@ public class GUI_Operador extends javax.swing.JFrame {
         operadorLabel2 = new javax.swing.JLabel();
         operadorLabel = new javax.swing.JLabel();
         bienvenidoLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        reportes = new javax.swing.JButton();
-        registrarPago = new javax.swing.JButton();
-        eliminarPreinscripcion = new javax.swing.JButton();
         CerrarSesion = new javax.swing.JLabel();
-        modificarParticipante = new javax.swing.JButton();
-        inscripcion = new javax.swing.JButton();
-        escarapelas = new javax.swing.JButton();
-        preInscripcion = new javax.swing.JButton();
-        certificados = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        crearEvento = new javax.swing.JButton();
+        citaLabel = new javax.swing.JLabel();
+        citaBoton = new javax.swing.JButton();
+        informeLabel = new javax.swing.JLabel();
+        informesBoton = new javax.swing.JButton();
+        pacienteLabel = new javax.swing.JLabel();
+        pacienteBoton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,110 +58,6 @@ public class GUI_Operador extends javax.swing.JFrame {
         jPanel1.add(bienvenidoLabel);
         bienvenidoLabel.setBounds(20, 240, 200, 50);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("Inscripción");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(410, 140, 130, 80);
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("<html><body> <center>  Modificar<br>Participante </center></body></html>");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(576, 140, 120, 80);
-
-        jLabel5.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("<html><body> <center>  Modificar<br>Cita </center></body></html>");
-        jPanel1.add(jLabel5);
-        jLabel5.setBounds(250, 250, 130, 80);
-
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("<html><body> <center>  Registrar<br>Pago </center></body></html>");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(410, 250, 130, 80);
-
-        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setText("Certificados");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(570, 250, 130, 80);
-
-        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("Escarapelas");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(410, 360, 130, 80);
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("<html><body> <center>  Reportes y<br>Consultas </center></body></html>");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(570, 360, 130, 80);
-
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Preinscripción");
-        jPanel1.add(jLabel10);
-        jLabel10.setBounds(250, 140, 130, 80);
-
-        reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        reportes.setBorder(null);
-        reportes.setBorderPainted(false);
-        reportes.setContentAreaFilled(false);
-        reportes.setFocusPainted(false);
-        reportes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reportesActionPerformed(evt);
-            }
-        });
-        jPanel1.add(reportes);
-        reportes.setBounds(560, 350, 170, 110);
-
-        registrarPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        registrarPago.setBorder(null);
-        registrarPago.setBorderPainted(false);
-        registrarPago.setContentAreaFilled(false);
-        registrarPago.setFocusPainted(false);
-        registrarPago.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registrarPagoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(registrarPago);
-        registrarPago.setBounds(400, 240, 170, 110);
-        registrarPago.getAccessibleContext().setAccessibleName("Reportes y Consultas");
-
-        eliminarPreinscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        eliminarPreinscripcion.setBorder(null);
-        eliminarPreinscripcion.setBorderPainted(false);
-        eliminarPreinscripcion.setContentAreaFilled(false);
-        eliminarPreinscripcion.setFocusPainted(false);
-        eliminarPreinscripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarPreinscripcionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(eliminarPreinscripcion);
-        eliminarPreinscripcion.setBounds(240, 240, 170, 110);
-
         CerrarSesion.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
         CerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         CerrarSesion.setText("Cerrar Sesión");
@@ -185,91 +69,68 @@ public class GUI_Operador extends javax.swing.JFrame {
         jPanel1.add(CerrarSesion);
         CerrarSesion.setBounds(610, 40, 120, 50);
 
-        modificarParticipante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        modificarParticipante.setBorder(null);
-        modificarParticipante.setBorderPainted(false);
-        modificarParticipante.setContentAreaFilled(false);
-        modificarParticipante.setFocusPainted(false);
-        modificarParticipante.addActionListener(new java.awt.event.ActionListener() {
+        citaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        citaLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        citaLabel.setForeground(new java.awt.Color(108, 101, 247));
+        citaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        citaLabel.setText("<html><body> <center>  Citas </center></body></html>");
+        jPanel1.add(citaLabel);
+        citaLabel.setBounds(240, 240, 140, 90);
+
+        citaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        citaBoton.setBorder(null);
+        citaBoton.setBorderPainted(false);
+        citaBoton.setContentAreaFilled(false);
+        citaBoton.setFocusPainted(false);
+        citaBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarParticipanteActionPerformed(evt);
+                citaBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(modificarParticipante);
-        modificarParticipante.setBounds(560, 130, 170, 110);
+        jPanel1.add(citaBoton);
+        citaBoton.setBounds(230, 230, 160, 110);
 
-        inscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        inscripcion.setBorder(null);
-        inscripcion.setBorderPainted(false);
-        inscripcion.setContentAreaFilled(false);
-        inscripcion.setFocusPainted(false);
-        inscripcion.addActionListener(new java.awt.event.ActionListener() {
+        informeLabel.setBackground(new java.awt.Color(255, 255, 255));
+        informeLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        informeLabel.setForeground(new java.awt.Color(108, 101, 247));
+        informeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        informeLabel.setText("<html><body> <center>  Informes </center></body></html>");
+        jPanel1.add(informeLabel);
+        informeLabel.setBounds(580, 240, 140, 90);
+
+        informesBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        informesBoton.setBorder(null);
+        informesBoton.setBorderPainted(false);
+        informesBoton.setContentAreaFilled(false);
+        informesBoton.setFocusPainted(false);
+        informesBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inscripcionActionPerformed(evt);
+                informesBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(inscripcion);
-        inscripcion.setBounds(400, 130, 170, 110);
+        jPanel1.add(informesBoton);
+        informesBoton.setBounds(570, 230, 160, 110);
 
-        escarapelas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        escarapelas.setBorder(null);
-        escarapelas.setBorderPainted(false);
-        escarapelas.setContentAreaFilled(false);
-        escarapelas.setFocusPainted(false);
-        escarapelas.addActionListener(new java.awt.event.ActionListener() {
+        pacienteLabel.setBackground(new java.awt.Color(255, 255, 255));
+        pacienteLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        pacienteLabel.setForeground(new java.awt.Color(108, 101, 247));
+        pacienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pacienteLabel.setText("<html><body> <center>  Pacientes </center></body></html>");
+        jPanel1.add(pacienteLabel);
+        pacienteLabel.setBounds(410, 240, 140, 90);
+
+        pacienteBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        pacienteBoton.setBorder(null);
+        pacienteBoton.setBorderPainted(false);
+        pacienteBoton.setContentAreaFilled(false);
+        pacienteBoton.setFocusPainted(false);
+        pacienteBoton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                escarapelasActionPerformed(evt);
+                pacienteBotonActionPerformed(evt);
             }
         });
-        jPanel1.add(escarapelas);
-        escarapelas.setBounds(400, 350, 170, 110);
-
-        preInscripcion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        preInscripcion.setBorder(null);
-        preInscripcion.setBorderPainted(false);
-        preInscripcion.setContentAreaFilled(false);
-        preInscripcion.setFocusPainted(false);
-        preInscripcion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                preInscripcionActionPerformed(evt);
-            }
-        });
-        jPanel1.add(preInscripcion);
-        preInscripcion.setBounds(240, 130, 170, 110);
-
-        certificados.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones2.png"))); // NOI18N
-        certificados.setBorder(null);
-        certificados.setBorderPainted(false);
-        certificados.setContentAreaFilled(false);
-        certificados.setFocusPainted(false);
-        certificados.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                certificadosActionPerformed(evt);
-            }
-        });
-        jPanel1.add(certificados);
-        certificados.setBounds(560, 240, 170, 110);
-
-        jLabel11.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel11.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setText("<html><body> <center>  Programar<br>Cita </center></body></html>");
-        jPanel1.add(jLabel11);
-        jLabel11.setBounds(240, 360, 140, 90);
-
-        crearEvento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
-        crearEvento.setBorder(null);
-        crearEvento.setBorderPainted(false);
-        crearEvento.setContentAreaFilled(false);
-        crearEvento.setFocusPainted(false);
-        crearEvento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearEventoActionPerformed(evt);
-            }
-        });
-        jPanel1.add(crearEvento);
-        crearEvento.setBounds(220, 350, 180, 110);
+        jPanel1.add(pacienteBoton);
+        pacienteBoton.setBounds(400, 230, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -290,91 +151,41 @@ public class GUI_Operador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void registrarPagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPagoActionPerformed
-        // TODO add your handling code here:
-        /*GUI_RegistrarPago pago = new GUI_RegistrarPago();
-        pago.setId(cedula);
-        pago.setVisible(true);
-        this.dispose();  */      
-    }//GEN-LAST:event_registrarPagoActionPerformed
-    
-    private void eliminarPreinscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPreinscripcionActionPerformed
-        
-        GUI_ModificarCita eliminarPre = new GUI_ModificarCita();
-        eliminarPre.setVisible(true);
-        this.dispose();       
-    }//GEN-LAST:event_eliminarPreinscripcionActionPerformed
-    
+            
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         
         GUI_Login interfazLogin = new GUI_Login();
         interfazLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_CerrarSesionMouseClicked
-    
-    private void reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportesActionPerformed
+
+    private void citaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citaBotonActionPerformed
+        GUI_InterfazCitas interfazModificarCita = new GUI_InterfazCitas();
+        interfazModificarCita.setTipo("Operador");
+        interfazModificarCita.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_citaBotonActionPerformed
+
+    private void informesBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_informesBotonActionPerformed
+        GUI_InterfazInformes i = new GUI_InterfazInformes();
+        i.setTipo("Operador");
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_informesBotonActionPerformed
+
+    private void pacienteBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacienteBotonActionPerformed
         // TODO add your handling code here:
-        
-       /* GUI_ReportesOperador vReportes = new GUI_ReportesOperador();
-        vReportes.setId(cedula);
-        vReportes.personalizarBienvenida();
-        vReportes.setVisible(true);
-        this.dispose();*/
-    }//GEN-LAST:event_reportesActionPerformed
-    
-    private void modificarParticipanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarParticipanteActionPerformed
-        // TODO add your handling code here:
-        /*GUI_ModificarParticipante modPreInscripcion = new GUI_ModificarParticipante();
-        modPreInscripcion.setIdOperador(cedula);
-        modPreInscripcion.setVisible(true);
-        this.dispose();*/
-    }//GEN-LAST:event_modificarParticipanteActionPerformed
-    
-    private void inscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscripcionActionPerformed
-        // TODO add your handling code here:
-        /*GUI_Inscripcion Inscripcion = new GUI_Inscripcion();
-        Inscripcion.setIdOperador(cedula);
-        Inscripcion.setVisible(true);
-        this.dispose();*/
-    }//GEN-LAST:event_inscripcionActionPerformed
-    
-    private void escarapelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_escarapelasActionPerformed
-        // TODO add your handling code here:
-        /*GUI_Escarapelas escarapelas = new GUI_Escarapelas();
-        escarapelas.setId(cedula);
-        escarapelas.setVisible(true);
-        this.dispose();*/          
-    }//GEN-LAST:event_escarapelasActionPerformed
-    
-    private void preInscripcionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_preInscripcionActionPerformed
-        // TODO add your handling code here:
-        /*GUI_PreInscripcion preInscripcion = new GUI_PreInscripcion();
-        preInscripcion.setIdOperador(cedula);
-        preInscripcion.setVisible(true);
-        this.dispose(); */       
-    }//GEN-LAST:event_preInscripcionActionPerformed
-    public void personalizarBienvenida(){
+        GUI_InterfazPacientes interfazCrearPaciente = new GUI_InterfazPacientes();
+        interfazCrearPaciente.setTipo("Operador");
+        interfazCrearPaciente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_pacienteBotonActionPerformed
+   public void personalizarBienvenida(){
         /*Operador operador = new Operador();
         ControladorOperador controladorOperador = new ControladorOperador();        
         operador = controladorOperador.consultarDatosOperador(cedula); 
         jLabel1.setText(operador.getPrimer_nombre());*/
     }    
-    private void certificadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_certificadosActionPerformed
-        // TODO add your handling code here:
-        /*GUI_Certificados certificados = new GUI_Certificados();
-        certificados.setId(cedula);
-        certificados.setVisible(true);
-        this.dispose(); */       
-    }//GEN-LAST:event_certificadosActionPerformed
-
-    private void crearEventoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearEventoActionPerformed
-
-        GUI_ProgramarCita interfazProgramarCita = new GUI_ProgramarCita();
-        interfazProgramarCita.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_crearEventoActionPerformed
-
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -389,28 +200,16 @@ public class GUI_Operador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel bienvenidoLabel;
-    private javax.swing.JButton certificados;
-    private javax.swing.JButton crearEvento;
-    private javax.swing.JButton eliminarPreinscripcion;
-    private javax.swing.JButton escarapelas;
+    private javax.swing.JButton citaBoton;
+    private javax.swing.JLabel citaLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JButton inscripcion;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel informeLabel;
+    private javax.swing.JButton informesBoton;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton modificarParticipante;
     private javax.swing.JLabel operadorLabel;
     private javax.swing.JLabel operadorLabel2;
-    private javax.swing.JButton preInscripcion;
-    private javax.swing.JButton registrarPago;
-    private javax.swing.JButton reportes;
+    private javax.swing.JButton pacienteBoton;
+    private javax.swing.JLabel pacienteLabel;
     // End of variables declaration//GEN-END:variables
    
 }

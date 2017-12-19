@@ -156,9 +156,9 @@ public class GUI_RegistrarMedicamento extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Administrador adminLogin = new GUI_Administrador();
-        adminLogin.setVisible(true);
-        this.dispose();
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void registrarMedicamento(){

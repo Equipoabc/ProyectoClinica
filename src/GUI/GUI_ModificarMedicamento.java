@@ -217,10 +217,9 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Operador operador = new GUI_Operador();
-        operador.personalizarBienvenida();
-        operador.setVisible(true);
-        this.dispose();
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     

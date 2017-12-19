@@ -191,9 +191,9 @@ public class GUI_RegistrarCampana extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Administrador administradorLogin = new GUI_Administrador();
-        administradorLogin.setVisible(true);
-        this.dispose();
+        GUI_InterfazCampana operador = new GUI_InterfazCampana();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void registrarCampana(){

@@ -14,6 +14,7 @@ public class GUI_ProgramarCita extends javax.swing.JFrame {
     ControladorPaciente controladorPaciente;
     ControladorMedico controladorMedico;
     ControladorCita controladorCita;
+    private String tipo;
         
     public GUI_ProgramarCita(){
         
@@ -191,9 +192,10 @@ public class GUI_ProgramarCita extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Operador operador = new GUI_Operador();
-        operador.setVisible(true);
-        this.dispose();
+        GUI_InterfazCitas operador = new GUI_InterfazCitas();
+            operador.setTipo(tipo);
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void programarCita(){
@@ -256,6 +258,10 @@ public class GUI_ProgramarCita extends javax.swing.JFrame {
             programarCita();
         }
     }//GEN-LAST:event_programarCitaKeyPressed
+    
+    void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
     
     /**
      * @param args the command line arguments

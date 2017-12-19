@@ -226,10 +226,8 @@ public class GUI_CrearArea extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
 
-        //GUI_Gerente gerenteLogin = new GUI_Gerente();
-        //gerenteLogin.setId(this.id);
-        //gerenteLogin.personalizarBienvenida();
-        //gerenteLogin.setVisible(true);
+        GUI_InterfazAreas gerenteLogin = new GUI_InterfazAreas();
+        gerenteLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     //Fin eventos del teclado
