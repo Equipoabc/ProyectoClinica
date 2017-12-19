@@ -237,11 +237,9 @@ public class GUI_CrearMedicamento extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
 
-        //GUI_Gerente gerenteLogin = new GUI_Gerente();
-        //gerenteLogin.setId(this.id);
-        //gerenteLogin.personalizarBienvenida();
-        //gerenteLogin.setVisible(true);
-        this.dispose();
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void costoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costoKeyPressed

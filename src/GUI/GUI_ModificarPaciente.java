@@ -189,18 +189,10 @@ public class GUI_ModificarPaciente extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        if(tipo.equals("Administrador")){
-            
-            GUI_Administrador administrador = new GUI_Administrador();
-            administrador.setVisible(true);
-            this.dispose();
-        }        
-        else {
-            
-            GUI_Operador operador = new GUI_Operador();
+        GUI_InterfazPacientes operador = new GUI_InterfazPacientes();
+            operador.setTipo(tipo);
             operador.setVisible(true);
             this.dispose();
-        }
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void telActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telActionPerformed

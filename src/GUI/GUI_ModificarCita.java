@@ -17,6 +17,7 @@ public class GUI_ModificarCita extends javax.swing.JFrame {
     ControladorCita controladorCita;
     Paciente paciente;
     Cita cita;
+    private String tipo;
 
     public GUI_ModificarCita() {
         
@@ -324,9 +325,10 @@ public class GUI_ModificarCita extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Operador operador = new GUI_Operador();
-        operador.setVisible(true);
-        this.dispose();
+        GUI_InterfazCitas operador = new GUI_InterfazCitas();
+            operador.setTipo(tipo);
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
         
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
@@ -572,4 +574,8 @@ public class GUI_ModificarCita extends javax.swing.JFrame {
     private javax.swing.JLabel preciolabel;
     private javax.swing.JLabel preguntaLabel;
     // End of variables declaration//GEN-END:variables
+
+    void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }

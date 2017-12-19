@@ -1,6 +1,7 @@
 package Controladores;
 import DAO.*;
 import Logica.*;
+import java.util.ArrayList;
 
 public class ControladorMedico {
     
@@ -49,4 +50,11 @@ public class ControladorMedico {
         return daoMedico.actualizarMedico(id_empleado, id_jefe, id_area, nombre_empleado, direccion, telefono,
         sal, email, car, numLi, espe, uni, contrasena);
     }
+
+    public ArrayList<String> llenarCombo() {
+        return daoMedico.llenarCombo();
+    }
+    public String seleccionMedico(String id_medico) {
+        return daoMedico.seleccionMedico(id_medico);
+    }    
 }

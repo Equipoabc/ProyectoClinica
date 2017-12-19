@@ -422,9 +422,9 @@ public class GUI_ModificarEmpleado extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Administrador adminLogin = new GUI_Administrador();
-        adminLogin.setVisible(true);
-        this.dispose();
+        GUI_InterfazEmpleados operador = new GUI_InterfazEmpleados();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     

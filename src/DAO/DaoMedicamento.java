@@ -1,22 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package DAO;
+import Logica.*;
+import Conexion.Conexiones;
+import java.sql.*;
+import java.util.ArrayList;
 
-import static Logica.Main.conexion;
-import Logica.Medicamento;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-
-/**
- *
- * @author Iván
- */
 public class DaoMedicamento {
+    
+    Conexiones conexion;
+    
+    public DaoMedicamento(){
+        
+        conexion = Main.conexion;
+    }
 
     public int guardarMedicamento(Medicamento medicamento) {
         
@@ -199,6 +194,30 @@ public class DaoMedicamento {
             System.out.println("Error" + e);
         }
         return -1;
+
     }
-    
+  
+    public ArrayList<String> llenarMedicamentos(){        
+        ArrayList<String> lista = new ArrayList<String>();               
+        String sql = "SELECT codigo_medicamento, nombre_medicamento FROM medicamentos;";
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                 lista.add(consulta.getString(1)+" "+consulta.getString(2));
+            }
+            
+        } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return lista;
+    }    
 }

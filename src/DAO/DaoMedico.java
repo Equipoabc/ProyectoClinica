@@ -2,6 +2,7 @@ package DAO;
 import java.sql.*;
 import Logica.*;
 import Conexion.*;
+import java.util.ArrayList;
 
 public class DaoMedico {
     Conexiones conexion;
@@ -135,15 +136,13 @@ public class DaoMedico {
                 return 4;
             }
             else {
-                int numFilas2 = numFilas = sentencia.executeUpdate(sql_guardarEmpleado);
+                int numFilas2 = sentencia.executeUpdate(sql_guardarEmpleado);
                 numFilas = sentencia.executeUpdate(sql_guardarMedico);
                 return numFilas + numFilas2;
-            }
+            }    
         } catch(SQLException e){
-            
             System.out.println("SQL error: " + e);
         } catch(Exception e){
-            
             System.out.println("Error" + e);
         }
         
@@ -188,7 +187,6 @@ public class DaoMedico {
                 return resultado + resultado2;
             }               
         } catch (SQLException e) {
-            e.printStackTrace();
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
             System.out.println("Error" + e);
@@ -196,7 +194,55 @@ public class DaoMedico {
 
         return -1;
     }
-  
+
+     public ArrayList<String> llenarCombo(){
+        
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql = "SELECT id_empleado, nombre_empleado FROM empleados;";                
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                lista.add(consulta.getString(1)+" "+consulta.getString(2));
+            }
+        }
+        catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            System.out.println("Error" + e);
+        }
+        
+        return lista;
+    }     
+     public String seleccionMedico(String id_medico){
+        String sql = "SELECT id_empleado, nombre_empleado FROM empleados WHERE id_empleado = '" + id_medico + "';";
+        String result = "";
+        
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                result = consulta.getString(1) + " " + consulta.getString(2); 
+            }
+            
+            } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return result;
+    }    
+
 }
 
 

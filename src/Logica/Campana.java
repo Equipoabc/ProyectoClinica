@@ -16,7 +16,7 @@ public class Campana {
     private String codigo_campana;
     private String nombre_campana;
     private String objetivo;
-    private Date fecha_realizacion;
+    private String fecha_realizacion;
     private String id_empleado;
     
     public Campana(){
@@ -73,14 +73,14 @@ public class Campana {
     /**
      * @return the fecha_realizacion
      */
-    public Date getFecha_realizacion() {
+    public String getFecha_realizacion() {
         return fecha_realizacion;
     }
 
     /**
      * @param fecha_realizacion the fecha_realizacion to set
      */
-    public void setFecha_realizacion(Date fecha_realizacion) {
+    public void setFecha_realizacion(String fecha_realizacion) {
         this.fecha_realizacion = fecha_realizacion;
     }
 

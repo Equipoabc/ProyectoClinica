@@ -176,9 +176,9 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Administrador admin = new GUI_Administrador();
-        admin.setVisible(true);
-        this.dispose();
+        GUI_InterfazAreas operador = new GUI_InterfazAreas();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     
