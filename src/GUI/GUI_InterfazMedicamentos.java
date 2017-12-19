@@ -27,6 +27,8 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
         registrarMedicamento = new javax.swing.JButton();
         modificarPacienteLabel1 = new javax.swing.JLabel();
         modificarMedicamento = new javax.swing.JButton();
+        crearPacienteLabel2 = new javax.swing.JLabel();
+        registrarCausa = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,7 +90,7 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
         crearPacienteLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         crearPacienteLabel1.setText("<html><body> <center>  Registrar<br>Medicamento </center></body></html>");
         jPanel1.add(crearPacienteLabel1);
-        crearPacienteLabel1.setBounds(300, 250, 140, 90);
+        crearPacienteLabel1.setBounds(310, 190, 140, 90);
 
         registrarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         registrarMedicamento.setBorder(null);
@@ -101,7 +103,7 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarMedicamento);
-        registrarMedicamento.setBounds(290, 240, 160, 110);
+        registrarMedicamento.setBounds(300, 180, 160, 110);
 
         modificarPacienteLabel1.setBackground(new java.awt.Color(255, 255, 255));
         modificarPacienteLabel1.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
@@ -109,7 +111,7 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
         modificarPacienteLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         modificarPacienteLabel1.setText("<html><body> <center>  Modificar<br>Medicamento </center></body></html>");
         jPanel1.add(modificarPacienteLabel1);
-        modificarPacienteLabel1.setBounds(510, 250, 140, 90);
+        modificarPacienteLabel1.setBounds(520, 190, 140, 90);
 
         modificarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         modificarMedicamento.setBorder(null);
@@ -122,7 +124,28 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
             }
         });
         jPanel1.add(modificarMedicamento);
-        modificarMedicamento.setBounds(500, 240, 160, 110);
+        modificarMedicamento.setBounds(510, 180, 160, 110);
+
+        crearPacienteLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        crearPacienteLabel2.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        crearPacienteLabel2.setForeground(new java.awt.Color(108, 101, 247));
+        crearPacienteLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        crearPacienteLabel2.setText("<html><body> <center>  Registrar<br>Causas </center></body></html>");
+        jPanel1.add(crearPacienteLabel2);
+        crearPacienteLabel2.setBounds(310, 330, 140, 90);
+
+        registrarCausa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        registrarCausa.setBorder(null);
+        registrarCausa.setBorderPainted(false);
+        registrarCausa.setContentAreaFilled(false);
+        registrarCausa.setFocusPainted(false);
+        registrarCausa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarCausaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrarCausa);
+        registrarCausa.setBounds(300, 320, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -173,6 +196,13 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
         interfazModificarPaciente.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarMedicamentoActionPerformed
+
+    private void registrarCausaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCausaActionPerformed
+        // TODO add your handling code here:
+        GUI_CrearCausa interfazModificarPaciente = new GUI_CrearCausa();
+        interfazModificarPaciente.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registrarCausaActionPerformed
     
     public static void main(String args[]){
        
@@ -191,13 +221,13 @@ public class GUI_InterfazMedicamentos extends javax.swing.JFrame {
     private javax.swing.JLabel administradorLabel2;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton botonCancelar;
-    private javax.swing.JButton crearPaciente;
-    private javax.swing.JButton crearPaciente1;
     private javax.swing.JLabel crearPacienteLabel1;
+    private javax.swing.JLabel crearPacienteLabel2;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarMedicamento;
     private javax.swing.JLabel modificarPacienteLabel1;
+    private javax.swing.JButton registrarCausa;
     private javax.swing.JButton registrarMedicamento;
     // End of variables declaration//GEN-END:variables
 }

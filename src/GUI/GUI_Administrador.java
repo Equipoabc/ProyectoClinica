@@ -167,9 +167,9 @@ public class GUI_Administrador extends javax.swing.JFrame {
         medicamentoLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
         medicamentoLabel.setForeground(new java.awt.Color(108, 101, 247));
         medicamentoLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        medicamentoLabel.setText("<html><body> <center> Medicamentos</center></body></html>");
+        medicamentoLabel.setText("<html><body> <center> Medicamentos </br> Y Causas</center></body></html>");
         jPanel1.add(medicamentoLabel);
-        medicamentoLabel.setBounds(490, 370, 150, 90);
+        medicamentoLabel.setBounds(490, 370, 160, 90);
 
         medicamentoBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         medicamentoBoton.setBorder(null);

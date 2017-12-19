@@ -55,7 +55,7 @@ public class GUI_CrearCausa extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Crear Evento");
+        jLabel6.setText("Crear Causa");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(140, 50, 200, 50);
 
@@ -133,9 +133,9 @@ public class GUI_CrearCausa extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Medico medico = new GUI_Medico();
-        medico.setVisible(true);
-        this.dispose();
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void crearCausa(){
