@@ -167,12 +167,12 @@ public class GUI_CrearArea extends javax.swing.JFrame {
         nom = nombre.getText();
         cod = codigo.getText();
         des = descripcion.getText();
-        
+
         if(nom.equals("") || cod.equals("") || des.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }
         else if(!validaciones.validarNumero(cod)) {
-            JOptionPane.showMessageDialog(null, "El campo Código debe ser numerico.");
+            JOptionPane.showMessageDialog(null, "El campo Código debe ser numerico");
         }
         else if(!validaciones.validarLetrasYNumerosEspacios(nom)||
                 !validaciones.validarLetrasYNumerosEspacios(des)) {

@@ -21,4 +21,8 @@ public class ControladorEmpleado {
         
         daoEmpleado.listarEmpleadosArea(nombre, id_area, modelo, tabla);      
     }
+
+    public void listarCitasMeses(int id_mes, DefaultTableModel modelo, JTable tabla) {
+        daoEmpleado.listarCitasMeses(id_mes, modelo, tabla);
+    }
 }
