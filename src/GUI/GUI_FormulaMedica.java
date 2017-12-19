@@ -1,14 +1,8 @@
 package GUI;
 import Controladores.*;
-import java.text.*;
 import javax.swing.*;
 import Logica.*;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class GUI_FormulaMedica extends javax.swing.JFrame {
     
@@ -16,9 +10,12 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     ControladorMedicamento controladorMedicamento;
     ControladorFormula_medica controladorFormulaMedica;
     ControladorFormulas_medicas_Medicamentos controladorFormulaMedicaMedicamento;
+    ControladorMedico controladorMedico;
     String idMedico;
-     DefaultListModel listaOpcion;
-     DefaultListModel listaAdicion;
+    int registro;
+    String nombrePaciente;
+    DefaultListModel listaOpcion;
+    DefaultListModel listaAdicion;
 
     
     public GUI_FormulaMedica(){
@@ -26,24 +23,38 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         controladorFormulaMedica = new ControladorFormula_medica();
+        controladorMedico = new ControladorMedico();
         controladorMedicamento = new ControladorMedicamento();
         controladorFormulaMedicaMedicamento = new ControladorFormulas_medicas_Medicamentos();
         validaciones = new Validaciones();  
-        listaOpcion=new DefaultListModel();
-        listaAdicion=new DefaultListModel();
+        listaOpcion =new DefaultListModel();
+        listaAdicion =new DefaultListModel();
         ArrayList<String> lista = new ArrayList<String>();
         lista = controladorMedicamento.llenarMedicamentos();    
                
         for(int i=0; i < lista.size(); i++){
+            
             listaOpcion.addElement(lista.get(i));       
         }
+        
         listaOpciones.setModel(listaOpcion);
         listaAdiciones.setModel(listaAdicion);        
     }
     
 
-    void setIdMedico(String id_medico) {
+    public void setIdMedico(String id_medico) {
         idMedico = id_medico;
+        Medico doc = controladorMedico.consultarDatosMedico(idMedico);
+        medico.setText("Medico: " + doc.getNombre_empleado());
+    }
+    
+    public void setRegistro(int x) {
+        registro = x;
+    }
+    
+    public void setNombrePaciente(String x) {
+        nombrePaciente = x;        
+        paciente.setText("Paciente: " + nombrePaciente);
     }
     
     @SuppressWarnings("unchecked")
@@ -52,20 +63,18 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         botonCancelar = new javax.swing.JButton();
-        cedulaLabel = new javax.swing.JLabel();
         adicionar = new javax.swing.JButton();
         eliminar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
         cedulaLabel2 = new javax.swing.JLabel();
-        cedulaText = new javax.swing.JTextField();
-        cedulaLabel3 = new javax.swing.JLabel();
-        codigoText = new javax.swing.JTextField();
         cedulaLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaAdiciones = new javax.swing.JList<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaOpciones = new javax.swing.JList<>();
+        medico = new javax.swing.JLabel();
+        paciente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -89,11 +98,6 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(370, 400, 140, 90);
-
-        cedulaLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        cedulaLabel.setText("Cédula del paciente:");
-        jPanel1.add(cedulaLabel);
-        cedulaLabel.setBounds(120, 130, 120, 30);
 
         adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         adicionar.setBorder(null);
@@ -152,27 +156,6 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         jPanel1.add(cedulaLabel2);
         cedulaLabel2.setBounds(470, 200, 180, 30);
 
-        cedulaText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cedulaTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(cedulaText);
-        cedulaText.setBounds(240, 130, 140, 30);
-
-        cedulaLabel3.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        cedulaLabel3.setText("Código de Fórmula:");
-        jPanel1.add(cedulaLabel3);
-        cedulaLabel3.setBounds(410, 130, 120, 30);
-
-        codigoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(codigoText);
-        codigoText.setBounds(530, 130, 140, 30);
-
         cedulaLabel1.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         cedulaLabel1.setText("Medicamentos Disponibles");
         jPanel1.add(cedulaLabel1);
@@ -187,6 +170,14 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(110, 230, 190, 160);
+
+        medico.setText("Medico: ");
+        jPanel1.add(medico);
+        medico.setBounds(70, 130, 220, 50);
+
+        paciente.setText("Paciente: ");
+        jPanel1.add(paciente);
+        paciente.setBounds(440, 140, 280, 30);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -220,100 +211,53 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
+       
         ListModel l = listaAdiciones.getModel();
-        String cedula = "";
-        cedula = cedulaText.getText();
-        String codigo = "";
-        codigo = codigoText.getText();
-/*
-  
-        if (cedula.equals("") || codigo.equals("")) {
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        }
-        else if(!validaciones.validarNumero(cedula) || !validaciones.validarNumero(codigo)) {
-            JOptionPane.showMessageDialog(null, "La cédula y el código deben ser numéricos.");
-        }
-        else if(l.getElementAt(0) == null){
+
+        if(l.getElementAt(0) == null){
             JOptionPane.showMessageDialog(null, "La fórmula médica se encuentra vacía.");
         }
         else {
-            if(Integer.parseInt(evento.getCupos()) <= 0){
-                 JOptionPane.showMessageDialog(null, "No hay cupos para el evento.");
-            }
-            else {
+           
+            int ifFormula = controladorFormulaMedica.crearFormulaMedica(idMedico, registro);
+            
+            for(int i = 0; i < l.getSize(); i++){
+            
+                String medicamento = (String) l.getElementAt(i);
+                String[] partes = medicamento.split(" ");
+                String codigo = partes[0];
+                int resultado = controladorFormulaMedicaMedicamento.insertarFormula(ifFormula, codigo);
                 
-                   for(int i=0; i< l.getSize(); i++){
-            
-                        String medicamento = (String) l.getElementAt(i);
-                        String[] partes = medicamento.split(" ");
-                        String codigoMedicamento = partes[0];
-                        int numFilas = controladorFormulas_medicas_Medicamentos.insertarFormula(cedula,codigo);
-                    }
-            int numFilas = controladorParticipante.insertarParticipante(primerNom,segundoNom,
-                    primerAp,segundoAp,ced,fechaNacimiento, tel, email, idOperador, codigoEvento, "Invalido");
-            
-            switch (numFilas) {
-                case 3:
-                    JOptionPane.showMessageDialog(null, "El evento que ingresó no existe.");
-                    break;
-                case 7:
-                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra pre-inscrito en este evento" + "\n" +
-                            "Debe proceder a pagar para quedar inscrito.");
-                    break;
-                case 8:
-                    JOptionPane.showMessageDialog(null, "El participante ya se encuentra inscrito en este evento");
-                    break;
-                case 2:
-                case 5:
-                    int cuposActuales = Integer.parseInt(evento.getCupos()) - 1;         
-                    controladorEvento.actualizarCupos(codigoEvento, Integer.toString(cuposActuales));
-                    JOptionPane.showMessageDialog(null, "La pre-inscripción se ha realizado exitosamente.");
-                    primerNombre.setText(null);
-                    segundoNombre.setText(null);
-                    primerApellido.setText(null);
-                    segundoApellido.setText(null);
-                    cedula.setText(null);
-                    telefono.setText(null);
-                    correo.setText(null);
-                    break;
-                default:
-                    JOptionPane.showMessageDialog(null, "Ocurrio un problema al realizar la pre-inscripción.");
-                    break;
+                if(resultado != 1){
+                    
+                    JOptionPane.showMessageDialog(null, "Ocurrio un error a la hora de ingresar los medicamentos.");
+                }
             }
-        }
-        }*/
+            
+            JOptionPane.showMessageDialog(null, "Se ha agragado la formula medica con exito.");
+            botonAceptar.setEnabled(false);
+        }        
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adicionarActionPerformed
-        // TODO add your handling code here:      
+           
         String nombre = "";
         nombre = listaOpciones.getSelectedValue();
         if ((nombre != null) ){
             listaAdicion.addElement(nombre);
             listaOpcion.remove(listaOpciones.getSelectedIndex());  
         }
-
     }//GEN-LAST:event_adicionarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        // TODO add your handling code here:
+        
         String nombre = "";
         nombre = listaAdiciones.getSelectedValue();
         if ((nombre != null)){
             listaOpcion.addElement(nombre);
             listaAdicion.remove(listaAdiciones.getSelectedIndex());  
-        }
-      
-        
+        }             
     }//GEN-LAST:event_eliminarActionPerformed
-
-    private void cedulaTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cedulaTextActionPerformed
-
-    private void codigoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoTextActionPerformed
 
     private void consultarParticipante(){
         /*String cedulaP;
@@ -355,18 +299,13 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
                 new GUI_FormulaMedica().setVisible(true);
             }
         });
-    }
-    
+    }    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton adicionar;
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
-    private javax.swing.JLabel cedulaLabel;
     private javax.swing.JLabel cedulaLabel1;
     private javax.swing.JLabel cedulaLabel2;
-    private javax.swing.JLabel cedulaLabel3;
-    private javax.swing.JTextField cedulaText;
-    private javax.swing.JTextField codigoText;
     private javax.swing.JButton eliminar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -375,6 +314,8 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> listaAdiciones;
     private javax.swing.JList<String> listaOpciones;
+    private javax.swing.JLabel medico;
+    private javax.swing.JLabel paciente;
     // End of variables declaration//GEN-END:variables
     
 }

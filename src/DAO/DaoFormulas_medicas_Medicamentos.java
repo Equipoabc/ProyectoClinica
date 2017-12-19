@@ -1,50 +1,36 @@
 package DAO;
-import Logica.Medicamento;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import Conexion.*;
+import Logica.*;
 
 public class DaoFormulas_medicas_Medicamentos {
     
-    public int insertarFormula(String cedula, String codigo){
-        /*
-        String sql_guardar, validar;
-        int numFilas;
+    Conexiones conexion;
+    
+    public DaoFormulas_medicas_Medicamentos(){
         
-        validar = "SELECT codigo_medicamento FROM Medicamentos WHERE codigo_medicamento = '" + medicamento.getCodigo_medicamento() + "';";
-        sql_guardar = "INSERT INTO Medicamentos (codigo_medicamento, nombre_medicamento, costo, descripcion) VALUES ('" 
-                + medicamento.getCodigo_medicamento() + "', '" +
-                medicamento.getNombre_medicamento() +  "', " + medicamento.getCosto() +  ", '" +
-                medicamento.getDescripcion()  +  "')" ;
+        conexion = Main.conexion;
+    }
+    
+    public int insertarFormula(int formula, String codigo){
+        
+        String sql;
+               
+        sql = "INSERT INTO formulas_medicas_medicamentos (codigo_formula, codigo_medicamento) "
+                + "VALUES ('" + formula + "', '" + codigo +  "')";
         
         try {
             
             Connection conn= conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            ResultSet consulta = sentencia.executeQuery(validar);
+            return sentencia.executeUpdate(sql);
             
-            while(consulta.next()){
-                
-                validar = consulta.getString(1);
-            }
-            
-            if(validar.equals(medicamento.getCodigo_medicamento())){
-                
-                return 2;
-            }            
-            else {                
-                numFilas = sentencia.executeUpdate(sql_guardar);
-                return numFilas;
-            }
-        } catch(SQLException e){
-            
+        } catch(SQLException e){            
             System.out.println("SQL error: " + e);
-        } catch(Exception e){
-            
+        } catch(Exception e){            
             System.out.println("Error" + e);
         }
-        */
+        
         return -1;
     }   
 }
