@@ -27,6 +27,8 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         agendaLabel = new javax.swing.JLabel();
         agendaBoton = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        agendaLabel1 = new javax.swing.JLabel();
+        listaEmpleadosBoton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,6 +105,27 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(610, 400, 130, 70);
 
+        agendaLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        agendaLabel1.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        agendaLabel1.setForeground(new java.awt.Color(108, 101, 247));
+        agendaLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agendaLabel1.setText("<html><body> <center> Lista de</br> Empleados</center></body></html>");
+        jPanel1.add(agendaLabel1);
+        agendaLabel1.setBounds(430, 170, 140, 90);
+
+        listaEmpleadosBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        listaEmpleadosBoton.setBorder(null);
+        listaEmpleadosBoton.setBorderPainted(false);
+        listaEmpleadosBoton.setContentAreaFilled(false);
+        listaEmpleadosBoton.setFocusPainted(false);
+        listaEmpleadosBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaEmpleadosBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaEmpleadosBoton);
+        listaEmpleadosBoton.setBounds(420, 160, 160, 110);
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -152,6 +175,13 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void listaEmpleadosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaEmpleadosBotonActionPerformed
+        GUI_ListaEmpleados lista = new GUI_ListaEmpleados();
+        lista.setTipo(this.tipo);
+        lista.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_listaEmpleadosBotonActionPerformed
     
     public static void main(String args[]){
        
@@ -170,10 +200,12 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
     private javax.swing.JLabel administradorLabel2;
     private javax.swing.JButton agendaBoton;
     private javax.swing.JLabel agendaLabel;
+    private javax.swing.JLabel agendaLabel1;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton listaEmpleadosBoton;
     // End of variables declaration//GEN-END:variables
 
     void setTipo(String administrador) {

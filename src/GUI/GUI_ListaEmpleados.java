@@ -12,6 +12,7 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
     ControladorEmpleado controladorEmpleado;
     ControladorArea controladorArea;
     String administrador;
+    private String tipo;
 
     public GUI_ListaEmpleados(){
         
@@ -98,9 +99,9 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Empleados");
+        jLabel6.setText("Lista de Empleados");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(140, 50, 200, 50);
+        jLabel6.setBounds(140, 50, 290, 50);
 
         tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -127,7 +128,7 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
 
         texto.setText("Area:");
         jPanel1.add(texto);
-        texto.setBounds(120, 130, 27, 14);
+        texto.setBounds(120, 130, 32, 16);
 
         areas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,25 +136,35 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
             }
         });
         jPanel1.add(areas);
-        areas.setBounds(160, 130, 80, 20);
+        areas.setBounds(160, 130, 180, 22);
 
-        consultar.setText("Consultar");
+        consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
+        consultar.setBorderPainted(false);
+        consultar.setContentAreaFilled(false);
+        consultar.setFocusPainted(false);
+        consultar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Consultar.png"))); // NOI18N
+        consultar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarPeq.png"))); // NOI18N
         consultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 consultarActionPerformed(evt);
             }
         });
         jPanel1.add(consultar);
-        consultar.setBounds(260, 123, 90, 30);
+        consultar.setBounds(330, 110, 130, 50);
 
-        cancelar.setText("Cancelar");
+        cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
+        cancelar.setBorderPainted(false);
+        cancelar.setContentAreaFilled(false);
+        cancelar.setFocusPainted(false);
+        cancelar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Cancelar.png"))); // NOI18N
+        cancelar.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarPeq.png"))); // NOI18N
         cancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cancelarActionPerformed(evt);
             }
         });
         jPanel1.add(cancelar);
-        cancelar.setBounds(613, 130, 90, 23);
+        cancelar.setBounds(580, 110, 130, 50);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -205,7 +216,8 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         
-        GUI_Administrador administrador = new GUI_Administrador();
+        GUI_InterfazInformes administrador = new GUI_InterfazInformes();
+        administrador.setTipo(this.tipo);
         administrador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
@@ -238,4 +250,8 @@ public class GUI_ListaEmpleados extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
+
+    void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
 }
