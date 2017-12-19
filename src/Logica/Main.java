@@ -14,8 +14,7 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        //Reportes.crearCarpetas();
-        GUI_Login interfaz = new GUI_Login();
+        GUI_ListaEmpleados interfaz = new GUI_ListaEmpleados();
         interfaz.setVisible(true);
     }
 }

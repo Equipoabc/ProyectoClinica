@@ -1,27 +1,24 @@
 package GUI;
 import Controladores.*;
 import java.text.*;
-import javax.swing.*;
 import Logica.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
-public class GUI_Agenda extends javax.swing.JFrame {
+public class GUI_ListaEmpleados extends javax.swing.JFrame {
     
     Validaciones validaciones;
     DefaultTableModel modelo;
-    ControladorCita controladorCita;
-    String medico;
+    ControladorEmpleado controladorEmpleado;
+    ControladorArea controladorArea;
+    String administrador;
 
-    public GUI_Agenda(String id){
+    public GUI_ListaEmpleados(){
         
-        initComponents();     
-        medico = id;
+        initComponents();
         this.setLocationRelativeTo(null);
-        controladorCita = new ControladorCita();
+        controladorEmpleado = new ControladorEmpleado();
+        controladorArea = new ControladorArea();
         validaciones = new Validaciones();
         modelo = new DefaultTableModel(){
             
@@ -34,34 +31,30 @@ public class GUI_Agenda extends javax.swing.JFrame {
         
         tabla.setModel(modelo);
         
-        modelo.addColumn("Hora");
-        modelo.addColumn("Paciente");
+        modelo.addColumn("Area");
+        modelo.addColumn("Cedula");
         modelo.addColumn("Nombre");
+        modelo.addColumn("Direccion");
+        modelo.addColumn("Telefono");
+        modelo.addColumn("Email");
+        modelo.addColumn("Cargo");
         
         tabla.getTableHeader().setReorderingAllowed(false);
-        date.getDateEditor().setEnabled(false);  
-        date.getDateEditor().addPropertyChangeListener(
+        
+        areas.addItem("Todas");
+        
+        ArrayList<String> lista = new ArrayList<String>();
+        lista = controladorArea.consultarAreas();
+        
+        for(int i=0; i < lista.size(); i++){
             
-            new PropertyChangeListener() {
-        
-                @Override
-                public void propertyChange(PropertyChangeEvent e) {
-                    
-                    consultarAgenda();
-                }
-        });
-        date.setDate(GetDateNow());
+            areas.addItem(lista.get(i));
+        } 
     }
     
-    private Date GetDateNow(){
+    public void setAdministrador(String administrador){
         
-        Calendar currentDate = Calendar.getInstance();
-        return currentDate.getTime();
-    }
-    
-    public void setMedico(String medico){
-        
-        this.medico = medico;
+        this.administrador = administrador;
     }
     
     @SuppressWarnings("unchecked")
@@ -78,7 +71,10 @@ public class GUI_Agenda extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jSeparator1 = new javax.swing.JSeparator();
-        date = new com.toedter.calendar.JDateChooser();
+        texto = new javax.swing.JLabel();
+        areas = new javax.swing.JComboBox<>();
+        consultar = new javax.swing.JButton();
+        cancelar = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
@@ -102,7 +98,7 @@ public class GUI_Agenda extends javax.swing.JFrame {
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Agenda");
+        jLabel6.setText("Empleados");
         jPanel1.add(jLabel6);
         jLabel6.setBounds(140, 50, 200, 50);
 
@@ -127,18 +123,37 @@ public class GUI_Agenda extends javax.swing.JFrame {
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(30, 170, 690, 310);
         jPanel1.add(jSeparator1);
-        jSeparator1.setBounds(380, 250, 50, 10);
+        jSeparator1.setBounds(380, 250, 0, 2);
 
-        date.setBackground(new java.awt.Color(255, 255, 255));
-        date.setForeground(new java.awt.Color(102, 102, 255));
-        date.setFocusable(false);
-        date.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
-        date.setMaxSelectableDate(new java.util.Date(3471314481000L));
-        date.setMinSelectableDate(new java.util.Date(-1262282319000L));
-        date.setRequestFocusEnabled(false);
-        date.setVerifyInputWhenFocusTarget(false);
-        jPanel1.add(date);
-        date.setBounds(140, 120, 180, 25);
+        texto.setText("Area:");
+        jPanel1.add(texto);
+        texto.setBounds(120, 130, 27, 14);
+
+        areas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                areasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(areas);
+        areas.setBounds(160, 130, 80, 20);
+
+        consultar.setText("Consultar");
+        consultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(consultar);
+        consultar.setBounds(260, 123, 90, 30);
+
+        cancelar.setText("Cancelar");
+        cancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(cancelar);
+        cancelar.setBounds(613, 130, 90, 23);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -161,22 +176,39 @@ public class GUI_Agenda extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void areasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_areasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_areasActionPerformed
+
+    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         
-    private void consultarAgenda(){
-       
-        String fecha = "";       
-        try {
-            fecha = new SimpleDateFormat("dd/MM/YYYY").format(date.getDate());
-        } catch(Exception e){
-            System.out.println("Error al obtener la fecha.");
-        }
+        String id_areaAux = (String) areas.getSelectedItem();
+        String[] partes = id_areaAux.split(" ");
+        String id_area = partes[0];        
+        
         while(modelo.getRowCount() != 0){
             
             modelo.removeRow(0);
         }
         
-        controladorCita.consutarAgenda(fecha, medico, modelo, tabla);     
-    }
+        if(id_area.equals("Todas")){
+                        
+            controladorEmpleado.listarEmpleados(modelo, tabla);
+        }
+        else {
+            
+            String nombre = partes[1];
+            controladorEmpleado.listarEmpleadosArea(nombre, id_area, modelo, tabla);
+        }
+    }//GEN-LAST:event_consultarActionPerformed
+
+    private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
+        
+        GUI_Administrador administrador = new GUI_Administrador();
+        administrador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_cancelarActionPerformed
     
     public static void main(String args[]){
         
@@ -185,12 +217,14 @@ public class GUI_Agenda extends javax.swing.JFrame {
             
             public void run(){
                 
-                new GUI_Agenda("").setVisible(true);
+                new GUI_ListaEmpleados().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser date;
+    private javax.swing.JComboBox<String> areas;
+    private javax.swing.JButton cancelar;
+    private javax.swing.JButton consultar;
     private javax.swing.JLabel fondo;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem2;
@@ -202,5 +236,6 @@ public class GUI_Agenda extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel texto;
     // End of variables declaration//GEN-END:variables
 }
