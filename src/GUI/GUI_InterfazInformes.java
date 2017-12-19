@@ -257,6 +257,10 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
 
     private void citasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citasBotonActionPerformed
         // TODO add your handling code here:
+         GUI_CitasMes citas = new GUI_CitasMes();
+        citas.setTipo(this.tipo);
+        citas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_citasBotonActionPerformed
 
     private void costosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costosBotonActionPerformed
