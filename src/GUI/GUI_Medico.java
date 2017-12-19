@@ -19,10 +19,16 @@ public class GUI_Medico extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         bienvenidoLabel = new javax.swing.JLabel();
         nombreMedico = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        agendaLabel = new javax.swing.JLabel();
         MedicoLabel = new javax.swing.JLabel();
         CerrarSesion = new javax.swing.JLabel();
         Agenda = new javax.swing.JButton();
+        historiaLabel = new javax.swing.JLabel();
+        historiaBoton = new javax.swing.JButton();
+        registroLabel = new javax.swing.JLabel();
+        registroBoton = new javax.swing.JButton();
+        inscribirLabel = new javax.swing.JLabel();
+        inscribirBoton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -47,13 +53,13 @@ public class GUI_Medico extends javax.swing.JFrame {
         jPanel1.add(nombreMedico);
         nombreMedico.setBounds(20, 280, 190, 50);
 
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(108, 101, 247));
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("<html><body> <center>  Agenda</center></body></html>");
-        jPanel1.add(jLabel9);
-        jLabel9.setBounds(240, 180, 140, 90);
+        agendaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        agendaLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        agendaLabel.setForeground(new java.awt.Color(108, 101, 247));
+        agendaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agendaLabel.setText("<html><body> <center>  Agenda</center></body></html>");
+        jPanel1.add(agendaLabel);
+        agendaLabel.setBounds(240, 180, 140, 90);
 
         MedicoLabel.setBackground(new java.awt.Color(255, 255, 255));
         MedicoLabel.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
@@ -85,6 +91,69 @@ public class GUI_Medico extends javax.swing.JFrame {
         });
         jPanel1.add(Agenda);
         Agenda.setBounds(220, 170, 180, 110);
+
+        historiaLabel.setBackground(new java.awt.Color(255, 255, 255));
+        historiaLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        historiaLabel.setForeground(new java.awt.Color(108, 101, 247));
+        historiaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        historiaLabel.setText("<html><body> <center> Historias</br> Clinicas</center></body></html>");
+        jPanel1.add(historiaLabel);
+        historiaLabel.setBounds(410, 180, 140, 90);
+
+        historiaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        historiaBoton.setBorder(null);
+        historiaBoton.setBorderPainted(false);
+        historiaBoton.setContentAreaFilled(false);
+        historiaBoton.setFocusPainted(false);
+        historiaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historiaBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(historiaBoton);
+        historiaBoton.setBounds(400, 170, 160, 110);
+
+        registroLabel.setBackground(new java.awt.Color(255, 255, 255));
+        registroLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        registroLabel.setForeground(new java.awt.Color(108, 101, 247));
+        registroLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registroLabel.setText("<html><body> <center> Crear</br> Registro</center></body></html>");
+        jPanel1.add(registroLabel);
+        registroLabel.setBounds(240, 310, 140, 90);
+
+        registroBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        registroBoton.setBorder(null);
+        registroBoton.setBorderPainted(false);
+        registroBoton.setContentAreaFilled(false);
+        registroBoton.setFocusPainted(false);
+        registroBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registroBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registroBoton);
+        registroBoton.setBounds(230, 300, 160, 110);
+
+        inscribirLabel.setBackground(new java.awt.Color(255, 255, 255));
+        inscribirLabel.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        inscribirLabel.setForeground(new java.awt.Color(108, 101, 247));
+        inscribirLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        inscribirLabel.setText("<html><body> <center> Inscribir</br> Participante</center></body></html>");
+        jPanel1.add(inscribirLabel);
+        inscribirLabel.setBounds(410, 310, 140, 90);
+
+        inscribirBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        inscribirBoton.setBorder(null);
+        inscribirBoton.setBorderPainted(false);
+        inscribirBoton.setContentAreaFilled(false);
+        inscribirBoton.setFocusPainted(false);
+        inscribirBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inscribirBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(inscribirBoton);
+        inscribirBoton.setBounds(400, 300, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -123,6 +192,18 @@ public class GUI_Medico extends javax.swing.JFrame {
         agenda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AgendaActionPerformed
+
+    private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_historiaBotonActionPerformed
+
+    private void registroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registroBotonActionPerformed
+
+    private void inscribirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inscribirBotonActionPerformed
  
     public void personalizarBienvenida(){
        /* Gerente gerente = new Gerente();
@@ -151,10 +232,16 @@ public class GUI_Medico extends javax.swing.JFrame {
     private javax.swing.JButton Agenda;
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel MedicoLabel;
+    private javax.swing.JLabel agendaLabel;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JButton historiaBoton;
+    private javax.swing.JLabel historiaLabel;
+    private javax.swing.JButton inscribirBoton;
+    private javax.swing.JLabel inscribirLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel nombreMedico;
+    private javax.swing.JButton registroBoton;
+    private javax.swing.JLabel registroLabel;
     // End of variables declaration//GEN-END:variables
 }

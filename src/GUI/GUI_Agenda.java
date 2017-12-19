@@ -213,7 +213,7 @@ public class GUI_Agenda extends javax.swing.JFrame {
     }//GEN-LAST:event_listaMedicoActionPerformed
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        System.out.println(medico);
+        
         if (validaciones.validarNumero(medico)){
             GUI_Medico medi = new GUI_Medico();
             medi.setId(medico);
@@ -221,10 +221,17 @@ public class GUI_Agenda extends javax.swing.JFrame {
             this.dispose();
         }
         else{
-            GUI_InterfazInformes medi = new GUI_InterfazInformes();
-            medi.setTipo(medico);
-            medi.setVisible(true);
-            this.dispose();
+            if(medico.equals("Administrador")){
+                GUI_InterfazInformes medi = new GUI_InterfazInformes();
+                medi.setTipo(medico);
+                medi.setVisible(true);
+                this.dispose();
+            }
+            else if (medico.equals("Operador")){
+                GUI_Operador operador = new GUI_Operador();
+                operador.setVisible(true);
+                this.dispose();
+            }
         }
     }//GEN-LAST:event_botonCancelarActionPerformed
     

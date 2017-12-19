@@ -29,6 +29,12 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         botonCancelar = new javax.swing.JButton();
         agendaLabel1 = new javax.swing.JLabel();
         listaEmpleadosBoton = new javax.swing.JButton();
+        agendaLabel2 = new javax.swing.JLabel();
+        historiaBoton = new javax.swing.JButton();
+        agendaLabel3 = new javax.swing.JLabel();
+        citasBoton = new javax.swing.JButton();
+        agendaLabel4 = new javax.swing.JLabel();
+        costosBoton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +81,7 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         agendaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         agendaLabel.setText("<html><body> <center> Agenda </br> Medicos</center></body></html>");
         jPanel1.add(agendaLabel);
-        agendaLabel.setBounds(260, 170, 140, 90);
+        agendaLabel.setBounds(240, 180, 140, 90);
 
         agendaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         agendaBoton.setBorder(null);
@@ -88,7 +94,7 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(agendaBoton);
-        agendaBoton.setBounds(250, 160, 160, 110);
+        agendaBoton.setBounds(230, 170, 160, 110);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
@@ -111,7 +117,7 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         agendaLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         agendaLabel1.setText("<html><body> <center> Lista de</br> Empleados</center></body></html>");
         jPanel1.add(agendaLabel1);
-        agendaLabel1.setBounds(430, 170, 140, 90);
+        agendaLabel1.setBounds(410, 180, 140, 90);
 
         listaEmpleadosBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         listaEmpleadosBoton.setBorder(null);
@@ -124,7 +130,70 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(listaEmpleadosBoton);
-        listaEmpleadosBoton.setBounds(420, 160, 160, 110);
+        listaEmpleadosBoton.setBounds(400, 170, 160, 110);
+
+        agendaLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        agendaLabel2.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        agendaLabel2.setForeground(new java.awt.Color(108, 101, 247));
+        agendaLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agendaLabel2.setText("<html><body> <center> Historias</br> Clinicas</center></body></html>");
+        jPanel1.add(agendaLabel2);
+        agendaLabel2.setBounds(580, 180, 140, 90);
+
+        historiaBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        historiaBoton.setBorder(null);
+        historiaBoton.setBorderPainted(false);
+        historiaBoton.setContentAreaFilled(false);
+        historiaBoton.setFocusPainted(false);
+        historiaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historiaBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(historiaBoton);
+        historiaBoton.setBounds(570, 170, 160, 110);
+
+        agendaLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        agendaLabel3.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        agendaLabel3.setForeground(new java.awt.Color(108, 101, 247));
+        agendaLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agendaLabel3.setText("<html><body> <center> Citas</br> Medico</center></body></html>");
+        jPanel1.add(agendaLabel3);
+        agendaLabel3.setBounds(320, 310, 140, 90);
+
+        citasBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        citasBoton.setBorder(null);
+        citasBoton.setBorderPainted(false);
+        citasBoton.setContentAreaFilled(false);
+        citasBoton.setFocusPainted(false);
+        citasBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                citasBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(citasBoton);
+        citasBoton.setBounds(310, 300, 160, 110);
+
+        agendaLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        agendaLabel4.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        agendaLabel4.setForeground(new java.awt.Color(108, 101, 247));
+        agendaLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        agendaLabel4.setText("<html><body> <center> Costos</br> Promedio</center></body></html>");
+        jPanel1.add(agendaLabel4);
+        agendaLabel4.setBounds(520, 310, 140, 90);
+
+        costosBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        costosBoton.setBorder(null);
+        costosBoton.setBorderPainted(false);
+        costosBoton.setContentAreaFilled(false);
+        costosBoton.setFocusPainted(false);
+        costosBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                costosBotonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(costosBoton);
+        costosBoton.setBounds(510, 300, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -157,7 +226,6 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
     
     private void agendaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaBotonActionPerformed
         GUI_Agenda agenda = new GUI_Agenda(tipo);
-        System.out.println(tipo);
         agenda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_agendaBotonActionPerformed
@@ -182,6 +250,18 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
         lista.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_listaEmpleadosBotonActionPerformed
+
+    private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_historiaBotonActionPerformed
+
+    private void citasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citasBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_citasBotonActionPerformed
+
+    private void costosBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_costosBotonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_costosBotonActionPerformed
     
     public static void main(String args[]){
        
@@ -201,9 +281,15 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
     private javax.swing.JButton agendaBoton;
     private javax.swing.JLabel agendaLabel;
     private javax.swing.JLabel agendaLabel1;
+    private javax.swing.JLabel agendaLabel2;
+    private javax.swing.JLabel agendaLabel3;
+    private javax.swing.JLabel agendaLabel4;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton botonCancelar;
+    private javax.swing.JButton citasBoton;
+    private javax.swing.JButton costosBoton;
     private javax.swing.JLabel fondo;
+    private javax.swing.JButton historiaBoton;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton listaEmpleadosBoton;
     // End of variables declaration//GEN-END:variables
