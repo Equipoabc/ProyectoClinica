@@ -16,7 +16,6 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     String nombrePaciente;
     DefaultListModel listaOpcion;
     DefaultListModel listaAdicion;
-
     
     public GUI_FormulaMedica(){
         
@@ -27,8 +26,8 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         controladorMedicamento = new ControladorMedicamento();
         controladorFormulaMedicaMedicamento = new ControladorFormulas_medicas_Medicamentos();
         validaciones = new Validaciones();  
-        listaOpcion =new DefaultListModel();
-        listaAdicion =new DefaultListModel();
+        listaOpcion = new DefaultListModel();
+        listaAdicion = new DefaultListModel();
         ArrayList<String> lista = new ArrayList<String>();
         lista = controladorMedicamento.llenarMedicamentos();    
                
@@ -41,18 +40,20 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         listaAdiciones.setModel(listaAdicion);        
     }
     
-
-    public void setIdMedico(String id_medico) {
+    public void setIdMedico(String id_medico){
+        
         idMedico = id_medico;
         Medico doc = controladorMedico.consultarDatosMedico(idMedico);
         medico.setText("Medico: " + doc.getNombre_empleado());
     }
     
-    public void setRegistro(int x) {
+    public void setRegistro(int x){
+        
         registro = x;
     }
     
-    public void setNombrePaciente(String x) {
+    public void setNombrePaciente(String x){
+        
         nombrePaciente = x;        
         paciente.setText("Paciente: " + nombrePaciente);
     }
@@ -112,7 +113,7 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
             }
         });
         jPanel1.add(adicionar);
-        adicionar.setBounds(310, 220, 140, 90);
+        adicionar.setBounds(310, 230, 140, 90);
 
         eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         eliminar.setBorder(null);
@@ -127,7 +128,7 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
             }
         });
         jPanel1.add(eliminar);
-        eliminar.setBounds(310, 280, 140, 90);
+        eliminar.setBounds(310, 290, 140, 90);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
@@ -173,11 +174,11 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
 
         medico.setText("Medico: ");
         jPanel1.add(medico);
-        medico.setBounds(70, 130, 220, 50);
+        medico.setBounds(110, 130, 270, 50);
 
         paciente.setText("Paciente: ");
         jPanel1.add(paciente);
-        paciente.setBounds(440, 140, 280, 30);
+        paciente.setBounds(400, 130, 270, 50);
 
         jLabel2.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -203,23 +204,24 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Medico medico = new GUI_Medico();
-        medico.setId(idMedico);
-        medico.personalizarBienvenida();
-        medico.setVisible(true);
+        GUI_Medico interfaz = new GUI_Medico();
+        interfaz.setId(idMedico);
+        interfaz.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
        
         ListModel l = listaAdiciones.getModel();
-
-        if(l.getElementAt(0) == null){
-            JOptionPane.showMessageDialog(null, "La fórmula médica se encuentra vacía.");
+        
+        if(l.getSize() == 0){
+            
+            JOptionPane.showMessageDialog(null, "La fórmula médica se encuentra vacía, sin medicamentos.");
         }
         else {
            
             int ifFormula = controladorFormulaMedica.crearFormulaMedica(idMedico, registro);
+            boolean error = false;
             
             for(int i = 0; i < l.getSize(); i++){
             
@@ -230,12 +232,19 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
                 
                 if(resultado != 1){
                     
-                    JOptionPane.showMessageDialog(null, "Ocurrio un error a la hora de ingresar los medicamentos.");
+                    error = true;
                 }
             }
             
-            JOptionPane.showMessageDialog(null, "Se ha agragado la formula medica con exito.");
-            botonAceptar.setEnabled(false);
+            if(error){
+                
+                JOptionPane.showMessageDialog(null, "Ocurrio un error a la hora de ingresar los medicamentos.");
+            }
+            else {
+                
+                JOptionPane.showMessageDialog(null, "Se ha agragado la formula medica con exito.");
+                botonAceptar.setEnabled(false);
+            }
         }        
     }//GEN-LAST:event_botonAceptarActionPerformed
 
@@ -243,7 +252,8 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
            
         String nombre = "";
         nombre = listaOpciones.getSelectedValue();
-        if ((nombre != null) ){
+        if (nombre != null){
+            
             listaAdicion.addElement(nombre);
             listaOpcion.remove(listaOpciones.getSelectedIndex());  
         }
@@ -253,42 +263,13 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
         
         String nombre = "";
         nombre = listaAdiciones.getSelectedValue();
-        if ((nombre != null)){
+        if (nombre != null){
+            
             listaOpcion.addElement(nombre);
             listaAdicion.remove(listaAdiciones.getSelectedIndex());  
         }             
     }//GEN-LAST:event_eliminarActionPerformed
 
-    private void consultarParticipante(){
-        /*String cedulaP;
-        cedulaP = cedula.getText();
-        if(cedulaP.equals("")){
-             JOptionPane.showMessageDialog(null, "No ha ingresado un número de cédula.");           
-        }
-        else if (!validaciones.validarNumero(cedulaP)){
-            JOptionPane.showMessageDialog(null, "La cedula debe ser un número.");
-            
-        }
-        else{
-        participante = controladorParticipante.consultarDatosParticipante(cedulaP);
-        
-        if(participante != null){
-                primerNombre.setText(participante.getPrimer_nombre());
-                segundoNombre.setText(participante.getSegundo_nombre());
-                primerApellido.setText(participante.getPrimer_apellido());
-                segundoApellido.setText(participante.getSegundo_apellido());
-                fecha.setDate(parseFecha(participante.getFecha_nacimiento()));
-                correo.setText(participante.getEmail());
-                telefono.setText(participante.getTelefono());
-               
-        }
-        else{
-            JOptionPane.showMessageDialog(null, "El participante no se encuentra registrado.");
-        }
-        }*/
-        
-    }
-        
     public static void main(String args[]){
         
         /* Create and display the form */
@@ -317,5 +298,4 @@ public class GUI_FormulaMedica extends javax.swing.JFrame {
     private javax.swing.JLabel medico;
     private javax.swing.JLabel paciente;
     // End of variables declaration//GEN-END:variables
-    
 }

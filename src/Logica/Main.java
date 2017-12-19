@@ -14,10 +14,8 @@ public class Main {
         
         conexion = new Conexiones();
         conexion.getConnetion();
-        GUI_FormulaMedica interfaz = new GUI_FormulaMedica();
-        interfaz.setIdMedico("1");
-        interfaz.setRegistro(1);
-        interfaz.setNombrePaciente("Juan");
+        GUI_Medico interfaz = new GUI_Medico();
+        interfaz.setId("1");
         interfaz.setVisible(true);
     }
 }

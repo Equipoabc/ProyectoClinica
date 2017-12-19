@@ -15,7 +15,6 @@ public class DaoRegistro {
     public int crearRegistro(String historia, String fech, String hor, String cedula_medico) {
         
         String sql_guardar;
-        int resultado;
         
         sql_guardar = "INSERT INTO Registros (numero_historia, fecha_consulta, hora, id_empleado) "
                 + "VALUES (" + Integer.parseInt(historia) + ", '" + fech + "', '" +
@@ -25,8 +24,8 @@ public class DaoRegistro {
             
             Connection conn= conexion.getConnetion();
             Statement sentencia = conn.createStatement();
-            resultado = sentencia.executeUpdate(sql_guardar);
-            return resultado;
+            sentencia.executeUpdate(sql_guardar);
+            return this.consultarRegistro(historia, fech, hor);
             
         } catch(SQLException e){            
             System.out.println("SQL error: " + e);
@@ -36,4 +35,30 @@ public class DaoRegistro {
         
         return -1;
     }    
+
+    public int consultarRegistro(String historia, String fech, String hor) {
+        
+        String sql;
+        sql = "SELECT numero_registro FROM registros "
+                + "WHERE numero_historia = " + Integer.parseInt(historia) + " AND fecha_consulta = '" + fech + "' AND hora = '" + hor + "';";
+        
+        try {
+            
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement(); 
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                return Integer.parseInt(consulta.getString(1));
+            }
+                              
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+        
+        return -1;
+    }
 }
