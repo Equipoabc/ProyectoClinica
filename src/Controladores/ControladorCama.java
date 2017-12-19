@@ -32,7 +32,17 @@ public class ControladorCama {
         int result = daoCama.guardarCama(cama);
         return result;
     }
-       
-
-    
+    public Cama consultarDatosCama(String numeroCama) {
+        
+        return daoCama.consultarDatosCama(numeroCama);
+    }       
+    public int comprobar(String numeroCama) {
+        return daoCama.comprobar(numeroCama);
+    }
+    public int actualizarCama(String numeroCama, String area, String descripcion, String estado) {
+        return daoCama.actualizarCama(numeroCama, area,descripcion,estado);
+    }    
+    public int eliminarCama(String numeroCama) {
+        return daoCama.eliminarCama(numeroCama);
+    }        
 }

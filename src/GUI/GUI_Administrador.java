@@ -356,9 +356,12 @@ public class GUI_Administrador extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarMedicamentoActionPerformed
 
     private void registrarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCampanaActionPerformed
-        GUI_RegistrarCampana i = new GUI_RegistrarCampana();
+     /*   GUI_RegistrarCampana i = new GUI_RegistrarCampana();
         i.setVisible(true);
-        this.dispose();
+        this.dispose();*/
+     GUI_ModificarCampana i = new GUI_ModificarCampana();
+     i.setVisible(true);
+     this.dispose();
     }//GEN-LAST:event_registrarCampanaActionPerformed
     
     public static void main(String args[]){
