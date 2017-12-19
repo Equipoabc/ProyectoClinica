@@ -20,8 +20,8 @@ public class ControladorFormulas_medicas_Medicamentos {
        daoFormulas_medicas_Medicamentos = new DaoFormulas_medicas_Medicamentos();
       
     }    
-    public int insertarFormula(String cedula, String codigo) {
-        return 1;
-       // return daoFormulas_medicas_Medicamentos.insertarFormula();
+    public int insertarFormula(int formula, String codigo) {
+        
+        return daoFormulas_medicas_Medicamentos.insertarFormula(formula, codigo);
     }      
 }

@@ -1,5 +1,6 @@
 package Controladores;
 import DAO.*;
+import java.util.ArrayList;
 
 public class ControladorCausas {
 
@@ -13,4 +14,9 @@ public class ControladorCausas {
         
         return daoCausa.registrarCausa(nombre, descripcion);
     }   
+
+    public ArrayList<String> llenarCausas() {
+        
+        return daoCausa.llenarCausas();
+    }
 }
