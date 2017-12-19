@@ -228,11 +228,10 @@ public class GUI_Medico extends javax.swing.JFrame {
     }//GEN-LAST:event_CerrarSesionMouseClicked
     
     private void modificarSedeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarSedeActionPerformed
-        // TODO add your handling code here:
-        /*GUI_ModificarSede interfazModificarSede = new GUI_ModificarSede();
-        interfazModificarSede.setId(id);
-        interfazModificarSede.setVisible(true);
-        this.dispose();*/
+        GUI_FormulaMedica i= new GUI_FormulaMedica();
+        i.setIdMedico(id);
+        i.setVisible(true);
+        this.dispose();
         
     }//GEN-LAST:event_modificarSedeActionPerformed
     
@@ -242,7 +241,7 @@ public class GUI_Medico extends javax.swing.JFrame {
         agenda.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_AgendaActionPerformed
-   
+ 
     public void personalizarBienvenida(){
        /* Gerente gerente = new Gerente();
         ControladorGerente controladorGerente = new ControladorGerente();

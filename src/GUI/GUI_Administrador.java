@@ -36,6 +36,10 @@ public class GUI_Administrador extends javax.swing.JFrame {
         modificarPaciente = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         modificarCita = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        registrarMedicamento = new javax.swing.JButton();
+        jLabel10 = new javax.swing.JLabel();
+        registrarCampana = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -146,7 +150,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("<html><body> <center>  Crear<br>Medico </center></body></html>");
         jPanel1.add(jLabel4);
-        jLabel4.setBounds(350, 130, 140, 90);
+        jLabel4.setBounds(410, 140, 140, 90);
 
         registrarMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         registrarMedico.setBorder(null);
@@ -159,7 +163,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarMedico);
-        registrarMedico.setBounds(340, 120, 160, 110);
+        registrarMedico.setBounds(400, 130, 160, 110);
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
@@ -167,7 +171,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("<html><body> <center>  Crear<br>Paciente </center></body></html>");
         jPanel1.add(jLabel6);
-        jLabel6.setBounds(530, 130, 140, 90);
+        jLabel6.setBounds(580, 140, 140, 90);
 
         crearPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         crearPaciente.setBorder(null);
@@ -180,7 +184,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
             }
         });
         jPanel1.add(crearPaciente);
-        crearPaciente.setBounds(520, 120, 160, 110);
+        crearPaciente.setBounds(570, 130, 160, 110);
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
@@ -224,6 +228,48 @@ public class GUI_Administrador extends javax.swing.JFrame {
         jPanel1.add(modificarCita);
         modificarCita.setBounds(400, 360, 160, 110);
 
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText("<html><body> <center>  Registrar<br>Medicamento </center></body></html>");
+        jPanel1.add(jLabel9);
+        jLabel9.setBounds(580, 370, 140, 90);
+
+        registrarMedicamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        registrarMedicamento.setBorder(null);
+        registrarMedicamento.setBorderPainted(false);
+        registrarMedicamento.setContentAreaFilled(false);
+        registrarMedicamento.setFocusPainted(false);
+        registrarMedicamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarMedicamentoActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrarMedicamento);
+        registrarMedicamento.setBounds(570, 360, 160, 110);
+
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(108, 101, 247));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("<html><body> <center>  Registrar<br>Campaña </center></body></html>");
+        jPanel1.add(jLabel10);
+        jLabel10.setBounds(240, 140, 140, 90);
+
+        registrarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        registrarCampana.setBorder(null);
+        registrarCampana.setBorderPainted(false);
+        registrarCampana.setContentAreaFilled(false);
+        registrarCampana.setFocusPainted(false);
+        registrarCampana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarCampanaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(registrarCampana);
+        registrarCampana.setBounds(230, 130, 160, 110);
+
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -259,7 +305,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
         interfazCrearEnfermera.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_registrarEnfermeraActionPerformed
-    
+  
     private void CerrarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CerrarSesionMouseClicked
         
         GUI_Login interfazLogin = new GUI_Login();
@@ -302,6 +348,18 @@ public class GUI_Administrador extends javax.swing.JFrame {
         interfazModificarCita.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modificarCitaActionPerformed
+
+    private void registrarMedicamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMedicamentoActionPerformed
+        GUI_RegistrarMedicamento i = new GUI_RegistrarMedicamento();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registrarMedicamentoActionPerformed
+
+    private void registrarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarCampanaActionPerformed
+        GUI_RegistrarCampana i = new GUI_RegistrarCampana();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_registrarCampanaActionPerformed
     
     public static void main(String args[]){
        
@@ -321,6 +379,7 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton crearPaciente;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -328,11 +387,14 @@ public class GUI_Administrador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton modificarCita;
     private javax.swing.JButton modificarEmpleado;
     private javax.swing.JButton modificarPaciente;
+    private javax.swing.JButton registrarCampana;
     private javax.swing.JButton registrarEnfermera;
+    private javax.swing.JButton registrarMedicamento;
     private javax.swing.JButton registrarMedico;
     private javax.swing.JButton reportes;
     // End of variables declaration//GEN-END:variables
