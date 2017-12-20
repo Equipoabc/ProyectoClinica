@@ -32,7 +32,6 @@ public class GUI_Login extends javax.swing.JFrame {
         TxtPass = new javax.swing.JLabel();
         pass = new javax.swing.JPasswordField();
         botonIniciarSesion = new javax.swing.JButton();
-        botonOlvide = new javax.swing.JLabel();
         contornoPass = new javax.swing.JLabel();
         contornoUser = new javax.swing.JLabel();
         contornoDatos = new javax.swing.JLabel();
@@ -93,16 +92,6 @@ public class GUI_Login extends javax.swing.JFrame {
         });
         jPanel1.add(botonIniciarSesion);
         botonIniciarSesion.setBounds(500, 310, 150, 70);
-
-        botonOlvide.setFont(new java.awt.Font("Cambria", 0, 14)); // NOI18N
-        botonOlvide.setText("Olvidé mi contraseña");
-        botonOlvide.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonOlvideMouseClicked(evt);
-            }
-        });
-        jPanel1.add(botonOlvide);
-        botonOlvide.setBounds(550, 380, 160, 30);
 
         contornoPass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/campo.png"))); // NOI18N
         contornoPass.setText("jLabel3");
@@ -226,13 +215,6 @@ public class GUI_Login extends javax.swing.JFrame {
             iniciarSesion();
         }
     }//GEN-LAST:event_usuarioKeyPressed
-
-    private void botonOlvideMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonOlvideMouseClicked
-        // TODO add your handling code here:
-        /*GUI_CambiarContrasena cambiarC = new GUI_CambiarContrasena();
-        cambiarC.setVisible(true);
-        this.dispose();*/
-    }//GEN-LAST:event_botonOlvideMouseClicked
     
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -249,7 +231,6 @@ public class GUI_Login extends javax.swing.JFrame {
     private javax.swing.JLabel TxtPass;
     private javax.swing.JLabel TxtUsuario;
     private javax.swing.JButton botonIniciarSesion;
-    private javax.swing.JLabel botonOlvide;
     private javax.swing.JLabel contornoDatos;
     private javax.swing.JLabel contornoPass;
     private javax.swing.JLabel contornoUser;

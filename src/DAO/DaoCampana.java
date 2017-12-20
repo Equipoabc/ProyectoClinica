@@ -159,6 +159,7 @@ public class DaoCampana {
             }
             
             int numFilas = sentencia.executeUpdate(sql_guardar);
+           
             return numFilas;
             
         } catch (SQLException e) {

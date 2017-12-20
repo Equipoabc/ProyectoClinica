@@ -39,7 +39,14 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         
         for(int i=0; i < lista.size(); i++){
             listaMedico.addItem(lista.get(i));
-        }        
+        }
+        ArrayList<String> lista1 = new ArrayList<String>();
+        lista1 = controladorCampana.llenarCombo();
+        
+        for(int i=0; i < lista1.size(); i++){
+            listaCampanas.addItem(lista1.get(i));
+        }
+       
     }
 
     public String organizarFecha(String fecha){
@@ -77,7 +84,6 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
         calleLabel = new javax.swing.JLabel();
-        consultar = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         objetivoText = new javax.swing.JTextArea();
         listaMedico = new javax.swing.JComboBox<>();
@@ -85,6 +91,7 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         primerNombreLabel1 = new javax.swing.JLabel();
         nombreText = new javax.swing.JTextField();
         segundoNombreLabel = new javax.swing.JLabel();
+        listaCampanas = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
 
         primerNombreLabel5.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
@@ -164,14 +171,6 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         jPanel1.add(calleLabel);
         calleLabel.setBounds(280, 170, 100, 30);
 
-        consultar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consultarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(consultar);
-        consultar.setBounds(90, 220, 120, 30);
-
         objetivoText.setColumns(20);
         objetivoText.setRows(5);
         jScrollPane2.setViewportView(objetivoText);
@@ -213,6 +212,14 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         jPanel1.add(segundoNombreLabel);
         segundoNombreLabel.setBounds(280, 130, 70, 30);
 
+        listaCampanas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                listaCampanasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(listaCampanas);
+        listaCampanas.setBounds(50, 230, 180, 25);
+
         jLabel2.setFont(new java.awt.Font("Cambria", 2, 18)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoOtros.png"))); // NOI18N
@@ -243,7 +250,9 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
 
         botonAceptar.setEnabled(true);
-        String codigo = consultar.getText(); 
+        String id_area1 = (String) listaCampanas.getSelectedItem();
+        String[] partes = id_area1.split(" ");
+        String codigo = partes[0]; 
         
         if (codigo.equals("")) {
             
@@ -275,14 +284,17 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
     }//GEN-LAST:event_botonConsultarActionPerformed
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
 
-        String  medico1, medico, objetivo, nombre, codigo, fecha = "", validar = "";
+        String  medico1, medico, objetivo, nombre, fecha = "", validar = "";
         
         medico1 = (String) listaMedico.getSelectedItem();
         objetivo = objetivoText.getText();
         nombre = nombreText.getText();
         String[] partes = medico1.split(" ");
         medico = partes[0];
-        codigo = consultar.getText();
+        String id_area1 = (String) listaCampanas.getSelectedItem();
+        String[] partes2 = id_area1.split(" ");
+        String codigo = partes2[0];
+        
         
         try {
             fecha = new SimpleDateFormat("dd/MM/YYYY").format(fechaText.getDate());
@@ -300,7 +312,7 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El campo de consulta debe ser numérico.");
         } else {
             
-            if(controladorCampana.comprobar(codigo) == 1){
+            
                 fecha = organizarFecha(fecha);
                 
                 if (nombre.equals(campana.getNombre_campana()) 
@@ -308,13 +320,20 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
                         && fecha.equals(campana.getFecha_realizacion())){
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningún campo.");
                 } else {
+                    
                     int numFilas = controladorCampana.actualizarCampana(codigo, nombre, objetivo, fecha, medico);
                     
                     switch (numFilas) {
                         case 1:
                             JOptionPane.showMessageDialog(null, "Los datos de la campaña se han modificado exitosamente.");                                                   
                             nombreText.setText(null);
-                            consultar.setText(null);
+                            listaCampanas.removeAllItems();
+                            ArrayList<String> lista1 = new ArrayList<String>();
+                            lista1 = controladorCampana.llenarCombo();
+        
+                            for(int i=0; i < lista1.size(); i++){
+                                 listaCampanas.addItem(lista1.get(i));
+                               }
                             objetivoText.setText(null);
                             fechaText.setDate(null);    
                             botonAceptar.setEnabled(false);
@@ -324,11 +343,7 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
                             break;
                     }
                 }
-            }
             
-            else{
-                JOptionPane.showMessageDialog(null, "La campaña que desea modificar no existe.");
-            }
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
 
@@ -336,9 +351,9 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_listaMedicoActionPerformed
 
-    private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
+    private void listaCampanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaCampanasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_consultarActionPerformed
+    }//GEN-LAST:event_listaCampanasActionPerformed
 
     public static void main(String args[]) {
         
@@ -358,7 +373,6 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
     private javax.swing.JButton botonConsultar;
     private javax.swing.JLabel calleLabel;
     private javax.swing.JLabel ciudadLabel1;
-    private javax.swing.JTextField consultar;
     private com.toedter.calendar.JDateChooser fechaText;
     private javax.swing.JLabel ingresarCodigoLabel;
     private javax.swing.JLabel jLabel2;
@@ -366,6 +380,8 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JComboBox<String> listaCampanas;
+    private javax.swing.JComboBox<String> listaCausas;
     private javax.swing.JComboBox<String> listaMedico;
     private javax.swing.JTextField nombreText;
     private javax.swing.JTextArea objetivoText;
