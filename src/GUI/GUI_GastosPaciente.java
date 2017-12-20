@@ -49,14 +49,6 @@ public class GUI_GastosPaciente extends javax.swing.JFrame {
         meses.addItem("10 Octubre");
         meses.addItem("11 Noviembre");
         meses.addItem("12 Diciembre");
-        /*
-        anos.addItem("2000");
-        anos.addItem("2001");
-        anos.addItem("2002");
-        anos.addItem("2003");
-        anos.addItem("2004");
-        anos.addItem("2005");
-        anos.addItem("2017");*/
         
         ArrayList<String> lista = new ArrayList<String>();
         lista = controladorCita.llenarAnos();
