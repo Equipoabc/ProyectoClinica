@@ -39,12 +39,10 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
         codigo_label = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
-        pCodigo = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         descripcion = new javax.swing.JTextArea();
         costo = new javax.swing.JTextField();
         costoLabel = new javax.swing.JLabel();
-        primerNombreLabel = new javax.swing.JLabel();
         segundoNombreLabel = new javax.swing.JLabel();
         descripcionLabel = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -135,16 +133,6 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
         jPanel1.add(botonConsultar);
         botonConsultar.setBounds(60, 260, 160, 70);
 
-        pCodigo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        pCodigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        pCodigo.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                pCodigoKeyPressed(evt);
-            }
-        });
-        jPanel1.add(pCodigo);
-        pCodigo.setBounds(320, 120, 180, 25);
-
         nombre.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         nombre.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -178,11 +166,6 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
         jPanel1.add(costoLabel);
         costoLabel.setBounds(240, 300, 50, 50);
 
-        primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel.setText("Código:");
-        jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(240, 110, 50, 50);
-
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Nombre:");
         jPanel1.add(segundoNombreLabel);
@@ -214,122 +197,100 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
-        
-        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
-            operador.setVisible(true);
-            this.dispose();
-    }//GEN-LAST:event_botonCancelarActionPerformed
-    
-    
-    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
-        
-        String codigoConsulta,cod, nom, des, cos = "";
-        codigoConsulta = codigo.getText();
-        cod = pCodigo.getText();
-        nom = nombre.getText();
-        des = descripcion.getText();
-        cos = costo.getText();
-        
-        
-        if ( cod.equals("") || cos.equals("") || nom.equals("") || codigoConsulta.equals("") || des.equals("")){
-            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        } else if (!validaciones.validarLetras(nom)){
-            JOptionPane.showMessageDialog(null, "El campo del nombre debe ser de solo letras.");
-        } else if (!validaciones.validarNumero(codigoConsulta) || !validaciones.validarNumero(cos)|| !validaciones.validarNumero(cod)) {
-            JOptionPane.showMessageDialog(null, "Los campos de consulta, codigo y costo del medicamento deben ser de solo numeros.");
-        }  else {
-            
-            if(controladorMedicamento.comprobar(codigoConsulta) == 1){
-                
-                          
-                if ( nom.equals(medicamento.getNombre_medicamento())
-                        && cod.equals(medicamento.getCodigo_medicamento()) && des.equals(medicamento.getDescripcion())
-                        && cos.equals(medicamento.getCosto())){
-                    
-                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
-                } else {
-                    
-                    int resultado = controladorMedicamento.actualizarMedicamento(codigoConsulta, nom,
-                            cod, des, cos);
-                    
-                    switch(resultado){
-                        case 1:
-                            JOptionPane.showMessageDialog(null, "Los datos del medicamento se han modificado exitosamente.");
-                            codigo.setText(null);           
-                            pCodigo.setText(null);
-                            nombre.setText(null);
-                            costo.setText(null);
-                            descripcion.setText(null);
-                            botonAceptar.setEnabled(false);
-                            break;
-                          
-                            
-                        default:
-                            JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el medicamento.");
-                            break;
-                    }
-                }
-            } else {
-                
-                JOptionPane.showMessageDialog(null, "El medicamento que desea modificar no existe.");
-            }
-        }
-    }//GEN-LAST:event_botonAceptarActionPerformed
-    
+
+    private void costoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costoKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_costoKeyPressed
+
+    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
+
+    }//GEN-LAST:event_nombreKeyPressed
+
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
-        
+
         String cod_med = codigo.getText();
-        
+
         if (cod_med.equals("")) {
-            
+
             JOptionPane.showMessageDialog(null, "El campo de la consulta esta vacío.");
-            
+
         } else if (!validaciones.validarNumero(cod_med)) {
-            
+
             JOptionPane.showMessageDialog(null, "El campo consultar debe ser numérico.");
-            
+
         } else {
-            
+
             medicamento = controladorMedicamento.consultarDatosMedicamento(cod_med);
-            
+
             if (medicamento != null) {
                 botonAceptar.setEnabled(true);
                 nombre.setText(medicamento.getNombre_medicamento());
                 descripcion.setText(medicamento.getDescripcion());
                 costo.setText(Integer.toString(medicamento.getCosto()));
                 codigo.setText(medicamento.getCodigo_medicamento());
-               
-                
-                
-                
+
             } else {
-                
+
                 JOptionPane.showMessageDialog(null, "El medicamento no existe.");
-                codigo.setText(null); 
+                codigo.setText(null);
                 nombre.setText(null);
                 descripcion.setText(null);
                 costo.setText(null);
             }
-        }        
+        }
     }//GEN-LAST:event_botonConsultarActionPerformed
-    
+
     private void codigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_codigoActionPerformed
 
-    private void pCodigoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pCodigoKeyPressed
-        
-    }//GEN-LAST:event_pCodigoKeyPressed
+    private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
 
-    private void nombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nombreKeyPressed
-       
-    }//GEN-LAST:event_nombreKeyPressed
+        String codigoConsulta,cod, nom, des, cos = "";
+        codigoConsulta = codigo.getText();
+        nom = nombre.getText();
+        des = descripcion.getText();
+        cos = costo.getText();
 
-    private void costoKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costoKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_costoKeyPressed
+        if (cos.equals("") || nom.equals("") || codigoConsulta.equals("") || des.equals("")){
+            JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
+        } else if (!validaciones.validarLetras(nom)){
+            JOptionPane.showMessageDialog(null, "El campo del nombre debe ser de solo letras.");
+        } else if (!validaciones.validarNumero(codigoConsulta) || !validaciones.validarNumero(cos)) {
+            JOptionPane.showMessageDialog(null, "Los campos de consulta, y costo del medicamento deben ser de solo numeros.");
+        }  else {
+
+            if(controladorMedicamento.comprobar(codigoConsulta) == 1){
+
+                if (nom.equals(medicamento.getNombre_medicamento()) && des.equals(medicamento.getDescripcion())
+                    && cos.equals(String.valueOf(medicamento.getCosto()))){
+
+                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
+                } else {
+
+                    int resultado = controladorMedicamento.actualizarMedicamento(codigoConsulta, nom, des, cos);
+
+                    switch(resultado){
+                        case 1:
+                        JOptionPane.showMessageDialog(null, "Los datos del medicamento se han modificado exitosamente.");
+                        codigo.setText(null);                      
+                        nombre.setText(null);
+                        costo.setText(null);
+                        descripcion.setText(null);
+                        botonAceptar.setEnabled(false);
+                        break;
+
+                        default:
+                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el medicamento.");
+                        break;
+                    }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "El medicamento que desea modificar no existe.");
+            }
+        }
+    }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
@@ -369,7 +330,15 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_botonEliminarActionPerformed
-    
+
+    private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
+
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
+        operador.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_botonCancelarActionPerformed
+        
+                
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
@@ -396,8 +365,6 @@ public class GUI_ModificarMedicamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField pCodigo;
-    private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel segundoNombreLabel;
     // End of variables declaration//GEN-END:variables
 }

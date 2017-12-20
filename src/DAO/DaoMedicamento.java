@@ -91,14 +91,14 @@ public class DaoMedicamento {
         return 0;
     }
 
-    public int actualizarMedicamento(String codigoConsulta, String nom, String cod, String des, String cos) {
+    public int actualizarMedicamento(String codigoConsulta, String nom, String des, String cos) {
    
         
         String sql_guardar, validar;
         
         validar = "SELECT codigo_medicamento FROM medicamentos WHERE codigo_medicamento = '" + codigoConsulta + "';";
         sql_guardar = "UPDATE medicamentos SET codigo_medicamento = '"
-                + cod + "', nombre_medicamento = '" + nom + "', descripcion = '"+
+                + codigoConsulta + "', nombre_medicamento = '" + nom + "', descripcion = '"+
                  des + "', costo = '" + cos +"' WHERE codigo_medicamento = '" + codigoConsulta + "';";
         
         try {

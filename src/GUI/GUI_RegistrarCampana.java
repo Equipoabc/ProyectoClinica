@@ -230,6 +230,10 @@ public class GUI_RegistrarCampana extends javax.swing.JFrame {
                     break;
                 case 1:
                     JOptionPane.showMessageDialog(null, "La campaña ha sido creada exitosamente.");
+                    codigoText.setText(null);
+                    nombreText.setText(null);
+                    objetivoText.setText(null);
+                    fechaText.setDate(GetDateNow());
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ocurrio un problema al registrar la campaña.");

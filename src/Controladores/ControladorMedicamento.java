@@ -29,8 +29,8 @@ public class ControladorMedicamento {
  
     }
 
-    public int actualizarMedicamento(String codigoConsulta, String nom, String cod, String des, String cos) {
-       return daoMedicamento.actualizarMedicamento(codigoConsulta, nom, cod, des, cos);
+    public int actualizarMedicamento(String codigoConsulta, String nom, String des, String cos) {
+       return daoMedicamento.actualizarMedicamento(codigoConsulta, nom, des, cos);
     }
 
     public Medicamento consultarDatosMedicamento(String cod_med) {

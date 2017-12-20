@@ -195,9 +195,16 @@ public class GUI_CrearMedicamento extends javax.swing.JFrame {
             switch (numFilas) {
                 case 2:
                     JOptionPane.showMessageDialog(null, "El medicamento ya se encuentra registrado en el sistema.");
+                    codigo.setText(null);
+                    nombre.setText(null);
+                    descripcion.setText(null);
                     break;
                 case 1:
                     JOptionPane.showMessageDialog(null, "Medicamento registrado exitosamente.");
+                    codigo.setText(null);
+                    nombre.setText(null);
+                    descripcion.setText(null);
+                    costo.setText(null);
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ocurrio un problema al guardar el medicamento.");

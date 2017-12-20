@@ -34,8 +34,8 @@ public class ControladorArea {
         return daoArea.comprobar(codigoConsulta);
     }
 
-    public int actualizarArea(String codigoConsulta, String nom, String cod, String des) {
-        return daoArea.actualizarArea(codigoConsulta, nom, cod, des);
+    public int actualizarArea(String codigoConsulta, String nom, String des) {
+        return daoArea.actualizarArea(codigoConsulta, nom, des);
     }
 
     public Area consultarDatosArea(String cod_area) {

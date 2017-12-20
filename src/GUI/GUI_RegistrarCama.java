@@ -207,6 +207,7 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null, "La cama se ha registrado exitosamente.");
                         numeroCamaText.setText(null);                     
                         descripcionText.setText(null);
+                        estadoText.setSelectedItem("Libre");
                         break;                   
                     case 2:
                         JOptionPane.showMessageDialog(null, "La cama con número " + numeroCama + " ya existe.");

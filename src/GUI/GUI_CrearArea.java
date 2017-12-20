@@ -187,9 +187,15 @@ public class GUI_CrearArea extends javax.swing.JFrame {
             switch (numFilas) {
                 case 2:
                     JOptionPane.showMessageDialog(null, "El área ya se encuentra registrada en el sistema.");
+                    codigo.setText(null);
+                    nombre.setText(null);
+                    descripcion.setText(null);
                     break;
                 case 1:
                     JOptionPane.showMessageDialog(null, "Área creada exitosamente.");
+                    codigo.setText(null);
+                    nombre.setText(null);
+                    descripcion.setText(null);
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Ocurrió un problema al guardar el área.");

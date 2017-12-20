@@ -133,12 +133,12 @@ public class DaoArea {
         return 0;
     }
 
-    public int actualizarArea(String codigoConsulta, String nom, String cod, String des) {
+    public int actualizarArea(String codigoConsulta, String nom, String des) {
         String sql_guardar, validar;
         
         validar = "SELECT id_area FROM areas WHERE id_area = '" + codigoConsulta + "';";
         sql_guardar = "UPDATE areas SET id_area = '"
-                + cod + "', nombre_area = '" + nom + "', descripcion = '"+
+                + codigoConsulta + "', nombre_area = '" + nom + "', descripcion = '"+
                  des + "' WHERE id_area = '" + codigoConsulta + "';";
         
         try {

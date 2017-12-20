@@ -30,10 +30,8 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         codigo_label = new javax.swing.JLabel();
         codigo = new javax.swing.JTextField();
         botonConsultar = new javax.swing.JButton();
-        pCodigo = new javax.swing.JTextField();
         nombre = new javax.swing.JTextField();
         descripcion = new javax.swing.JTextArea();
-        primerNombreLabel = new javax.swing.JLabel();
         segundoNombreLabel = new javax.swing.JLabel();
         descripcionLabel = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -119,11 +117,6 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         jPanel1.add(botonConsultar);
         botonConsultar.setBounds(60, 260, 160, 70);
 
-        pCodigo.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        pCodigo.setSelectionColor(new java.awt.Color(102, 102, 255));
-        jPanel1.add(pCodigo);
-        pCodigo.setBounds(340, 150, 180, 25);
-
         nombre.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         nombre.setSelectionColor(new java.awt.Color(102, 102, 255));
         jPanel1.add(nombre);
@@ -136,11 +129,6 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         descripcion.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jPanel1.add(descripcion);
         descripcion.setBounds(340, 260, 180, 70);
-
-        primerNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        primerNombreLabel.setText("Código:");
-        jPanel1.add(primerNombreLabel);
-        primerNombreLabel.setBounds(260, 140, 50, 50);
 
         segundoNombreLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         segundoNombreLabel.setText("Nombre:");
@@ -184,40 +172,37 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
-        String codigoConsulta,cod, nom, des = "";
+        String codigoConsulta, nom, des = "";
         codigoConsulta = codigo.getText();
-        cod = pCodigo.getText();
         nom = nombre.getText();
         des = descripcion.getText();
         
         
-        if ( cod.equals("") || nom.equals("") || codigoConsulta.equals("") || des.equals("")){
+        if (nom.equals("") || codigoConsulta.equals("") || des.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         } else if (!validaciones.validarLetras(nom)){
             JOptionPane.showMessageDialog(null, "El campo del nombre debe ser de solo letras.");
-        } else if (!validaciones.validarNumero(codigoConsulta) || !validaciones.validarNumero(cod)) {
-            JOptionPane.showMessageDialog(null, "Los campos de consulta y codigo  del medicamento deben ser de solo numeros.");
+        } else if (!validaciones.validarNumero(codigoConsulta)) {
+            JOptionPane.showMessageDialog(null, "El código de consulta debe ser númerico.");
         }  else {
             
             if(controladorArea.comprobar(codigoConsulta) == 1){
                 
                           
-                if ( nom.equals(area.getNombre_area())
-                        && cod.equals(area.getId_area()) && des.equals(area.getDescripcion())){
+                if ( nom.equals(area.getNombre_area()) && des.equals(area.getDescripcion())){
                     
                     JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
                 } else {
                     
-                    int resultado = controladorArea.actualizarArea(codigoConsulta, nom,
-                            cod, des);
+                    int resultado = controladorArea.actualizarArea(codigoConsulta, nom, des);
                     
                     switch(resultado){
                         case 1:
                             JOptionPane.showMessageDialog(null, "Los datos del área se han modificado exitosamente.");
                             codigo.setText(null);           
-                            pCodigo.setText(null);
                             nombre.setText(null);
                             descripcion.setText(null);
+                            codigo.setText(null);
                             botonAceptar.setEnabled(false);
                             break;
                           
@@ -330,8 +315,6 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nombre;
-    private javax.swing.JTextField pCodigo;
-    private javax.swing.JLabel primerNombreLabel;
     private javax.swing.JLabel segundoNombreLabel;
     // End of variables declaration//GEN-END:variables
 }
