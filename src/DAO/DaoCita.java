@@ -18,6 +18,7 @@ public class DaoCita {
         String sql_guardar, sql_validar, validar, validarPaciente, validarMedico, fechaValida;
         fechaValida = cita.getFecha().replace("/", "-");
         validar = "";
+        String validar_descuento = "SELECT COUNT(*) FROM pacientes_campanas WHERE id_paciente = '"+ cita.getId_paciente()+"';";
         sql_validar = "SELECT id_empleado FROM citas WHERE hora = '" + cita.getHora() + "' and fecha = '" + fechaValida + "';";
         int numFilas;
         validarMedico = "SELECT id_empleado FROM medicos WHERE id_empleado = '" + cita.getId_empleado() + "';";
@@ -50,6 +51,10 @@ public class DaoCita {
                 validarPaciente = consulta3.getString(1);
             }
             
+            ResultSet consulta4 = sentencia.executeQuery(validar_descuento);
+            while (consulta4.next()) {                
+                validar_descuento = consulta4.getString(1);
+            }
             if(validar.equals(cita.getId_empleado())){
                 
                 return 2;
@@ -64,9 +69,20 @@ public class DaoCita {
             }
             
             else {
+                int numCam = Integer.parseInt(validar_descuento);
+                if(numCam >= 2){
+                    double precio = Integer.parseInt(cita.getPrecio());
+                    precio = precio*0.9;
+                    String precioDescuento = String.valueOf(precio);
+                    
+                    sql_guardar = "INSERT INTO citas (id_paciente, id_empleado, fecha, hora, precio) VALUES ('" 
+                + cita.getId_paciente() + "', '" + cita.getId_empleado() +  "', '" + cita.getFecha() +  "', '" +
+               cita.getHora() +  "', '" + precioDescuento+ "');" ;
+                }
                 
                 numFilas = sentencia.executeUpdate(sql_guardar);
                 return numFilas;
+                
             }
         } catch(SQLException e){
             

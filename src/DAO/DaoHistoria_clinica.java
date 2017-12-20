@@ -2,6 +2,8 @@ package DAO;
 import Conexion.Conexiones;
 import Logica.Main;
 import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class DaoHistoria_clinica {
 
@@ -57,6 +59,41 @@ public class DaoHistoria_clinica {
             System.out.println("SQL error: " + e);
         } catch(Exception e){            
             System.out.println("Error" + e);
+        }
+    }
+
+    public void consultarHistoria(String cedula, DefaultTableModel modelo, JTable tabla) {
+        
+         String sql;
+        
+        sql = "SELECT registros.numero_registro, codigo_formula FROM registros NATURAL JOIN historias_clinicas NATURAL JOIN formulas_medicas" +
+                " WHERE id_paciente = '" + cedula + "';";
+        
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[2];
+            
+            while(consulta.next()){
+                
+                
+                for (int i = 0; i < 2; i++){
+                    
+                    fila[i] = consulta.getObject(i+1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);          
+        } catch(Exception e){            
+            System.out.println("Error: " + e);           
         }
     }
 }

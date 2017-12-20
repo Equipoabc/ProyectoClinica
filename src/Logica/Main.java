@@ -15,7 +15,8 @@ public class Main {
         conexion = new Conexiones();
         conexion.getConnetion();
         //Reportes.crearCarpetas();
-        GUI_Login interfaz = new GUI_Login();
+        //GUI_Login interfaz = new GUI_Login();
+        GUI_HistoriaClinica interfaz = new GUI_HistoriaClinica();
         interfaz.setVisible(true);
     }
 }

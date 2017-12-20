@@ -1,5 +1,7 @@
 package Controladores;
 import DAO.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorHistoria_clinica {
 
@@ -18,5 +20,9 @@ public class ControladorHistoria_clinica {
     public void crearHistoria(String fecha, String cedula) {
         
         daoHistoria_clinica.crearHistoria(fecha, cedula);
+    }
+
+    public void consultarHistoria(String cedula, DefaultTableModel modelo, JTable tabla) {
+        daoHistoria_clinica.consultarHistoria(cedula, modelo, tabla);
     }
 }

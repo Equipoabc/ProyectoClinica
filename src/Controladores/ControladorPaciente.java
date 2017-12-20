@@ -52,4 +52,8 @@ public class ControladorPaciente {
         
         daoPaciente.consultarGastosPacienteAnual(cedula, datoA, modelo, tabla);
     }
+
+    public void consultarHistoriaEsp(String cedula, DefaultTableModel modelo, JTable tabla) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
