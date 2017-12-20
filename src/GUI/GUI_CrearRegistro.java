@@ -326,7 +326,7 @@ public class GUI_CrearRegistro extends javax.swing.JFrame {
                 
                 JOptionPane.showMessageDialog(null, "El paciente no existe.");
                 titulo.setText("Historia clinica: | Paciente:");
-                fecha.setDate(null);
+                fecha.setDate(GetDateNow());
                 hora.setValue(0);
                 minuto.setValue(0);
             }

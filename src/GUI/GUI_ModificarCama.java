@@ -218,9 +218,9 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
 
-        GUI_Administrador adminGUI = new GUI_Administrador();
-        adminGUI.setVisible(true);
-        this.dispose();
+        GUI_InterfazCamas operador = new GUI_InterfazCamas();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
 

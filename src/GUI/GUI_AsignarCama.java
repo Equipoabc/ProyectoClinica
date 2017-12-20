@@ -3,17 +3,10 @@ import Controladores.*;
 import java.text.*;
 import javax.swing.*;
 import Logica.*;
-
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.time.*;
+import java.util.*;
 
 public class GUI_AsignarCama extends javax.swing.JFrame {
     
@@ -21,19 +14,13 @@ public class GUI_AsignarCama extends javax.swing.JFrame {
     ControladorPaciente controladorPaciente;
     ControladorCama controladorCama;
     ControladorPacientes_Camas controladorPacientes_Camas;
-    String idOperador;
     String id_participante, nombre_participante;
     Pacientes_Camas pacientesCamas;
     Paciente paciente;
     Cama cama;
     int banderaAceptar;
     DateFormat df = DateFormat.getDateInstance();
-    String idNombre;
-    
-    public void setId(String id) {
-        this.idNombre = id;
-    }
-    
+
     public GUI_AsignarCama(){
         
         initComponents();
@@ -46,6 +33,7 @@ public class GUI_AsignarCama extends javax.swing.JFrame {
         controladorPacientes_Camas = new ControladorPacientes_Camas();
         validaciones = new Validaciones();
         fechaText.setMaxSelectableDate(GetDateNow());
+        fechaText.setDate(GetDateNow());
         fechaText.getDateEditor().setEnabled(false);
 
     }
@@ -68,10 +56,6 @@ public class GUI_AsignarCama extends javax.swing.JFrame {
     private static Date GetDateNow() {
         Calendar currentDate = Calendar.getInstance();
         return currentDate.getTime();
-    }
-    
-    void setIdOperador(String cedula) {
-        idOperador = cedula;
     }
     
     @SuppressWarnings("unchecked")
@@ -236,11 +220,9 @@ public class GUI_AsignarCama extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Medico med = new GUI_Medico();
-        med.setId(idOperador);
-        med.personalizarBienvenida();
-        med.setVisible(true);
-        this.dispose();
+         GUI_InterfazCamas operador = new GUI_InterfazCamas();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     
     private void asignarCama(){

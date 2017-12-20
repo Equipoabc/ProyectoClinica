@@ -236,9 +236,9 @@ public class GUI_ModificarCampana extends javax.swing.JFrame {
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
 
-        GUI_Administrador adminGUI = new GUI_Administrador();
-        adminGUI.setVisible(true);
-        this.dispose();
+        GUI_InterfazCampana operador = new GUI_InterfazCampana();
+            operador.setVisible(true);
+            this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
 
