@@ -253,6 +253,10 @@ public class GUI_InterfazInformes extends javax.swing.JFrame {
 
     private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
         // TODO add your handling code here:
+        GUI_HistoriaClinica citas = new GUI_HistoriaClinica();
+        citas.setTipo("Administrador");
+        citas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_historiaBotonActionPerformed
 
     private void citasBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_citasBotonActionPerformed

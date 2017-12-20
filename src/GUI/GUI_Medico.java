@@ -195,6 +195,10 @@ public class GUI_Medico extends javax.swing.JFrame {
 
     private void historiaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaBotonActionPerformed
         // TODO add your handling code here:
+        GUI_HistoriaClinica citas = new GUI_HistoriaClinica();
+        citas.setTipo(this.id);
+        citas.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_historiaBotonActionPerformed
 
     private void registroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBotonActionPerformed

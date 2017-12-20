@@ -188,11 +188,20 @@ public class GUI_HistoriaClinica extends javax.swing.JFrame {
         
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_InterfazInformes administrador = new GUI_InterfazInformes();
-        administrador.setTipo(tipos);
-        administrador.setVisible(true);
-        
-        this.dispose();                   
+        if(validaciones.validarNumero(tipos)){
+            GUI_Medico administrador = new GUI_Medico();
+            administrador.setId(tipos);
+            administrador.setVisible(true);
+            
+            this.dispose();
+        }
+        else{
+            GUI_InterfazInformes administrador = new GUI_InterfazInformes();
+            administrador.setTipo(tipos);
+            administrador.setVisible(true);
+            
+            this.dispose();
+        }
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
