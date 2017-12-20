@@ -25,6 +25,8 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
         registrarCampanaLabel = new javax.swing.JLabel();
         registrarCampana = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        registrarCampanaLabel1 = new javax.swing.JLabel();
+        modificarCampana = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,7 +73,7 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
         registrarCampanaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         registrarCampanaLabel.setText("<html><body> <center>  Registrar<br>Campaña </center></body></html>");
         jPanel1.add(registrarCampanaLabel);
-        registrarCampanaLabel.setBounds(270, 260, 140, 90);
+        registrarCampanaLabel.setBounds(330, 250, 140, 90);
 
         registrarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         registrarCampana.setBorder(null);
@@ -84,7 +86,7 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarCampana);
-        registrarCampana.setBounds(260, 250, 160, 110);
+        registrarCampana.setBounds(320, 240, 160, 110);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
@@ -100,6 +102,27 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(610, 400, 130, 70);
+
+        registrarCampanaLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        registrarCampanaLabel1.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        registrarCampanaLabel1.setForeground(new java.awt.Color(108, 101, 247));
+        registrarCampanaLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        registrarCampanaLabel1.setText("<html><body> <center>  Modificar<br>Campaña </center></body></html>");
+        jPanel1.add(registrarCampanaLabel1);
+        registrarCampanaLabel1.setBounds(530, 250, 140, 90);
+
+        modificarCampana.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        modificarCampana.setBorder(null);
+        modificarCampana.setBorderPainted(false);
+        modificarCampana.setContentAreaFilled(false);
+        modificarCampana.setFocusPainted(false);
+        modificarCampana.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarCampanaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(modificarCampana);
+        modificarCampana.setBounds(520, 240, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -142,6 +165,12 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
         adminLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void modificarCampanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarCampanaActionPerformed
+        GUI_ModificarCampana i = new GUI_ModificarCampana();
+        i.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarCampanaActionPerformed
     
     public static void main(String args[]){
        
@@ -162,7 +191,9 @@ public class GUI_InterfazCampana extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarCampana;
     private javax.swing.JButton registrarCampana;
     private javax.swing.JLabel registrarCampanaLabel;
+    private javax.swing.JLabel registrarCampanaLabel1;
     // End of variables declaration//GEN-END:variables
 }

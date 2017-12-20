@@ -82,4 +82,40 @@ public class DaoEmpleado {
             System.out.println("Error: " + e);           
         }
     }    
+
+    public void listarCitasMeses(int id_mes, DefaultTableModel modelo, JTable tabla) {
+        String sql;
+        
+        
+        sql = "select empleados.id_empleado, nombre_empleado ,count(*)from (medicos INNER JOIN citas ON (medicos.id_empleado = citas.id_empleado)" +
+              "INNER JOIN empleados ON (medicos.id_empleado = empleados.id_empleado))" +
+              "where (extract( month from citas.fecha) =" +id_mes+ ")" +
+              "GROUP BY empleados.id_empleado ;";
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[3];
+            
+            while(consulta.next()){
+                
+                fila[0] = consulta.getObject(1);
+                
+                for (int i = 1; i <= 2; i++){
+                    
+                    fila[i] = consulta.getObject(i+1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);          
+        } catch(Exception e){            
+            System.out.println("Error: " + e);           
+        }
+    }
 }

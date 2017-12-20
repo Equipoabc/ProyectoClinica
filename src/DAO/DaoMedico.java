@@ -218,7 +218,30 @@ public class DaoMedico {
         
         return lista;
     }     
-    
+     public String seleccionMedico(String id_medico){
+        String sql = "SELECT id_empleado, nombre_empleado FROM empleados WHERE id_empleado = '" + id_medico + "';";
+        String result = "";
+        
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                result = consulta.getString(1) + " " + consulta.getString(2); 
+            }
+            
+            } catch(SQLException e){
+            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return result;
+    }    
 
 }
 

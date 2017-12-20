@@ -120,7 +120,7 @@ public class GUI_Login extends javax.swing.JFrame {
         contornoDatos.setBounds(420, 90, 290, 340);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/gif1.gif"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/GifClinica.gif"))); // NOI18N
         fondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jPanel1.add(fondo);
         fondo.setBounds(0, 0, 750, 500);

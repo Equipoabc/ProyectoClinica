@@ -33,5 +33,14 @@ public class ControladorCampana {
         
         int result = daoCampana.guardarCampana(campana);
         return result;
+    } 
+    public Campana consultarDatosCampana(String id_campana) {
+        return daoCampana.consultarDatosCampana(id_campana);
+    }
+    public int comprobar(String codigo) {
+        return daoCampana.comprobar(codigo);
+    }
+    public int actualizarCampana(String codigo, String nombre, String objetivo, String fecha, String medico) {
+        return daoCampana.actualizarCampana(codigo, nombre, objetivo, fecha, medico);
     }    
 }

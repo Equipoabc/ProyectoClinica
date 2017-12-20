@@ -303,11 +303,11 @@
               <Color blue="f7" green="65" red="6c" type="rgb"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt; &lt;center&gt; Medicamentos&lt;/center&gt;&lt;/body&gt;&lt;/html&gt;"/>
+            <Property name="text" type="java.lang.String" value="&lt;html&gt;&lt;body&gt; &lt;center&gt; Medicamentos &lt;/br&gt; Y Causas&lt;/center&gt;&lt;/body&gt;&lt;/html&gt;"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="490" y="370" width="150" height="90"/>
+              <AbsoluteConstraints x="490" y="370" width="160" height="90"/>
             </Constraint>
           </Constraints>
         </Component>
