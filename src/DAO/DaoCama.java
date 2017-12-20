@@ -97,13 +97,13 @@ public class DaoCama {
         }
         return null;
     }
-    public int actualizarCama(String numeroCama, String area, String descripcion, String estado) {
+    public int actualizarCama(String numeroCama, String area, String descripcion) {
         
         String sql_guardar, validar;
         
         validar = "SELECT numero_cama FROM Camas WHERE numero_cama = '" + numeroCama + "';";
         sql_guardar = "UPDATE Camas SET numero_cama = '" + numeroCama + "', descripcion = '"
-                + descripcion + "', estado = '" + estado + "', id_area = '"
+                + descripcion + "', id_area = '"
                 + area  + "';";
         
         try {

@@ -10,6 +10,7 @@ public class GUI_GastosPaciente extends javax.swing.JFrame {
     DefaultTableModel modelo;
     ControladorPaciente controladorPaciente;
     ControladorCita controladorCita;
+    private String tipos;
     
     public GUI_GastosPaciente(){
         
@@ -211,9 +212,11 @@ public class GUI_GastosPaciente extends javax.swing.JFrame {
         
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_Operador operador = new GUI_Operador();
-        operador.setVisible(true);
-        this.dispose();                    
+        GUI_InterfazInformes administrador = new GUI_InterfazInformes();
+        administrador.setTipo(tipos);
+        administrador.setVisible(true);
+        
+        this.dispose();                   
     }//GEN-LAST:event_botonCancelarActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
@@ -314,4 +317,8 @@ public class GUI_GastosPaciente extends javax.swing.JFrame {
     private javax.swing.JTable tabla;
     private javax.swing.JComboBox<String> tipoReporte;
     // End of variables declaration//GEN-END:variables
+
+    void setTipo(String tipo) {
+        this.tipos = tipo;
+    }
 }

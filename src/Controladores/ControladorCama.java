@@ -39,8 +39,8 @@ public class ControladorCama {
     public int comprobar(String numeroCama) {
         return daoCama.comprobar(numeroCama);
     }
-    public int actualizarCama(String numeroCama, String area, String descripcion, String estado) {
-        return daoCama.actualizarCama(numeroCama, area,descripcion,estado);
+    public int actualizarCama(String numeroCama, String area, String descripcion) {
+        return daoCama.actualizarCama(numeroCama, area,descripcion);
     }    
     public int eliminarCama(String numeroCama) {
         return daoCama.eliminarCama(numeroCama);

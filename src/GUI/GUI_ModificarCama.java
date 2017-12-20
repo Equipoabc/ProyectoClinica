@@ -60,7 +60,6 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         descripcionText = new javax.swing.JTextArea();
         listaArea = new javax.swing.JComboBox<>();
-        estadoText = new javax.swing.JComboBox<>();
         botonEliminar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -169,18 +168,6 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
         jPanel1.add(listaArea);
         listaArea.setBounds(360, 150, 180, 25);
 
-        estadoText.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        estadoText.setForeground(new java.awt.Color(102, 102, 255));
-        estadoText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupada" }));
-        estadoText.setFocusable(false);
-        estadoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(estadoText);
-        estadoText.setBounds(360, 310, 130, 20);
-
         botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarMed.png"))); // NOI18N
         botonEliminar.setBorderPainted(false);
         botonEliminar.setContentAreaFilled(false);
@@ -238,8 +225,7 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
             if (cama != null) {                
                 descripcionText.setText(cama.getDescripcion());
                 listaArea.setSelectedItem(controladorArea.seleccionArea(cama.getId_area()));
-                estadoText.setSelectedItem(cama.getEstado());
-                
+                               
             } else {
                 
                 JOptionPane.showMessageDialog(null, "La cama con número "+ numeroCama + " no se encuentra registrada.");                
@@ -253,23 +239,22 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
         
         area1 = (String) listaArea.getSelectedItem();
         descripcion = descripcionText.getText();
-        estado = (String) estadoText.getSelectedItem();
         String[] partes = area1.split(" ");
         area = partes[0];
         numeroCama = consultar.getText();
         
-        if (area.equals("") || descripcion.equals("") || estado.equals("")){
+        if (area.equals("") || descripcion.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
         }         else if(!validaciones.validarLetrasYNumerosEspaciosSimbolos(descripcion)) {
             JOptionPane.showMessageDialog(null, "Caracteres inválidos.");
         } else {
                        
             if (area.equals(cama.getId_area()) 
-                    && descripcion.equals(cama.getDescripcion()) && estado.equals(cama.getEstado())){                
+                    && descripcion.equals(cama.getDescripcion())){                
                 JOptionPane.showMessageDialog(null, "No se ha modificado ningún campo.");
             } else {                
                 if(controladorCama.comprobar(numeroCama) == 1){
-                    int numFilas = controladorCama.actualizarCama(numeroCama,area,descripcion,estado);
+                    int numFilas = controladorCama.actualizarCama(numeroCama,area,descripcion);
                 
                 switch (numFilas) {
                     case 1:
@@ -293,10 +278,6 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
     private void listaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAreaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_listaAreaActionPerformed
-
-    private void estadoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoTextActionPerformed
 
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         // TODO add your handling code here:
@@ -363,7 +344,6 @@ public class GUI_ModificarCama extends javax.swing.JFrame {
     private javax.swing.JLabel ciudadLabel1;
     private javax.swing.JTextField consultar;
     private javax.swing.JTextArea descripcionText;
-    private javax.swing.JComboBox<String> estadoText;
     private javax.swing.JLabel ingresarCodigoLabel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

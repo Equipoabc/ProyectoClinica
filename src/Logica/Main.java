@@ -15,7 +15,7 @@ public class Main {
         conexion = new Conexiones();
         conexion.getConnetion();
         //Reportes.crearCarpetas();
-        GUI_GastosPaciente interfaz = new GUI_GastosPaciente();
+        GUI_Login interfaz = new GUI_Login();
         interfaz.setVisible(true);
     }
 }
