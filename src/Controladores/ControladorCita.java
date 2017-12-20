@@ -52,4 +52,9 @@ public class ControladorCita {
         
         return daoCita.consutarAgenda(fecha, medico, modelo, tabla);
     }
+
+    public ArrayList<String> llenarAnos() {
+        
+        return daoCita.llenarAnos();
+    }
 }

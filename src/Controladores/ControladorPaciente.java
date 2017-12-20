@@ -1,6 +1,8 @@
 package Controladores;
 import DAO.*;
 import Logica.Paciente;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class ControladorPaciente {
     
@@ -29,5 +31,25 @@ public class ControladorPaciente {
     public int actualizarPaciente(String cedula, String nombre, String telefono, String act, String direccion, String numero) {
         
         return daoPaciente.actualizarPaciente(cedula, nombre, telefono, act, direccion, numero);
+    }
+
+    public void consultarGastosPacientesMensual(String datoM, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        daoPaciente.consultarGastosPacientesMensual(datoM, datoA, modelo, tabla);
+    }
+
+    public void consultarGastosPacientesAnual(String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        daoPaciente.consultarGastosPacientesAnual(datoA, modelo, tabla);
+    }
+
+    public void consultarGastosPacienteMensual(String cedula, String datoM, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        daoPaciente.consultarGastosPacienteMensual(cedula, datoM, datoA, modelo, tabla);
+    }
+
+    public void consultarGastosPacienteAnual(String cedula, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        daoPaciente.consultarGastosPacienteAnual(cedula, datoA, modelo, tabla);
     }
 }

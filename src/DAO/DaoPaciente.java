@@ -1,8 +1,9 @@
 package DAO;
 import Conexion.Conexiones;
-import Logica.Main;
-import Logica.Paciente;
+import Logica.*;
 import java.sql.*;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class DaoPaciente {
 
@@ -33,7 +34,7 @@ public class DaoPaciente {
                 
                 validar = consulta.getString(1);
             }
-            
+             
             if(validar.equals(cedula)){
                 
                 return 2;
@@ -171,5 +172,235 @@ public class DaoPaciente {
         }
 
         return -1;
+    }
+
+    public void consultarGastosPacientesMensual(String datoM, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        String sql, fechaI, fechaF, sql2;
+        
+        fechaI = datoA + "-" + datoM + "-01";
+        if(datoM.equals("01") || datoM.equals("03") || datoM.equals("05") || datoM.equals("07") || datoM.equals("08")
+                || datoM.equals("10") || datoM.equals("12")){
+            
+            fechaF = datoA + "-" + datoM + "-31";
+        }
+        else if(datoM.equals("02")){
+            
+            fechaF = datoA + "-" + datoM + "-28";
+        }
+        else {
+            
+           fechaF = datoA + "-" + datoM + "-30"; 
+        }
+        
+        sql = "SELECT pacientes.id_paciente, pacientes.nombre_paciente, AVG(citas.precio) " 
+                + "FROM citas NATURAL JOIN pacientes " 
+                + "WHERE citas.fecha BETWEEN '" +  fechaI + "' AND '" + fechaF + "' GROUP BY pacientes.id_paciente, pacientes.nombre_paciente;";
+                
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[4];
+            
+            while(consulta.next()){
+                
+                for (int i = 0; i < 3; i++){
+                    
+                    fila[i] = consulta.getObject(i + 1);
+                }
+                
+                sql2 = "SELECT AVG(costo) " +
+                    "FROM pacientes NATURAL JOIN historias_clinicas NATURAL JOIN registros NATURAL JOIN formulas_medicas NATURAL JOIN formulas_medicas_medicamentos NATURAL JOIN Medicamentos " +
+                    "WHERE registros.fecha_consulta BETWEEN '" + fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + fila[0] + 
+                    "' GROUP BY nombre_paciente;";
+                
+                Statement sentencia2 = con.createStatement();
+                ResultSet consulta2 = sentencia2.executeQuery(sql2);
+                
+                while(consulta2.next()){
+                
+                    fila[3] = consulta2.getObject(1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+    }
+
+    public void consultarGastosPacientesAnual(String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        String sql, fechaI, fechaF, sql2;
+        
+        fechaI = datoA + "-01-01";
+        fechaF = datoA + "-12-31";
+        
+        sql = "SELECT pacientes.id_paciente, pacientes.nombre_paciente, AVG(citas.precio) " 
+                + "FROM citas NATURAL JOIN pacientes " 
+                + "WHERE citas.fecha BETWEEN '" +  fechaI + "' AND '" + fechaF + "' GROUP BY pacientes.id_paciente, pacientes.nombre_paciente;";
+                
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[4];
+            
+            while(consulta.next()){
+                
+                for (int i = 0; i < 3; i++){
+                    
+                    fila[i] = consulta.getObject(i + 1);
+                }
+                
+                sql2 = "SELECT AVG(costo) " +
+                    "FROM pacientes NATURAL JOIN historias_clinicas NATURAL JOIN registros NATURAL JOIN formulas_medicas NATURAL JOIN formulas_medicas_medicamentos NATURAL JOIN Medicamentos " +
+                    "WHERE registros.fecha_consulta BETWEEN '" + fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + fila[0] + 
+                    "' GROUP BY nombre_paciente;";
+                
+                Statement sentencia2 = con.createStatement();
+                ResultSet consulta2 = sentencia2.executeQuery(sql2);
+                
+                while(consulta2.next()){
+                
+                    fila[3] = consulta2.getObject(1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+    }
+
+    public void consultarGastosPacienteMensual(String cedula, String datoM, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        String sql, fechaI, fechaF, sql2;
+        
+        fechaI = datoA + "-" + datoM + "-01";
+        if(datoM.equals("01") || datoM.equals("03") || datoM.equals("05") || datoM.equals("07") || datoM.equals("08")
+                || datoM.equals("10") || datoM.equals("12")){
+            
+            fechaF = datoA + "-" + datoM + "-31";
+        }
+        else if(datoM.equals("02")){
+            
+            fechaF = datoA + "-" + datoM + "-28";
+        }
+        else {
+            
+           fechaF = datoA + "-" + datoM + "-30"; 
+        }
+        
+        sql = "SELECT pacientes.id_paciente, pacientes.nombre_paciente, AVG(citas.precio) " 
+                + "FROM citas NATURAL JOIN pacientes " 
+                + "WHERE citas.fecha BETWEEN '" +  fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + cedula +
+                "' GROUP BY pacientes.id_paciente, pacientes.nombre_paciente;";
+                
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[4];
+            
+            while(consulta.next()){
+                
+                for (int i = 0; i < 3; i++){
+                    
+                    fila[i] = consulta.getObject(i + 1);
+                }
+                
+                sql2 = "SELECT AVG(costo) " +
+                    "FROM pacientes NATURAL JOIN historias_clinicas NATURAL JOIN registros NATURAL JOIN formulas_medicas NATURAL JOIN formulas_medicas_medicamentos NATURAL JOIN Medicamentos " +
+                    "WHERE registros.fecha_consulta BETWEEN '" + fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + fila[0] + 
+                    "' GROUP BY nombre_paciente;";
+                
+                Statement sentencia2 = con.createStatement();
+                ResultSet consulta2 = sentencia2.executeQuery(sql2);
+                
+                while(consulta2.next()){
+                
+                    fila[3] = consulta2.getObject(1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+    }
+
+    public void consultarGastosPacienteAnual(String cedula, String datoA, DefaultTableModel modelo, JTable tabla) {
+        
+        String sql, fechaI, fechaF, sql2;
+        
+        fechaI = datoA + "-01-01";
+        fechaF = datoA + "-12-31";
+        
+        sql = "SELECT pacientes.id_paciente, pacientes.nombre_paciente, AVG(citas.precio) " 
+            + "FROM citas NATURAL JOIN pacientes " 
+            + "WHERE citas.fecha BETWEEN '" +  fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + cedula +
+            "' GROUP BY pacientes.id_paciente, pacientes.nombre_paciente;";      
+        
+        try {
+            
+            Connection con = conexion.getConnetion();
+            Statement sentencia = con.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            Object fila[] = new Object[4];
+            
+            while(consulta.next()){
+                
+                for (int i = 0; i < 3; i++){
+                    
+                    fila[i] = consulta.getObject(i + 1);
+                }
+                
+                sql2 = "SELECT AVG(costo) " +
+                    "FROM pacientes NATURAL JOIN historias_clinicas NATURAL JOIN registros NATURAL JOIN formulas_medicas NATURAL JOIN formulas_medicas_medicamentos NATURAL JOIN Medicamentos " +
+                    "WHERE registros.fecha_consulta BETWEEN '" + fechaI + "' AND '" + fechaF + "' AND id_paciente = '" + fila[0] + 
+                    "' GROUP BY nombre_paciente;";
+                
+                Statement sentencia2 = con.createStatement();
+                ResultSet consulta2 = sentencia2.executeQuery(sql2);
+                
+                while(consulta2.next()){
+                
+                    fila[3] = consulta2.getObject(1);
+                }
+                
+                modelo.addRow(fila);
+            }
+            
+            tabla.updateUI();
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }    
     }
 }

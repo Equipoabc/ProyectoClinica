@@ -188,6 +188,26 @@ public class DaoEnfermera {
 
         return -1;
     }
-    
-    
+
+    public int agregarHabilidad(String id_empleado, String habilidadX) {
+        
+        String sql;
+        sql = "INSERT INTO enfermeras_habilidades (id_empleado, habilidad)" +
+                " VALUES ('" + id_empleado + "', '" + habilidadX + "');";
+        
+        try {
+            
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement(); 
+            sentencia.executeUpdate(sql);            
+            return 1;                  
+            
+        } catch(SQLException e){            
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+        
+        return -1;
+    }        
 }

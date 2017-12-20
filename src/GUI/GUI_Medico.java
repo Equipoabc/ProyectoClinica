@@ -198,7 +198,7 @@ public class GUI_Medico extends javax.swing.JFrame {
     }//GEN-LAST:event_historiaBotonActionPerformed
 
     private void registroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBotonActionPerformed
-        // TODO add your handling code here:
+
         GUI_CrearRegistro interfaz = new GUI_CrearRegistro();
         interfaz.setCedula_medico(id);
         interfaz.setVisible(true);
@@ -211,19 +211,7 @@ public class GUI_Medico extends javax.swing.JFrame {
         i.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_inscribirBotonActionPerformed
- 
-    public void personalizarBienvenida(){
-       /* Gerente gerente = new Gerente();
-        ControladorGerente controladorGerente = new ControladorGerente();
-        
-        
-        gerente = controladorGerente.consultarDatosGerente(id);
-        System.out.println(gerente);
-        jLabel1.setText(gerente.getPrimer_nombre());*/
-    }    
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
