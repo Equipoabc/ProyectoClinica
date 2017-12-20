@@ -25,6 +25,10 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
         camaLabel = new javax.swing.JLabel();
         registrarCama = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
+        camaLabel1 = new javax.swing.JLabel();
+        modificarCama = new javax.swing.JButton();
+        camaLabel2 = new javax.swing.JLabel();
+        asignarCama = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -71,7 +75,7 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
         camaLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         camaLabel.setText("<html><body> <center> Registrar </br> Cama </center></body></html>");
         jPanel1.add(camaLabel);
-        camaLabel.setBounds(270, 250, 140, 90);
+        camaLabel.setBounds(230, 250, 140, 90);
 
         registrarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
         registrarCama.setBorder(null);
@@ -84,7 +88,7 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
             }
         });
         jPanel1.add(registrarCama);
-        registrarCama.setBounds(260, 240, 160, 110);
+        registrarCama.setBounds(220, 240, 160, 110);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
@@ -100,6 +104,48 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(610, 400, 130, 70);
+
+        camaLabel1.setBackground(new java.awt.Color(255, 255, 255));
+        camaLabel1.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        camaLabel1.setForeground(new java.awt.Color(108, 101, 247));
+        camaLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        camaLabel1.setText("<html><body> <center> Modificar </br> Cama </center></body></html>");
+        jPanel1.add(camaLabel1);
+        camaLabel1.setBounds(400, 250, 140, 90);
+
+        modificarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        modificarCama.setBorder(null);
+        modificarCama.setBorderPainted(false);
+        modificarCama.setContentAreaFilled(false);
+        modificarCama.setFocusPainted(false);
+        modificarCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modificarCamaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(modificarCama);
+        modificarCama.setBounds(390, 240, 160, 110);
+
+        camaLabel2.setBackground(new java.awt.Color(255, 255, 255));
+        camaLabel2.setFont(new java.awt.Font("SansSerif", 0, 22)); // NOI18N
+        camaLabel2.setForeground(new java.awt.Color(108, 101, 247));
+        camaLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        camaLabel2.setText("<html><body> <center> Asignar </br> Cama </center></body></html>");
+        jPanel1.add(camaLabel2);
+        camaLabel2.setBounds(580, 250, 130, 90);
+
+        asignarCama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoBotones.png"))); // NOI18N
+        asignarCama.setBorder(null);
+        asignarCama.setBorderPainted(false);
+        asignarCama.setContentAreaFilled(false);
+        asignarCama.setFocusPainted(false);
+        asignarCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                asignarCamaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(asignarCama);
+        asignarCama.setBounds(560, 240, 160, 110);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoAdministrador1.png"))); // NOI18N
@@ -142,6 +188,18 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
         adminLogin.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void modificarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarCamaActionPerformed
+         GUI_ModificarCama interfazLogin = new GUI_ModificarCama();
+        interfazLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modificarCamaActionPerformed
+
+    private void asignarCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_asignarCamaActionPerformed
+       GUI_AsignarCama interfazLogin = new GUI_AsignarCama();
+        interfazLogin.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_asignarCamaActionPerformed
     
     public static void main(String args[]){
        
@@ -158,11 +216,15 @@ public class GUI_InterfazCamas extends javax.swing.JFrame {
     private javax.swing.JLabel CerrarSesion;
     private javax.swing.JLabel administradorLabel;
     private javax.swing.JLabel administradorLabel2;
+    private javax.swing.JButton asignarCama;
     private javax.swing.JLabel bienvenidoLabel;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel camaLabel;
+    private javax.swing.JLabel camaLabel1;
+    private javax.swing.JLabel camaLabel2;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton modificarCama;
     private javax.swing.JButton registrarCama;
     // End of variables declaration//GEN-END:variables
 }

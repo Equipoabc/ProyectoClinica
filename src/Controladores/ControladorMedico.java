@@ -53,5 +53,8 @@ public class ControladorMedico {
 
     public ArrayList<String> llenarCombo() {
         return daoMedico.llenarCombo();
-    }        
+    }
+    public String seleccionMedico(String id_medico) {
+        return daoMedico.seleccionMedico(id_medico);
+    }    
 }

@@ -199,6 +199,10 @@ public class GUI_Medico extends javax.swing.JFrame {
 
     private void registroBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registroBotonActionPerformed
         // TODO add your handling code here:
+        GUI_CrearRegistro interfaz = new GUI_CrearRegistro();
+        interfaz.setCedula_medico(id);
+        interfaz.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_registroBotonActionPerformed
 
     private void inscribirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirBotonActionPerformed
