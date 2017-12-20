@@ -279,4 +279,35 @@ public class DaoCita {
             return 2;
         }
     } 
+
+    public ArrayList<String> llenarAnos() {
+        
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql, aux;
+        sql = "SELECT fecha FROM citas ORDER BY fecha;";
+        
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                aux = consulta.getString(1);
+                String[] partes = aux.split("-");
+                aux = partes[0];
+                if(lista.indexOf(aux) == -1){
+                    
+                    lista.add(aux);
+                }
+            }
+            
+        } catch(SQLException e){               
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){            
+            System.out.println("Error: " + e);
+        }
+        
+        return lista;
+    }
 }
