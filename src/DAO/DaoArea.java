@@ -137,8 +137,7 @@ public class DaoArea {
         String sql_guardar, validar;
         
         validar = "SELECT id_area FROM areas WHERE id_area = '" + codigoConsulta + "';";
-        sql_guardar = "UPDATE areas SET id_area = '"
-                + codigoConsulta + "', nombre_area = '" + nom + "', descripcion = '"+
+        sql_guardar = "UPDATE areas SET nombre_area = '" + nom + "', descripcion = '"+
                  des + "' WHERE id_area = '" + codigoConsulta + "';";
         
         try {

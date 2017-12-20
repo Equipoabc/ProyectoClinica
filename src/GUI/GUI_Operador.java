@@ -198,7 +198,10 @@ public class GUI_Operador extends javax.swing.JFrame {
     }//GEN-LAST:event_pacienteBotonActionPerformed
 
     private void inscribirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirBotonActionPerformed
-        // TODO add your handling code here:
+        GUI_InscribirCampana i = new GUI_InscribirCampana();
+        i.setTipo("Operador");
+        i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_inscribirBotonActionPerformed
 
     private void agendaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendaBotonActionPerformed

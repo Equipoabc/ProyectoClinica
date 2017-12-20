@@ -24,8 +24,8 @@ public class ControladorPacientes_Camas {
         
         return daoPacientes_Camas.consultarAsignacion(cedulaBusqueda);
     }   
-  /*  public Pacientes_Camas asignarCama(String cedula, String numeroCama) {
+    public int asignarCama(String cedula, String numeroCama, String fecha, int n) {
         
-        return daoPacientes_Camas.asignarCama(cedula, numeroCama);
-    } */    
+        return daoPacientes_Camas.asignarCama(cedula, numeroCama, fecha, n);
+    }   
 }

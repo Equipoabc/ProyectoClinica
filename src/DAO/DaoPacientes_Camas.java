@@ -32,9 +32,8 @@ public class DaoPacientes_Camas {
         String sql, validar;
         Pacientes_Camas pc = new Pacientes_Camas();
         
-        validar = "SELECT numero_cama FROM Pacientes_Camas WHERE id_paciente = '" + id_paciente + "';";
-        sql = "SELECT numero_cama "
-                + "FROM Pacientes_Camas WHERE id_paciente = '" + id_paciente + "';";
+        validar = "SELECT id_paciente FROM Pacientes_Camas WHERE id_paciente = '" + id_paciente + "';";
+        sql = "SELECT numero_cama FROM Pacientes_Camas WHERE id_paciente = '" + id_paciente + "';";
         
         try {
             
@@ -47,11 +46,7 @@ public class DaoPacientes_Camas {
                 validar = consulta.getString(1);
             }
             
-            if (!validar.equals(id_paciente)) {
-                
-                return null;
-            }
-            else {
+            if (validar.equals(id_paciente)) {
                 
                 ResultSet consulta2 = sentencia.executeQuery(sql);
                 
@@ -62,6 +57,10 @@ public class DaoPacientes_Camas {
                 
                 return pc;
             }
+            else {
+                return null;
+                
+            }
         } catch (SQLException e) {
             System.out.println("SQL error: " + e);
         } catch (Exception e) {
@@ -71,16 +70,20 @@ public class DaoPacientes_Camas {
         return null;
     }
 
-    public int asignarCama(String cedula, String numeroCama){
-       /* 
-        String sql_guardar, validar;
+    public int asignarCama(String cedula, String numeroCama, String fecha, int n){
+       
+        String sql_guardar, validar, eliminar, sql_ocupar;
         int numFilas;
         
-        validar = "SELECT numero_cama FROM Camas WHERE numero_cama = '" + cama.getNumero_cama() + "';";
+        validar = "SELECT estado FROM camas WHERE numero_cama = '" + numeroCama + "';";
+        String buscarCama = "SELECT numero_cama FROM Pacientes_Camas WHERE id_paciente = '" + cedula + "';";
+        String validarCamaIgual = "SELECT id_paciente FROM Pacientes_Camas WHERE numero_cama = '" + numeroCama + "';";
         sql_guardar = "INSERT INTO Pacientes_Camas (id_paciente, numero_cama, fecha_asignacion) VALUES ('" 
-                + cama.getNumero_cama() + "', '" +
-                cama.getDescripcion() +  "', '" + cama.getEstado() +  "', '" +
-                cama.getId_area()  +  "')" ;
+                + cedula + "', '" + numeroCama +  "', '" + fecha +  "');" ;
+        sql_ocupar = "UPDATE camas SET estado = 'Ocupada' WHERE numero_cama = '" +numeroCama+ "';";
+        eliminar = "DELETE FROM Pacientes_Camas WHERE id_paciente = '" + cedula + "';";
+        
+        
         
         try {
             
@@ -93,13 +96,41 @@ public class DaoPacientes_Camas {
                 validar = consulta.getString(1);
             }
             
-            if(validar.equals(cama.getNumero_cama())){
+            ResultSet consulta2 = sentencia.executeQuery(validarCamaIgual);
+            while(consulta2.next()){
+                
+                validarCamaIgual = consulta2.getString(1);
+            }
+            
+            ResultSet consulta3 = sentencia.executeQuery(buscarCama);
+            while(consulta3.next()){
+                
+                buscarCama = consulta3.getString(1);
+            }
+            
+            if(validar.equals("Ocupada") && !validarCamaIgual.equals(cedula)){
                 
                 return 2;
+            }
+            else if(validar.equals("Ocupada") && validarCamaIgual.equals(cedula)){
+                
+                return 3;
             }            
-            else {                
+            else { 
+                if(n == 0){
                 numFilas = sentencia.executeUpdate(sql_guardar);
+                sentencia.executeUpdate(sql_ocupar);
                 return numFilas;
+                }
+                else if (n == 1){
+                    
+                    String sql_desocupar = "UPDATE camas SET estado = 'Libre' WHERE numero_cama = '" +buscarCama+ "';";
+                    sentencia.executeUpdate(eliminar);
+                    numFilas = sentencia.executeUpdate(sql_guardar);
+                    sentencia.executeUpdate(sql_ocupar);
+                    sentencia.executeUpdate(sql_desocupar);
+                return numFilas;
+                }
             }
         } catch(SQLException e){
             
@@ -108,7 +139,7 @@ public class DaoPacientes_Camas {
             
             System.out.println("Error" + e);
         }
-        */
+        
         return -1;
     }    
 }

@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class DaoCampana {
     
@@ -169,4 +170,29 @@ public class DaoCampana {
         
         return -1;
     }    
+
+    public ArrayList<String> llenarCombo() {
+        ArrayList<String> lista = new ArrayList<String>();
+        String sql = "SELECT codigo_campana, nombre_campana FROM campanas;";
+        try {
+            Connection conn = conexion.getConnetion();
+            Statement sentencia = conn.createStatement();
+            ResultSet consulta = sentencia.executeQuery(sql);
+            
+            while(consulta.next()){
+                
+                lista.add(consulta.getString(1)+" "+consulta.getString(2));
+            }
+            
+            } catch(SQLException e){
+        
+        
+            System.out.println("SQL error: " + e);
+        } catch(Exception e){
+            
+            System.out.println("Error: " + e);
+        }
+        
+        return lista;
+    }
 }

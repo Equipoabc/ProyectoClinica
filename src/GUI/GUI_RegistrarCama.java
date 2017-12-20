@@ -40,8 +40,6 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         botonCancelar = new javax.swing.JButton();
-        estadoText = new javax.swing.JComboBox<>();
-        estadoLabel = new javax.swing.JLabel();
         descripcionLabel = new javax.swing.JLabel();
         areaLabel = new javax.swing.JLabel();
         numeroCamaLabel = new javax.swing.JLabel();
@@ -79,23 +77,6 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
         });
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(380, 370, 130, 70);
-
-        estadoText.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        estadoText.setForeground(new java.awt.Color(102, 102, 255));
-        estadoText.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Libre", "Ocupada" }));
-        estadoText.setFocusable(false);
-        estadoText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                estadoTextActionPerformed(evt);
-            }
-        });
-        jPanel1.add(estadoText);
-        estadoText.setBounds(370, 310, 130, 20);
-
-        estadoLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
-        estadoLabel.setText("Estado:");
-        jPanel1.add(estadoLabel);
-        estadoLabel.setBounds(260, 300, 170, 30);
 
         descripcionLabel.setFont(new java.awt.Font("Cambria", 2, 14)); // NOI18N
         descripcionLabel.setText("Descripción:");
@@ -184,11 +165,10 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
         String id_area = (String) listaArea.getSelectedItem();
         String[] partes = id_area.split(" ");
         area = partes[0];
-        descripcion = descripcionText.getText();
-        estado = (String) estadoText.getSelectedItem();        
+        descripcion = descripcionText.getText();      
         
         
-        if (numeroCama.equals("") || area.equals("") || estado.equals("") || descripcion.equals("")) {
+        if (numeroCama.equals("") || area.equals("") || descripcion.equals("")) {
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios." + validar);
         }
 
@@ -201,13 +181,12 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
         else {
                           
                 int numFilas = controladorCama.insertarCama(numeroCama,
-                        area, descripcion, estado);                
+                        area, descripcion, "Libre");                
                 switch (numFilas) {
                     case 1:
                         JOptionPane.showMessageDialog(null, "La cama se ha registrado exitosamente.");
                         numeroCamaText.setText(null);                     
                         descripcionText.setText(null);
-                        estadoText.setSelectedItem("Libre");
                         break;                   
                     case 2:
                         JOptionPane.showMessageDialog(null, "La cama con número " + numeroCama + " ya existe.");
@@ -228,10 +207,6 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
     private void fechaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_fechaKeyPressed
      
     }//GEN-LAST:event_fechaKeyPressed
-
-    private void estadoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoTextActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_estadoTextActionPerformed
 
     private void listaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAreaActionPerformed
         // TODO add your handling code here:
@@ -256,8 +231,6 @@ public class GUI_RegistrarCama extends javax.swing.JFrame {
     private javax.swing.JButton botonCancelar;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JTextArea descripcionText;
-    private javax.swing.JLabel estadoLabel;
-    private javax.swing.JComboBox<String> estadoText;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;

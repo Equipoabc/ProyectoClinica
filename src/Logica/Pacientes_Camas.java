@@ -15,13 +15,13 @@ public class Pacientes_Camas {
     
     private String id_paciente;
     private String numero_cama;
-    private Date fecha_asignacion;
+    private String fecha_asignacion;
     
     public Pacientes_Camas(){
         
         id_paciente = "";
         numero_cama = "";
-        fecha_asignacion = null;
+        fecha_asignacion = "";
     } 
 
     /**
@@ -55,14 +55,14 @@ public class Pacientes_Camas {
     /**
      * @return the fecha_asignacion
      */
-    public Date getFecha_asignacion() {
+    public String getFecha_asignacion() {
         return fecha_asignacion;
     }
 
     /**
      * @param fecha_asignacion the fecha_asignacion to set
      */
-    public void setFecha_asignacion(Date fecha_asignacion) {
+    public void setFecha_asignacion(String fecha_asignacion) {
         this.fecha_asignacion = fecha_asignacion;
     }
 }

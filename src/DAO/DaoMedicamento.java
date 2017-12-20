@@ -97,8 +97,7 @@ public class DaoMedicamento {
         String sql_guardar, validar;
         
         validar = "SELECT codigo_medicamento FROM medicamentos WHERE codigo_medicamento = '" + codigoConsulta + "';";
-        sql_guardar = "UPDATE medicamentos SET codigo_medicamento = '"
-                + codigoConsulta + "', nombre_medicamento = '" + nom + "', descripcion = '"+
+        sql_guardar = "UPDATE medicamentos SET nombre_medicamento = '" + nom + "', descripcion = '"+
                  des + "', costo = '" + cos +"' WHERE codigo_medicamento = '" + codigoConsulta + "';";
         
         try {

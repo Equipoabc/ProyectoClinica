@@ -4,25 +4,26 @@ import javax.swing.*;
 import Logica.*;
 import java.util.ArrayList;
 
-public class GUI_ModificarArea extends javax.swing.JFrame {
+public class GUI_ModificarCausa extends javax.swing.JFrame {
     
     Validaciones validaciones;
-    ControladorArea controladorArea;
-    Area area;
+    ControladorCausas controladorCausas;
+    Causa causa;
 
-    public GUI_ModificarArea() {
+    public GUI_ModificarCausa() {
         
         initComponents();
         this.setLocationRelativeTo(null);
-        controladorArea = new ControladorArea();
+        controladorCausas = new ControladorCausas();
         validaciones = new Validaciones();
+        causa = new Causa();
         botonAceptar.setEnabled(false);
         ArrayList<String> lista = new ArrayList<String>();
-        lista = controladorArea.llenarCombo();
+        lista = controladorCausas.llenarCausas();
         
         for(int i=0; i < lista.size(); i++){
-            listaArea.addItem(lista.get(i));
-        }  
+            listaCausas.addItem(lista.get(i));
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -30,8 +31,9 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        botonEliminar = new javax.swing.JButton();
         botonCancelar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
+        causasGrande = new javax.swing.JLabel();
         botonAceptar = new javax.swing.JButton();
         codigo_label = new javax.swing.JLabel();
         botonConsultar = new javax.swing.JButton();
@@ -39,13 +41,27 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         descripcion = new javax.swing.JTextArea();
         segundoNombreLabel = new javax.swing.JLabel();
         descripcionLabel = new javax.swing.JLabel();
-        listaArea = new javax.swing.JComboBox<>();
+        listaCausas = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setLayout(null);
+
+        botonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarMed.png"))); // NOI18N
+        botonEliminar.setBorderPainted(false);
+        botonEliminar.setContentAreaFilled(false);
+        botonEliminar.setFocusPainted(false);
+        botonEliminar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/EliminarPeq.png"))); // NOI18N
+        botonEliminar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Eliminar.png"))); // NOI18N
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(botonEliminar);
+        botonEliminar.setBounds(80, 340, 120, 50);
 
         botonCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         botonCancelar.setBorder(null);
@@ -62,12 +78,12 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         jPanel1.add(botonCancelar);
         botonCancelar.setBounds(400, 370, 140, 90);
 
-        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Modificar Área");
-        jPanel1.add(jLabel6);
-        jLabel6.setBounds(140, 40, 320, 50);
+        causasGrande.setBackground(new java.awt.Color(255, 255, 255));
+        causasGrande.setFont(new java.awt.Font("SansSerif", 0, 30)); // NOI18N
+        causasGrande.setForeground(new java.awt.Color(255, 255, 255));
+        causasGrande.setText("Modificar Causas");
+        jPanel1.add(causasGrande);
+        causasGrande.setBounds(140, 40, 320, 50);
 
         botonAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/AceptarMed.png"))); // NOI18N
         botonAceptar.setBorder(null);
@@ -127,13 +143,13 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
         jPanel1.add(descripcionLabel);
         descripcionLabel.setBounds(260, 260, 80, 30);
 
-        listaArea.addActionListener(new java.awt.event.ActionListener() {
+        listaCausas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaAreaActionPerformed(evt);
+                listaCausasActionPerformed(evt);
             }
         });
-        jPanel1.add(listaArea);
-        listaArea.setBounds(50, 230, 180, 25);
+        jPanel1.add(listaCausas);
+        listaCausas.setBounds(50, 230, 180, 25);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -159,7 +175,7 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         
-        GUI_InterfazAreas operador = new GUI_InterfazAreas();
+        GUI_InterfazMedicamentos operador = new GUI_InterfazMedicamentos();
             operador.setVisible(true);
             this.dispose();
     }//GEN-LAST:event_botonCancelarActionPerformed
@@ -167,103 +183,142 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         
-        String area1 = (String) listaArea.getSelectedItem();
-        String[] partes = area1.split(" ");
         String codigoConsulta, nom, des = "";
-        codigoConsulta = partes[0];
+        codigoConsulta = causa.getCodigo_causa();
         nom = nombre.getText();
         des = descripcion.getText();
         
         
-        if (nom.equals("") || codigoConsulta.equals("") || des.equals("")){
+        if (nom.equals("") || des.equals("")){
             JOptionPane.showMessageDialog(null, "Faltan campos obligatorios.");
-        } else if (!validaciones.validarLetras(nom)){
+        } else if (!validaciones.validarLetrasEspacios(nom)){
             JOptionPane.showMessageDialog(null, "El campo del nombre debe ser de solo letras.");
-        } else if (!validaciones.validarNumero(codigoConsulta)) {
-            JOptionPane.showMessageDialog(null, "El código de consulta debe ser númerico.");
-        }  else {
+        }  else  {
             
-            if(controladorArea.comprobar(codigoConsulta) == 1){
+            if ( nom.equals(causa.getNombre_causa()) && des.equals(causa.getDescripcion())){
                 
-                
-                if ( nom.equals(area.getNombre_area()) && des.equals(area.getDescripcion())){
-                    
-                    JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
-                } else {
-                    
-                    int resultado = controladorArea.actualizarArea(codigoConsulta, nom, des);
-                    
-                    switch(resultado){
-                        case 1:
-                            JOptionPane.showMessageDialog(null, "Los datos del área se han modificado exitosamente.");
-                            listaArea.removeAllItems();
-                            ArrayList<String> lista = new ArrayList<String>();
-                            lista = controladorArea.llenarCombo();
-                            
-                            for(int i=0; i < lista.size(); i++){
-                                listaArea.addItem(lista.get(i));
-                            }
-                            nombre.setText(null);
-                            descripcion.setText(null);
-                            botonAceptar.setEnabled(false);
-                            break;
-                            
-                        default:
-                            JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar el área.");
-                            break;
-                    }
-                }
+                JOptionPane.showMessageDialog(null, "No se ha modificado ningun campo.");
             } else {
                 
-                JOptionPane.showMessageDialog(null, "El área que desea modificar no existe.");
+                int resultado = controladorCausas.actualizarCausa(codigoConsulta, nom, des);
+                
+                switch(resultado){
+                    case 1:
+                        JOptionPane.showMessageDialog(null, "Los datos del área se han modificado exitosamente.");
+                        nombre.setText(null);
+                        descripcion.setText(null);
+                        botonAceptar.setEnabled(false);
+                        listaCausas.removeAllItems();
+                        ArrayList<String> lista = new ArrayList<String>();
+                        lista = controladorCausas.llenarCausas();
+                        
+                        for(int i=0; i < lista.size(); i++){
+                            listaCausas.addItem(lista.get(i));
+                        }
+                        break;
+                        
+                    default:
+                        JOptionPane.showMessageDialog(null, "Ocurrio un problema al actualizar la causa.");
+                        break;
+                }
             }
         }
     }//GEN-LAST:event_botonAceptarActionPerformed
     
     private void botonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonConsultarActionPerformed
+
         
-        String area1 = (String) listaArea.getSelectedItem();
-        String[] partes = area1.split(" ");
-        String cod_area = partes[0];
+        String id_area1 = (String) listaCausas.getSelectedItem();
+        String[] partes = id_area1.split(" ");
+        String cod_causa = partes[0];
         
-        if (cod_area.equals("")) {
+        if (cod_causa.equals("")) {
             
             JOptionPane.showMessageDialog(null, "El campo de la consulta esta vacio.");
             
-        } else if (!validaciones.validarNumero(cod_area)) {
+        } else if (!validaciones.validarNumero(cod_causa)) {
             
             JOptionPane.showMessageDialog(null, "El campo consultar debe ser numerico.");
             
         } else {
             
-            area = controladorArea.consultarDatosArea(cod_area);
+            causa = controladorCausas.consultarDatosCausa(cod_causa);
             
-            if (area != null) {
+            if (causa != null) {
                 botonAceptar.setEnabled(true);
-                nombre.setText(area.getNombre_area());
-                descripcion.setText(area.getDescripcion());
-                
+                nombre.setText(causa.getNombre_causa());
+                descripcion.setText(causa.getDescripcion());
                
             } else {
                 
-                JOptionPane.showMessageDialog(null, "El área no existe.");
+                JOptionPane.showMessageDialog(null, "La causa no está registrada.");
                 nombre.setText(null);
                 descripcion.setText(null);
             }
         }        
     }//GEN-LAST:event_botonConsultarActionPerformed
+    
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
 
-    private void listaAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaAreaActionPerformed
+        String id_area1 = (String) listaCausas.getSelectedItem();
+        String[] partes = id_area1.split(" ");
+        String cod_causa = partes[0];
+
+        if (cod_causa.equals("")){
+
+            JOptionPane.showMessageDialog(null, "No ha ingresado ninguna causa.");
+        } else if (!validaciones.validarNumero(cod_causa)){
+
+            JOptionPane.showMessageDialog(null, "El campo debe ser numérico.");
+        } else {
+
+            causa = controladorCausas.consultarDatosCausa(cod_causa);
+
+            if(causa != null){
+
+                int opcion = 5;
+                opcion = JOptionPane.showConfirmDialog(null, "Está seguro que desea borrar esta causa: \n" + causa.getNombre_causa() + " ?", "Confirmar eliminación", JOptionPane.OK_CANCEL_OPTION);
+
+                if(opcion == 0){
+
+                    int numFilas = controladorCausas.eliminarCausa(cod_causa);
+
+                    if (numFilas == 1){
+
+                        JOptionPane.showMessageDialog(null, "La causa "+ causa.getNombre_causa()+ " ha sido eliminada.");
+                        listaCausas.removeAllItems();
+                        ArrayList<String> lista = new ArrayList<String>();
+                        lista = controladorCausas.llenarCausas();
+                        
+                        for(int i=0; i < lista.size(); i++){
+                            listaCausas.addItem(lista.get(i));
+                        }
+                        nombre.setText(null);
+                        descripcion.setText(null);
+                    }
+                    else{
+
+                        JOptionPane.showMessageDialog(null, "Hubo un error eliminando la causa.");
+                    }
+                }
+            } else {
+
+                JOptionPane.showMessageDialog(null, "La causa: " + cod_causa + " no existe.");
+            }
+        }
+    }//GEN-LAST:event_botonEliminarActionPerformed
+
+    private void listaCausasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaCausasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listaAreaActionPerformed
-        
+    }//GEN-LAST:event_listaCausasActionPerformed
+    
     public static void main(String args[]){
         
         java.awt.EventQueue.invokeLater(new Runnable(){
             
             public void run(){
                 
-                new GUI_ModificarArea().setVisible(true);
+                new GUI_ModificarCausa().setVisible(true);
             }
         });
     }
@@ -272,13 +327,14 @@ public class GUI_ModificarArea extends javax.swing.JFrame {
     private javax.swing.JButton botonAceptar;
     private javax.swing.JButton botonCancelar;
     private javax.swing.JButton botonConsultar;
+    private javax.swing.JButton botonEliminar;
+    private javax.swing.JLabel causasGrande;
     private javax.swing.JLabel codigo_label;
     private javax.swing.JTextArea descripcion;
     private javax.swing.JLabel descripcionLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JComboBox<String> listaArea;
+    private javax.swing.JComboBox<String> listaCausas;
     private javax.swing.JTextField nombre;
     private javax.swing.JLabel segundoNombreLabel;
     // End of variables declaration//GEN-END:variables

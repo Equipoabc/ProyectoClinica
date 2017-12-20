@@ -1,19 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Controladores;
-
-import DAO.DaoCama;
 import DAO.DaoCampana;
-import Logica.Cama;
 import Logica.Campana;
+import java.util.ArrayList;
 
-/**
- *
- * @author Iván
- */
 public class ControladorCampana {
     DaoCampana daoCampana;
 
@@ -43,4 +32,8 @@ public class ControladorCampana {
     public int actualizarCampana(String codigo, String nombre, String objetivo, String fecha, String medico) {
         return daoCampana.actualizarCampana(codigo, nombre, objetivo, fecha, medico);
     }    
+
+    public ArrayList<String> llenarCombo() {
+        return daoCampana.llenarCombo();
+    }
 }

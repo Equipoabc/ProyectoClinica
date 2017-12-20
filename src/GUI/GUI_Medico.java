@@ -206,7 +206,10 @@ public class GUI_Medico extends javax.swing.JFrame {
     }//GEN-LAST:event_registroBotonActionPerformed
 
     private void inscribirBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inscribirBotonActionPerformed
-        // TODO add your handling code here:
+        GUI_InscribirCampana i = new GUI_InscribirCampana();
+        i.setTipo(id);
+        i.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_inscribirBotonActionPerformed
  
     public void personalizarBienvenida(){
