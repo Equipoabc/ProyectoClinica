@@ -83,13 +83,13 @@ public class DaoEmpleado {
         }
     }    
 
-    public void listarCitasMeses(int id_mes, DefaultTableModel modelo, JTable tabla) {
+    public void listarCitasMeses(int id_mes,int ano, DefaultTableModel modelo, JTable tabla) {
         String sql;
         
         
         sql = "select empleados.id_empleado, nombre_empleado ,count(*)from (medicos INNER JOIN citas ON (medicos.id_empleado = citas.id_empleado)" +
               "INNER JOIN empleados ON (medicos.id_empleado = empleados.id_empleado))" +
-              "where (extract( month from citas.fecha) =" +id_mes+ ")" +
+              "where (extract( month from citas.fecha) =" +id_mes+ ") AND (extract( year from citas.fecha) =" + ano +")" +
               "GROUP BY empleados.id_empleado ;";
         try {
             

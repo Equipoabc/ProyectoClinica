@@ -53,6 +53,10 @@ public class GUI_CitasMes extends javax.swing.JFrame {
         meses.addItem("Diciembre");
         
         
+         for(int i = 0 ; i<18 ; i++){
+             anos.addItem(Integer.toString(2000+i));
+        }
+        
         
     }
     
@@ -74,6 +78,7 @@ public class GUI_CitasMes extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
+        anos = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         texto = new javax.swing.JLabel();
         meses = new javax.swing.JComboBox<>();
@@ -126,12 +131,20 @@ public class GUI_CitasMes extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1);
         jScrollPane1.setBounds(30, 170, 690, 310);
+
+        anos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anosActionPerformed(evt);
+            }
+        });
+        jPanel1.add(anos);
+        anos.setBounds(330, 130, 70, 20);
         jPanel1.add(jSeparator1);
         jSeparator1.setBounds(380, 250, 0, 2);
 
         texto.setText("Mes:");
         jPanel1.add(texto);
-        texto.setBounds(120, 130, 27, 30);
+        texto.setBounds(100, 130, 27, 30);
 
         meses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -139,7 +152,7 @@ public class GUI_CitasMes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(meses);
-        meses.setBounds(160, 130, 180, 20);
+        meses.setBounds(140, 130, 180, 20);
 
         consultar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ConsultarMed.png"))); // NOI18N
         consultar.setBorderPainted(false);
@@ -153,7 +166,7 @@ public class GUI_CitasMes extends javax.swing.JFrame {
             }
         });
         jPanel1.add(consultar);
-        consultar.setBounds(330, 110, 130, 50);
+        consultar.setBounds(410, 110, 130, 50);
 
         cancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/CancelarMed.png"))); // NOI18N
         cancelar.setBorderPainted(false);
@@ -199,60 +212,67 @@ public class GUI_CitasMes extends javax.swing.JFrame {
         
         String mes = (String) meses.getSelectedItem();
         int id_mes =0;
+        int anoAux =0;
         
         while(modelo.getRowCount() != 0){
-            
             modelo.removeRow(0);
-            
         }
-            if( mes.equals("Enero")){
+        
+       anoAux = anos.getSelectedIndex()+2000;
+        System.out.println(anoAux);
+                
+        switch (mes) {
+            case "Enero":
                 id_mes = 1;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-            else if( mes.equals("Febrero")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Febrero":
                 id_mes = 2;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Marzo")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Marzo":
                 id_mes = 3;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Abril")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Abril":
                 id_mes = 4;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Mayo")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Mayo":
                 id_mes = 5;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Junio")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Junio":
                 id_mes = 6;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Julio")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Julio":
                 id_mes = 7;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else  if( mes.equals("Agosto")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Agosto":
                 id_mes = 8;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Septiembre")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Septiembre":
                 id_mes = 9;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Octubre")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Octubre":
                 id_mes = 10;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Noviembre")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Noviembre":
                 id_mes = 11;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
-           else if( mes.equals("Diciembre")){
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            case "Diciembre":
                 id_mes = 12;
-            controladorEmpleado.listarCitasMeses(id_mes, modelo, tabla);
-            }
+                controladorEmpleado.listarCitasMeses(id_mes,anoAux, modelo, tabla);
+                break;
+            default:
+                break;
+        }
             
          if(modelo.getRowCount() == 0){
             JOptionPane.showMessageDialog(null,"La consulta no arrojó resultados");
@@ -267,6 +287,10 @@ public class GUI_CitasMes extends javax.swing.JFrame {
         administrador.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
+
+    private void anosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_anosActionPerformed
     
     public static void main(String args[]){
         
@@ -280,6 +304,7 @@ public class GUI_CitasMes extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> anos;
     private javax.swing.JButton cancelar;
     private javax.swing.JButton consultar;
     private javax.swing.JLabel fondo;
