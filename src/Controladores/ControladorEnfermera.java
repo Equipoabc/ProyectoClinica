@@ -40,6 +40,11 @@ public class ControladorEnfermera {
         return daoEnfermera.actualizarEnfermera(id_empleado, id_jefe, id_area, nombre_empleado, direccion, telefono,
         sal, email, car, an);
     }
+
+    public int agregarHabilidad(String id_empleado, String habilidadX) {
+        
+        return daoEnfermera.agregarHabilidad(id_empleado, habilidadX);
+    }
     
     
     
