@@ -62,6 +62,8 @@ public class GUI_HistoriaClinica extends javax.swing.JFrame {
         campoCedula = new javax.swing.JTextField();
         consultar = new javax.swing.JButton();
         nombrePacienteLabel = new javax.swing.JLabel();
+        nombrePacienteLabel1 = new javax.swing.JLabel();
+        numeroHistoria = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         jCheckBoxMenuItem1.setSelected(true);
@@ -148,9 +150,19 @@ public class GUI_HistoriaClinica extends javax.swing.JFrame {
 
         nombrePacienteLabel.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
         nombrePacienteLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombrePacienteLabel.setText("Nombre:");
+        nombrePacienteLabel.setText("No° Historia:");
         jPanel1.add(nombrePacienteLabel);
-        nombrePacienteLabel.setBounds(30, 160, 100, 30);
+        nombrePacienteLabel.setBounds(30, 120, 150, 30);
+
+        nombrePacienteLabel1.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        nombrePacienteLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombrePacienteLabel1.setText("Nombre:");
+        jPanel1.add(nombrePacienteLabel1);
+        nombrePacienteLabel1.setBounds(30, 160, 100, 30);
+
+        numeroHistoria.setFont(new java.awt.Font("Cambria", 0, 24)); // NOI18N
+        jPanel1.add(numeroHistoria);
+        numeroHistoria.setBounds(180, 120, 520, 30);
 
         fondo.setFont(new java.awt.Font("Cambria", 0, 12)); // NOI18N
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -186,14 +198,27 @@ public class GUI_HistoriaClinica extends javax.swing.JFrame {
     private void consultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarActionPerformed
         Paciente paciente = new Paciente();
         paciente = controladorPaciente.consultarDatosPaciente(campoCedula.getText());
-        if (paciente == null){
-            JOptionPane.showMessageDialog(null, "no existe el paciente.");
+        
+        if(campoCedula.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "No ha ingresado una cedula.");
+        }
+        else if(!validaciones.validarNumero(campoCedula.getText())){
+            JOptionPane.showMessageDialog(null, "La cedula debe ser un número.");
+        }
+        else if (paciente == null){
+            JOptionPane.showMessageDialog(null, "El paciente no se encuentra registrado.");
         }
         else {
+            String numero = controladorHistoria_clinica.consultarNumero(paciente.getId_paciente());
             nombreLabel.setText(paciente.getNombre_paciente());
+            numeroHistoria.setText(numero);
+            consultarHistoria();
+            
+            
+            
         }
             
-        consultarHistoria();
+        
     }//GEN-LAST:event_consultarActionPerformed
     
     private void consultarHistoria(){
@@ -242,6 +267,8 @@ public class GUI_HistoriaClinica extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel nombrePacienteLabel;
+    private javax.swing.JLabel nombrePacienteLabel1;
+    private javax.swing.JLabel numeroHistoria;
     private javax.swing.JTable tabla;
     // End of variables declaration//GEN-END:variables
 
